@@ -1,0 +1,16 @@
+name: CI Build
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: "Run tests"
+    steps:
+        - uses: actions/checkout@v1
+        - name: Install packages
+          run: "npm install"
+        - name: "Run tests"
+          run: "npm run test"
+        - name: "Try a build."
+          run: "npm run build"
+  
