@@ -5,7 +5,13 @@ Currently, the following differences in APi and behavior might affect compatibil
 * The default `createHashHistory` also utilizes the HTML5 history API (pushstate, replacestate). Meaning Verlauf is not compatible with IE10.
 * URL encoding and decoding was dropped. Please see [here](./URI_Decoding.md) for a partial workaround.
 * For typescript users, there are type incompatibilities that you'll need a workaround for.
+* The algorithm to resolve relative paths has been reimplemented from scratch and might differ in some edge cases.
 * The blocking callback might receive a `location.key` where it would not in history 4.
+* The blocking callback might receive a difference action type in some circumstances.
+* The package does not have the same file structure. Some import statements may break as a result.
+  - You can alias these, if need be.
+* The UMD bundle uses a different namespace.
+* Verlauf does not issue any warnings. History for example warns about incomplete basenames and re-pushing the same location.
 
 ## New features
 
@@ -15,7 +21,6 @@ Currently, the following differences in APi and behavior might affect compatibil
   - `navigate()` as an alternative to push and replace.
   - `unblock()` to disable the current block (if it's set).
 * Typescript definitions with intellisense come with the package.
-* 
 
 ## Architecture
 

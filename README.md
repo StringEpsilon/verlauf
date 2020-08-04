@@ -4,15 +4,18 @@
 
 # Verlauf
 
-is a work in progress drop-in replacement for history version 4. This is a partial rewrite of history@4. The core functionality / architecture was written from scratch and some minor aspects were borrowed from the history codebase.
+Is a (work in progress) reimplementation of history version 4, aiming to keep compatibility while still offering new features and bugfixes that can't be added to history@4 without breaking semantic versioning.
+
+Major differences:
+
+* Modular. You can implement your own middleware to interface with the browser history.
+* Removed URL encoding and decoding, though you can work around that, if you need to.
+* You can implement your own transition blocking logic.
+* Single file bundling. Meaning you can't import `verlauf/createBrowserHistory`.
+
+Detailed documentation can [be found here](./docs/differences.md), including all the minor differences in behavior.
 
 ## [Documentation here](./docs/index.md)
-
-## Goals
-
-1. Keep API compatibility and feature parity with history version 4.
-2. Offer bugfixes that can't be backported to history@4 without breaking semver.
-3. Allow more flexibility in the implementation to make custom behaviors easier to add by users.
 
 ## Roadmap:
 
@@ -24,8 +27,9 @@ is a work in progress drop-in replacement for history version 4. This is a parti
     * [ ] pass existing history test suite
     * [x] pass react-router test suite
     * [ ] Test behavior in demos and test applications.
-* [ ] Write documentation
-* [ ] Write tests.
+* [ ] Complete documentation.
+* [ ] Complete unit test coverage.
+* [ ] Allow to toggle forceRefresh after History was instantiated.
 
 **Future**: 
 

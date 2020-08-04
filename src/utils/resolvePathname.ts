@@ -1,5 +1,8 @@
-// TODO: This really could need some optimization. But for now it's at least 100% compatible with the old resolve-pathname package,
-// according to the unit tests of that package.
+// TODO: Make this a little easier to understand and maybe squeeze some optimizations in there.
+
+// Note: I tested this against the unit tests of the 'resolve-pathname' package,
+// but since this is a completely different approach implemented from scratch
+// it's probably not 100% the same behavior on edge cases.
 
 /**
  * Resolve one path relative to another.
