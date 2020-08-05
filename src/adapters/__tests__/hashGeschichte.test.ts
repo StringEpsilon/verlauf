@@ -121,8 +121,8 @@ describe("createHashAdapter()", () => {
 		});
 	});
 
-	describe(".getLength()", ()=> {
-		it("returns non-initial length from window.history", ()=>{
+	describe(".getLength()", () => {
+		it("returns non-initial length from window.history", () => {
 			// Mock history.length:
 			Object.defineProperty(window.history, "length", {
 				value: 42,
@@ -140,14 +140,14 @@ describe("createHashAdapter()", () => {
 			);
 		});
 
-		it("returns initial length from window.history", ()=>{
+		it("returns initial length from window.history", () => {
 			let wrapper = createHashAdapter(jest.fn(), {});
 			expect(wrapper.getLength()).toBe(1);
 		});
 	});
 
-	describe(".getLocation()", ()=> {
-		it("extracts location from window.location.hash properly", ()=>{
+	describe(".getLocation()", () => {
+		it("extracts location from window.location.hash properly", () => {
 			// Mock history.length:
 			window.location.hash = "#/current/path";
 
@@ -156,7 +156,7 @@ describe("createHashAdapter()", () => {
 				pathname: "/current/path",
 			});
 		});
-		it("extracts location from window.location.hash with search and hash", ()=>{
+		it("extracts location from window.location.hash with search and hash", () => {
 			// Mock history.length:
 			window.location.hash = "#/current/path?search#hash";
 
@@ -168,44 +168,86 @@ describe("createHashAdapter()", () => {
 			});
 		});
 
-		it("extracts location from window.location.hash properly, with hashtype: hashbang", ()=>{
+		it("extracts location from window.location.hash properly, with hashtype: hashbang", () => {
 			// Mock history.length:
 			window.location.hash = "#!/current/path";
 
-			let wrapper = createHashAdapter(jest.fn(), {hashType: "hashbang"});
+			let wrapper = createHashAdapter(jest.fn(), { hashType: "hashbang" });
 			expect(wrapper.getLocation()).toMatchObject({
 				pathname: "/current/path",
 			});
 		});
 
-		it("extracts location from window.location.hash properly, with hashtype: noslash", ()=>{
+		it("extracts location from window.location.hash properly, with hashtype: noslash", () => {
 			// Mock history.length:
 			window.location.hash = "#current/path";
 
-			let wrapper = createHashAdapter(jest.fn(), {hashType: "noslash"});
+			let wrapper = createHashAdapter(jest.fn(), { hashType: "noslash" });
 			expect(wrapper.getLocation()).toMatchObject({
 				pathname: "/current/path",
 			});
 		});
 
-		it("strips the basename", ()=>{
+		it("strips the basename", () => {
 			// Mock history.length:
 			window.location.hash = "/prefix/location";
 
-			let wrapper = createHashAdapter(jest.fn(), { basename: "/prefix"});
+			let wrapper = createHashAdapter(jest.fn(), { basename: "/prefix" });
 			expect(wrapper.getLocation()).toMatchObject({
 				pathname: "/location",
 			});
 		});
 
-		it("strips the basename, case insensitively", ()=>{
+		it("strips the basename, case insensitively", () => {
 			// Mock history.length:
 			window.location.hash = "/PREFIX/location";
 
-			let wrapper = createHashAdapter(jest.fn(), { basename: "/prefix"});
+			let wrapper = createHashAdapter(jest.fn(), { basename: "/prefix" });
 			expect(wrapper.getLocation()).toMatchObject({
 				pathname: "/location",
 			});
 		});
+	});
+
+	describe("listens to onhashchange", () => {
+		const _window = {
+			onhashchange: jest.fn(),
+			location: new URL("http://www.example.com/index.html#/hashlocation"),
+			history: {},
+		};
+		const changeListener = jest.fn();
+		// @ts-ignore
+		let wrapper = createHashAdapter(changeListener, { window: _window });
+
+		wrapper.listen();
+		expect(_window.onhashchange).toBeDefined();
+		_window.onhashchange();
+
+		expect(changeListener).toBeCalledTimes(1);
+		expect(changeListener).toBeCalledWith({
+			hash: "",
+			key: "",
+			pathname: "/hashlocation",
+			search: "",
+			state: null
+		});
+	});
+
+	describe(".go", () => {
+		it("calls window.history.go()", () => {
+			const _window = {
+				onhashchange: jest.fn(),
+				history: {
+					go: jest.fn(),
+				},
+			};
+			// @ts-ignore
+			let wrapper = createHashAdapter(jest.fn(), { window: _window });
+
+			wrapper.go(-1);
+
+			expect(_window.history.go).toBeCalledTimes(1);
+			expect(_window.history.go).toBeCalledWith(-1);
+		})
 	});
 });
