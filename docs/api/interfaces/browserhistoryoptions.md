@@ -19,6 +19,7 @@ Options specific to the BrowserHistory.
 * [forceRefresh](browserhistoryoptions.md#optional-forcerefresh)
 * [getUserConfirmation](browserhistoryoptions.md#optional-getuserconfirmation)
 * [keyLength](browserhistoryoptions.md#optional-keylength)
+* [preserveSearch](browserhistoryoptions.md#optional-preservesearch)
 * [window](browserhistoryoptions.md#optional-window)
 
 ## Properties
@@ -70,6 +71,17 @@ ___
 *Inherited from [HistoryOptions](historyoptions.md).[keyLength](historyoptions.md#optional-keylength)*
 
 Length of the 'key' for each history entry. Default: 6.
+
+___
+
+### `Optional` preserveSearch
+
+• **preserveSearch**? : *boolean*
+
+*Inherited from [HistoryOptions](historyoptions.md).[preserveSearch](historyoptions.md#optional-preservesearch)*
+
+Tell history to preserve the search fragment when only the hash changes.
+Default is false.
 
 ___
 

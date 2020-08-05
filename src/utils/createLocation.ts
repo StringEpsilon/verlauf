@@ -9,9 +9,10 @@ import { parsePath } from "./parsePath";
  * @param state Desired state of the new location
  * @param key Key for the new location.
  * @param currentLocation The location to resolve from
+ * @param preserveSearch preserve the search fragment when only the hash changes.
  * @returns The resolved new location.
  */
-export function createLocation(path: string | Location, state?: any, key?: any, currentLocation?: Location) {
+export function createLocation(path: string | Location, state?: any, key?: any, currentLocation?: Location, preserveSearch: boolean = false) {
 	let location: Location;
 	if (typeof path === "string") {
 		location = parsePath(path);
@@ -19,10 +20,10 @@ export function createLocation(path: string | Location, state?: any, key?: any, 
 	} else {
 		location = {
 			pathname: path.pathname || "",
-			search: path.search
+			search: (path.search && path.search !== "?")
 				? path.search.replace(/^\??/, "?")
 				: "",
-			hash: path.hash
+			hash: (path.hash && path.hash !== "#")
 				? path.hash.replace(/^#?/, "#")
 				: "",
 			state: (state !== undefined && path.state === undefined)
@@ -35,10 +36,17 @@ export function createLocation(path: string | Location, state?: any, key?: any, 
 		location.key = key;
 	}
 
+	if(preserveSearch){
+		if (!location.pathname && !location.search){
+			location.search = currentLocation.search;
+		}
+	}
+
 	location.pathname = resolvePathname(
 		location.pathname,
 		currentLocation?.pathname
 	);
+
 
 	return location;
 }

@@ -21,6 +21,13 @@ Currently, the following differences in APi and behavior might affect compatibil
   - `navigate()` as an alternative to push and replace.
   - `unblock()` to disable the current block (if it's set).
 * Typescript definitions with intellisense come with the package.
+* `preserveSearch` option. If set to true, Verlauf will keep the search fragment as is, if only the hash is changed in a push or replace.
+  -  The default is false, just to avoid any breakage.
+
+## Bugfixes
+
+* Fixed: Pushing `{hash: "#", search: "?" }` would have resulted in the "#" and "?" being preserved in history.location, while not being visible in the URL. 
+  This was also inconsistent with pushing `"#?"`.
 
 ## Architecture
 

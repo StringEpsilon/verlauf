@@ -19,6 +19,7 @@ Options specific to the HashHistory.
 * [getUserConfirmation](hashhistoryoptions.md#optional-getuserconfirmation)
 * [hashType](hashhistoryoptions.md#optional-hashtype)
 * [keyLength](hashhistoryoptions.md#optional-keylength)
+* [preserveSearch](hashhistoryoptions.md#optional-preservesearch)
 * [window](hashhistoryoptions.md#optional-window)
 
 ## Properties
@@ -75,6 +76,17 @@ ___
 *Inherited from [HistoryOptions](historyoptions.md).[keyLength](historyoptions.md#optional-keylength)*
 
 Length of the 'key' for each history entry. Default: 6.
+
+___
+
+### `Optional` preserveSearch
+
+• **preserveSearch**? : *boolean*
+
+*Inherited from [HistoryOptions](historyoptions.md).[preserveSearch](historyoptions.md#optional-preservesearch)*
+
+Tell history to preserve the search fragment when only the hash changes.
+Default is false.
 
 ___
 

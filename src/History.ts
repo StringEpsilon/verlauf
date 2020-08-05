@@ -94,7 +94,7 @@ export class History {
 	}
 
 	private _transition(target: string | Location, action: string, onSuccess: Function, onFailure?: Function) {
-		let newLocation = resolveLocation(this.location, target);
+		let newLocation = resolveLocation(this.location, target, this._options.preserveSearch);
 		let isBlocked = this._blocker.isBlocked(newLocation, action)
 		if (isBlocked) {
 			onFailure && onFailure();
@@ -147,7 +147,7 @@ export class History {
 	 * Default: PUSH.
 	 */
 	navigate(target: string | Location, state: object | null, method: string = "PUSH") {
-		let newLocation = resolveLocation(this.location, target);
+		let newLocation = resolveLocation(this.location, target, this._options.preserveSearch);
 		let newPath = createPath(newLocation);
 		newLocation.state = state;
 

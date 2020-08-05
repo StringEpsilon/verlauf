@@ -84,6 +84,11 @@ export interface HistoryOptions {
 	getUserConfirmation?: getUserConfirmation,
 	/** Optional override for the history.block() behavior. */
 	createBlocker?: Function;
+
+	/** Tell history to preserve the search fragment when only the hash changes.
+	 * Default is false.
+	*/
+	preserveSearch?: boolean,
 }
 
 /** Options specific to the HashHistory. */

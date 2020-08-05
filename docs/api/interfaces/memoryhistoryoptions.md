@@ -20,6 +20,7 @@ Options specific to the MemoryHistory.
 * [initialEntries](memoryhistoryoptions.md#optional-initialentries)
 * [initialIndex](memoryhistoryoptions.md#optional-initialindex)
 * [keyLength](memoryhistoryoptions.md#optional-keylength)
+* [preserveSearch](memoryhistoryoptions.md#optional-preservesearch)
 
 ## Properties
 
@@ -79,3 +80,14 @@ ___
 *Inherited from [HistoryOptions](historyoptions.md).[keyLength](historyoptions.md#optional-keylength)*
 
 Length of the 'key' for each history entry. Default: 6.
+
+___
+
+### `Optional` preserveSearch
+
+• **preserveSearch**? : *boolean*
+
+*Inherited from [HistoryOptions](historyoptions.md).[preserveSearch](historyoptions.md#optional-preservesearch)*
+
+Tell history to preserve the search fragment when only the hash changes.
+Default is false.

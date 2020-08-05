@@ -211,18 +211,19 @@ ___
 
 ###  createLocation
 
-▸ **createLocation**(`path`: string | [Location](interfaces/location.md), `state?`: any, `key?`: any, `currentLocation?`: [Location](interfaces/location.md)): *[Location](interfaces/location.md)*
+▸ **createLocation**(`path`: string | [Location](interfaces/location.md), `state?`: any, `key?`: any, `currentLocation?`: [Location](interfaces/location.md), `preserveSearch`: boolean): *[Location](interfaces/location.md)*
 
 Creates a new location object for a target path / location resolving the pathnames from the current location.
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`path` | string &#124; [Location](interfaces/location.md) | Target path or location object to resolve to. |
-`state?` | any | Desired state of the new location |
-`key?` | any | Key for the new location. |
-`currentLocation?` | [Location](interfaces/location.md) | The location to resolve from |
+Name | Type | Default | Description |
+------ | ------ | ------ | ------ |
+`path` | string &#124; [Location](interfaces/location.md) | - | Target path or location object to resolve to. |
+`state?` | any | - | Desired state of the new location |
+`key?` | any | - | Key for the new location. |
+`currentLocation?` | [Location](interfaces/location.md) | - | The location to resolve from |
+`preserveSearch` | boolean | false | preserve the search fragment when only the hash changes. |
 
 **Returns:** *[Location](interfaces/location.md)*
 
@@ -343,14 +344,15 @@ ___
 
 ###  resolveLocation
 
-▸ **resolveLocation**(`from`: [Location](interfaces/location.md), `to`: string | [Location](interfaces/location.md)): *[Location](interfaces/location.md)*
+▸ **resolveLocation**(`from`: [Location](interfaces/location.md), `to`: string | [Location](interfaces/location.md), `preserveSearch`: boolean): *[Location](interfaces/location.md)*
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`from` | [Location](interfaces/location.md) |
-`to` | string &#124; [Location](interfaces/location.md) |
+Name | Type | Default |
+------ | ------ | ------ |
+`from` | [Location](interfaces/location.md) | - |
+`to` | string &#124; [Location](interfaces/location.md) | - |
+`preserveSearch` | boolean | true |
 
 **Returns:** *[Location](interfaces/location.md)*
 

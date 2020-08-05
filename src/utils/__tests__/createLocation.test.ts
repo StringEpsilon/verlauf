@@ -1,9 +1,60 @@
 import { createLocation } from "../createLocation";
+import { parsePath } from "../parsePath";
 
 // These unit tests were taken from the history v4 branch and amended / slightly modified.
 // Original copyright: History contributors.
 
 describe("createLocation()", () => {
+	describe("with preserveSearch = true", ()=>{
+		it("preserves the search fragment when only the hash changes", () => {
+			expect(
+				createLocation(
+					"#hash",
+					null,
+					null,
+					parsePath("/path?search"),
+					true
+				)
+			).toMatchObject({
+				pathname: "/path",
+				search: "?search",
+				hash: "#hash"
+			});
+		});
+
+		it("overrides the search, if the new location has it", () => {
+			expect(
+				createLocation(
+					"?newSearch#hash",
+					null,
+					null,
+					parsePath("/path?oldSearch"),
+					true
+				)
+			).toMatchObject({
+				pathname: "/path",
+				search: "?newSearch",
+				hash: "#hash"
+			});
+		});
+
+		it("clears the search when pathname changes", () => {
+			expect(
+				createLocation(
+					"/",
+					null,
+					null,
+					parsePath("/path?oldSearch"),
+					true
+				)
+			).toMatchObject({
+				pathname: "/",
+				search: "",
+				hash: ""
+			});
+		});
+	});
+
 	describe("with empty to and/or from", () => {
 		it("creates a root location pathname", () => {
 			expect(createLocation("")).toMatchObject({

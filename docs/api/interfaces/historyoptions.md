@@ -22,6 +22,7 @@ Gernal options for all History variants.
 * [createBlocker](historyoptions.md#optional-createblocker)
 * [getUserConfirmation](historyoptions.md#optional-getuserconfirmation)
 * [keyLength](historyoptions.md#optional-keylength)
+* [preserveSearch](historyoptions.md#optional-preservesearch)
 
 ## Properties
 
@@ -55,3 +56,12 @@ ___
 • **keyLength**? : *number*
 
 Length of the 'key' for each history entry. Default: 6.
+
+___
+
+### `Optional` preserveSearch
+
+• **preserveSearch**? : *boolean*
+
+Tell history to preserve the search fragment when only the hash changes.
+Default is false.
