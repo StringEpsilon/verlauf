@@ -32,7 +32,7 @@ export const createHashAdapter = (historyListener: OnAdapterLocationChange, opti
 
 	return {
 		getLength(): number {
-			return window.history.length;
+			return _window.history.length;
 		},
 
 		pushState(newLocation: Location, target: string): void {
