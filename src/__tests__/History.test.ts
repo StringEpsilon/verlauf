@@ -1,5 +1,5 @@
 import { History } from "../History";
-import { HistoryAdapter, NavigationListener } from "../types";
+import { HistoryAdapter, NavigationListener, HistoryOptions } from "../types";
 
 
 interface TestWrapper extends HistoryAdapter{
@@ -10,7 +10,7 @@ interface TestWrapper extends HistoryAdapter{
 describe("History", () =>{
 	let testWrapper: TestWrapper;
 
-	let createTestWrapper = (callback: NavigationListener, options):HistoryAdapter => {
+	let createTestWrapper = (callback: NavigationListener, options: HistoryOptions):HistoryAdapter => {
 		let testWrapperInstance = {
 			callback,
 			options: options,
