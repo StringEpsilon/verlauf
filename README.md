@@ -22,6 +22,7 @@ Detailed documentation can [be found here](./docs/differences.md), including all
 **1.0**:
 
 * [ ] Backport bugfixes that were made in history@5, as compatability allows
+  * [ ] Correctly parse and utilize `<base/>` tag in hashHistoryAdapter
 * [ ] Final pass over names and calling conventions of Verlauf specific APIs
 * [ ] **Ensure compatibility:**
     * [ ] pass existing history test suite
@@ -36,7 +37,7 @@ Detailed documentation can [be found here](./docs/differences.md), including all
 * [ ] Replace all code borrowed from history.
     * [ ] createLocation()
     * [ ] Unit tests.
-
+* Make preserveSearch = true the default.
 
 ## Name
 

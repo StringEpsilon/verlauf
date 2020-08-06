@@ -4,14 +4,16 @@ import { HistoryAdapter, NavigationListener } from "../types";
 
 interface TestWrapper extends HistoryAdapter{
 	callback: NavigationListener,
+	options: any,
 }
 
 describe("History", () =>{
 	let testWrapper: TestWrapper;
 
-	let createTestWrapper = (callback: NavigationListener):HistoryAdapter => {
+	let createTestWrapper = (callback: NavigationListener, options):HistoryAdapter => {
 		let testWrapperInstance = {
 			callback,
+			options: options,
 			listen: jest.fn(),
 			getLocation: jest.fn(() => ({
 				pathname: "/mock/path",
@@ -30,7 +32,7 @@ describe("History", () =>{
 		return testWrapperInstance;
 	};
 
-    it("wird gemacht", ()=>{
+    it("is constructed properly", ()=>{
 		// es geht voran!
 		let history = new History(createTestWrapper);
 		expect(history).toBeTruthy();
@@ -43,6 +45,11 @@ describe("History", () =>{
 		expect(testWrapper.replaceState).not.toBeCalled();
 		expect(testWrapper.go).not.toBeCalled();
 		expect(testWrapper.modifyPath).not.toBeCalled();
+
+		expect(testWrapper.options).toMatchObject({
+			basename: "",
+			keyLength: 6,
+		})
 	});
 
 	it("sets option defaults, if necessary", ()=>{
