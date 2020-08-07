@@ -14,6 +14,12 @@ Gernal options for all History variants.
 
   ↳ [MemoryHistoryOptions](memoryhistoryoptions.md)
 
+## Indexable
+
+* \[ **indexer**: *string*\]: any
+
+Gernal options for all History variants.
+
 ## Index
 
 ### Properties

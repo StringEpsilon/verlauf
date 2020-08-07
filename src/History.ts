@@ -66,7 +66,7 @@ export class History {
 				},
 				() => {
 					this.location = oldLocation;
-					this._historyAdapter.replaceState(oldLocation,  createPath(oldLocation))
+					this._historyAdapter.replaceState(oldLocation, createPath(oldLocation))
 					this._alertListeners(ACTION.PUSH);
 				}
 			)
@@ -229,5 +229,23 @@ export class History {
 	 */
 	go(steps: number): void {
 		this._historyAdapter.go(steps);
+	}
+
+	/**
+	 * Change any options via it's name. Keep in mind that depending on the option and when it's changed,
+	 * it could have unintended sideffects.
+	 *
+	 * @param key
+	 * @param value
+	 *
+	 * @example
+	 * // Change basename:
+	 * history.setOptions("basename", "/en-US/");
+	 * history.setOptions("basename", "/en-UK/");
+	 * // Keep in mind that changing the basename option will not trigger a location change.
+	 */
+	setOption(key: string, value: any) {
+		this._options[key] = value;
+		this._historyAdapter.setOptions(this._options);
 	}
 }

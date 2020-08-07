@@ -31,6 +31,7 @@ History object, providing all APIs to interact with browser, hash or memory hist
 * [navigate](history.md#navigate)
 * [push](history.md#push)
 * [replace](history.md#replace)
+* [setOption](history.md#setoption)
 * [unblock](history.md#unblock)
 * [unlisten](history.md#unlisten)
 
@@ -233,6 +234,30 @@ Name | Type | Default | Description |
 ------ | ------ | ------ | ------ |
 `target` | string &#124; [Location](../interfaces/location.md) | - | Location or pathname to navigate to. |
 `state` | object &#124; null | null | Desired state  |
+
+**Returns:** *void*
+
+___
+
+###  setOption
+
+▸ **setOption**(`key`: string, `value`: any): *void*
+
+Change any options via it's name. Keep in mind that depending on the option and when it's changed,
+it could have unintended sideffects.
+
+**`example`** 
+// Change basename:
+history.setOptions("basename", "/en-US/");
+history.setOptions("basename", "/en-UK/");
+// Keep in mind that changing the basename option will not trigger a location change.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`key` | string | - |
+`value` | any |   |
 
 **Returns:** *void*
 

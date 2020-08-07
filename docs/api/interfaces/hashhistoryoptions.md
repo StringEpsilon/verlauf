@@ -10,6 +10,12 @@ Options specific to the HashHistory.
 
   ↳ **HashHistoryOptions**
 
+## Indexable
+
+* \[ **indexer**: *string*\]: any
+
+Options specific to the HashHistory.
+
 ## Index
 
 ### Properties

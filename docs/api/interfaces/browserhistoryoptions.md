@@ -10,6 +10,12 @@ Options specific to the BrowserHistory.
 
   ↳ **BrowserHistoryOptions**
 
+## Indexable
+
+* \[ **indexer**: *string*\]: any
+
+Options specific to the BrowserHistory.
+
 ## Index
 
 ### Properties
@@ -18,7 +24,7 @@ Options specific to the BrowserHistory.
 * [createBlocker](browserhistoryoptions.md#optional-createblocker)
 * [forceRefresh](browserhistoryoptions.md#optional-forcerefresh)
 * [getUserConfirmation](browserhistoryoptions.md#optional-getuserconfirmation)
-* [keepPage](browserhistoryoptions.md#keeppage)
+* [keepPage](browserhistoryoptions.md#optional-keeppage)
 * [keyLength](browserhistoryoptions.md#optional-keylength)
 * [preserveSearch](browserhistoryoptions.md#optional-preservesearch)
 * [window](browserhistoryoptions.md#optional-window)
@@ -65,9 +71,9 @@ Default: Uses window.confirm.
 
 ___
 
-###  keepPage
+### `Optional` keepPage
 
-• **keepPage**: *boolean*
+• **keepPage**? : *boolean*
 
 Keep the application on the page, even if a <base/> tag points to another domain.
 

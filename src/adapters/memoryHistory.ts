@@ -22,13 +22,20 @@ function normalizeEntries(entries: (string | Location)[], keyLength: number): Lo
  * @param options Memory History options.
  */
 export const createMemoryAdapter = (historyListener: OnAdapterLocationChange, options: MemoryHistoryOptions): HistoryAdapter => {
-	let entries: Location[] = normalizeEntries(options.initialEntries || ["/"], options.keyLength)
+	let entries: Location[];
+	let activeEntry: number;
 
-	let activeEntry = options.initialIndex
-		? options.initialIndex
-		: 0;
+	function initialize(options: MemoryHistoryOptions) {
+		entries = normalizeEntries(options.initialEntries || ["/"], options.keyLength)
+		activeEntry = options.initialIndex ? options.initialIndex : 0;
+	}
+	initialize(options);
 
 	return {
+		setOptions(options) {
+			initialize(options);
+		},
+
 		getLength(): number {
 			return entries.length;
 		},
@@ -50,11 +57,11 @@ export const createMemoryAdapter = (historyListener: OnAdapterLocationChange, op
 			return entries[activeEntry];
 		},
 
-		listen() {/* Nothing to listen to. */},
+		listen() {/* Nothing to listen to. */ },
 
 		go(steps: number) {
 			let targetIndex = activeEntry + steps;
-			if (targetIndex >= 0 && targetIndex < entries.length ) {
+			if (targetIndex >= 0 && targetIndex < entries.length) {
 				activeEntry = targetIndex
 				historyListener(entries[targetIndex]);
 			}

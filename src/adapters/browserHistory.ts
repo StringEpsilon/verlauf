@@ -1,5 +1,5 @@
 import { History } from "../History";
-import { HistoryAdapter, Location, OnAdapterLocationChange, BrowserHistoryOptions } from "../types";
+import { HistoryAdapter, Location, OnAdapterLocationChange, BrowserHistoryOptions, HistoryOptions } from "../types";
 import { stripBasename, addLeadingSlash, stripTrailingSlash } from "../basenameUtils";
 
 function getOrigin(): string {
@@ -15,11 +15,23 @@ function getOrigin(): string {
  * @param options Browser History options.
  */
 export const createBrowserAdapter = (historyListener: OnAdapterLocationChange, options: BrowserHistoryOptions): HistoryAdapter => {
-	const basename: string = stripTrailingSlash(addLeadingSlash(options.basename || ""));
-	const originPrefix = options.keepPage ? getOrigin() : "";
-	const _window = options.window || window;
+	let basename: string;
+	let originPrefix: string;
+	let _window: Window;
+
+	function initialize(options: BrowserHistoryOptions) {
+		basename = stripTrailingSlash(addLeadingSlash(options.basename || ""));
+		originPrefix = options.keepPage ? getOrigin() : "";
+		_window = options.window || window;
+	}
+
+	initialize(options);
 
 	return {
+		setOptions(options) {
+			initialize(options);
+		},
+
 		getLength(): number {
 			return _window.history.length;
 		},
@@ -36,7 +48,7 @@ export const createBrowserAdapter = (historyListener: OnAdapterLocationChange, o
 			}
 		},
 
-		replaceState(newLocation: Location,  target: string): void {
+		replaceState(newLocation: Location, target: string): void {
 			if (options.forceRefresh) {
 				_window.location.replace(target);
 			} else {

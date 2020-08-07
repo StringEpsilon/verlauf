@@ -10,6 +10,12 @@ Options specific to the MemoryHistory.
 
   ↳ **MemoryHistoryOptions**
 
+## Indexable
+
+* \[ **indexer**: *string*\]: any
+
+Options specific to the MemoryHistory.
+
 ## Index
 
 ### Properties

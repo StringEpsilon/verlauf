@@ -69,6 +69,11 @@ export interface HistoryAdapter {
 	modifyPath: (path: string) => string;
 	/** Return the current size of the history stack. */
 	getLength: () => number,
+
+	/**
+	 *
+	 */
+	setOptions: (newOptions: HistoryOptions)=> void
 }
 
 /** Gernal options for all History variants. */
@@ -89,6 +94,9 @@ export interface HistoryOptions {
 	 * Default is false.
 	*/
 	preserveSearch?: boolean,
+
+	//* @ignore */
+	[indexer:string]: any,
 }
 
 /** Options specific to the HashHistory. */

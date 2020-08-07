@@ -19,6 +19,7 @@ An adapter between [History](../classes/history.md) and `window.history` or cust
 * [modifyPath](historyadapter.md#modifypath)
 * [pushState](historyadapter.md#pushstate)
 * [replaceState](historyadapter.md#replacestate)
+* [setOptions](historyadapter.md#setoptions)
 
 ## Properties
 
@@ -129,3 +130,19 @@ Name | Type |
 ------ | ------ |
 `state` | [Location](location.md) |
 `target` | string |
+
+___
+
+###  setOptions
+
+• **setOptions**: *function*
+
+#### Type declaration:
+
+▸ (`newOptions`: [HistoryOptions](historyoptions.md)): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`newOptions` | [HistoryOptions](historyoptions.md) |

@@ -21,6 +21,10 @@ Detailed documentation can [be found here](./docs/differences.md), including all
 
 **1.0**:
 
+* [ ] Write tests for setOption()
+* [ ] Write documentation for setOption() 
+  - why and how to use it and when it's safe to change specific options.
+
 * [ ] Backport bugfixes that were made in history@5, as compatability allows
   * [ ] Correctly parse and utilize `<base/>` tag in hashHistoryAdapter
 * [ ] Final pass over names and calling conventions of Verlauf specific APIs

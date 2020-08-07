@@ -18,18 +18,32 @@ function getHashBase(): string {
  * @param options Hash history options.
  */
 export const createHashAdapter = (historyListener: OnAdapterLocationChange, options: HashHistoryOptions): HistoryAdapter => {
-	const basename = stripTrailingSlash(addLeadingSlash(options.basename || ""));
-	const _window = options.window || window;
-	let hash = "#/";
-	const hashBase = getHashBase();
-	if (options.hashType === "noslash"){
-		hash = "#";
-	}
-	if (options.hashType === "hashbang"){
-		hash = "#!/"
+	let basename: string;
+	let _window: Window;
+	let hash: string;
+	let hashBase: string;
+
+	function initialize(options: HashHistoryOptions) {
+		basename = stripTrailingSlash(addLeadingSlash(options.basename || ""));
+		_window = options.window || window;
+		hash = "#/";
+		hashBase = getHashBase();
+
+		if (options.hashType === "noslash") {
+			hash = "#";
+		}
+		if (options.hashType === "hashbang") {
+			hash = "#!/"
+		}
 	}
 
+	initialize(options);
+
 	return {
+		setOptions(options) {
+			initialize(options);
+		},
+
 		getLength(): number {
 			return _window.history.length;
 		},
@@ -54,7 +68,7 @@ export const createHashAdapter = (historyListener: OnAdapterLocationChange, opti
 			let result = parsePath(_window.location.hash.substr(hash.length));
 			result.state = _window.history.state?.state || null;
 			result.key = _window.history.state?.key || "";
-			result.pathname = addLeadingSlash(stripBasename(addLeadingSlash(result.pathname),basename));
+			result.pathname = addLeadingSlash(stripBasename(addLeadingSlash(result.pathname), basename));
 			return result;
 		},
 
