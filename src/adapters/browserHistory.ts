@@ -2,6 +2,12 @@ import { History } from "../History";
 import { HistoryAdapter, Location, OnAdapterLocationChange, BrowserHistoryOptions } from "../types";
 import { stripBasename, addLeadingSlash, stripTrailingSlash } from "../basenameUtils";
 
+function getOrigin(): string {
+	if (!document.querySelector("base[href]")) {
+		return "";
+	}
+	return document.location.origin;
+}
 
 /**
  * Creates an adapter to interface the HMTL 5 history API with the History instance.
@@ -10,6 +16,7 @@ import { stripBasename, addLeadingSlash, stripTrailingSlash } from "../basenameU
  */
 export const createBrowserAdapter = (historyListener: OnAdapterLocationChange, options: BrowserHistoryOptions): HistoryAdapter => {
 	const basename: string = stripTrailingSlash(addLeadingSlash(options.basename || ""));
+	const originPrefix = options.keepPage ? getOrigin() : "";
 	const _window = options.window || window;
 
 	return {
@@ -70,7 +77,7 @@ export const createBrowserAdapter = (historyListener: OnAdapterLocationChange, o
 			if (basename && basename !== "/") {
 				path = basename + path;
 			}
-			return addLeadingSlash(path);
+			return originPrefix + addLeadingSlash(path);
 		}
 	}
 };

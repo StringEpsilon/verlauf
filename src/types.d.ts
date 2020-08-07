@@ -123,6 +123,12 @@ export interface BrowserHistoryOptions extends HistoryOptions {
 	 * Default: The global window object.
 	 */
 	window?: Window,
+	/**
+	 * Keep the application on the page, even if a <base/> tag points to another domain.
+	 *
+	 * Default: False.
+	 */
+	keepPage: boolean,
 }
 
 /** Options specific to the MemoryHistory. */

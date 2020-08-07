@@ -18,6 +18,7 @@ Options specific to the BrowserHistory.
 * [createBlocker](browserhistoryoptions.md#optional-createblocker)
 * [forceRefresh](browserhistoryoptions.md#optional-forcerefresh)
 * [getUserConfirmation](browserhistoryoptions.md#optional-getuserconfirmation)
+* [keepPage](browserhistoryoptions.md#keeppage)
 * [keyLength](browserhistoryoptions.md#optional-keylength)
 * [preserveSearch](browserhistoryoptions.md#optional-preservesearch)
 * [window](browserhistoryoptions.md#optional-window)
@@ -61,6 +62,16 @@ ___
 
 Callback to ask the user to confirm or abort a page transition when blocking is active.
 Default: Uses window.confirm.
+
+___
+
+###  keepPage
+
+• **keepPage**: *boolean*
+
+Keep the application on the page, even if a <base/> tag points to another domain.
+
+Default: False.
 
 ___
 

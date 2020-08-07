@@ -36,6 +36,7 @@
 * [createMemoryHistory](README.md#creatememoryhistory)
 * [createPath](README.md#createpath)
 * [defaultUserConfirmation](README.md#const-defaultuserconfirmation)
+* [getOrigin](README.md#getorigin)
 * [locationsAreEqual](README.md#locationsareequal)
 * [parsePath](README.md#parsepath)
 * [resolveLocation](README.md#resolvelocation)
@@ -302,6 +303,14 @@ Name | Type |
 `confirmNavigation` | boolean |
 
 **Returns:** *void*
+
+___
+
+###  getOrigin
+
+▸ **getOrigin**(): *string*
+
+**Returns:** *string*
 
 ___
 
