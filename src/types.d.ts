@@ -128,7 +128,7 @@ export interface BrowserHistoryOptions extends HistoryOptions {
 	 *
 	 * Default: False.
 	 */
-	keepPage: boolean,
+	keepPage?: boolean,
 }
 
 /** Options specific to the MemoryHistory. */
