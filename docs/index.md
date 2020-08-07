@@ -1,15 +1,15 @@
 # Verlauf documentation
 
-* [Getting started](./getting_started.md)
+* [Getting started](./getting_started.md) (TODO.)
 
-* [Blocking transitions](./blocking.md)
+* [Blocking transitions](./blocking.md) (TODO)
 
-* [API documentation](./api/README.md)
+* [API documentation](./api/README.md) - Auto-generated
 
-* [Differences and minor incompatibilties](./differences.md)
+* [Differences and minor incompatibilties](./differences.md) to history@4.10
 
 ## Modifying behavior
 
-* [URI Encoding and Decoding](./URI_Decoding.md)
+* [URI Encoding and Decoding](./URI_Decoding.md) - Example of changing a HistoryAdapter.
 
-
+* [setOption](./setOption.md) - changing settings after the fact.
