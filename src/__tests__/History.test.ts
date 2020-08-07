@@ -1,16 +1,17 @@
 import { History } from "../History";
 import { HistoryAdapter, NavigationListener, HistoryOptions } from "../types";
+import { LegacyBlocker } from "../LegacyBlocker";
 
 
-interface TestWrapper extends HistoryAdapter{
+interface TestWrapper extends HistoryAdapter {
 	callback: NavigationListener,
 	options: any,
 }
 
-describe("History", () =>{
+describe("History", () => {
 	let testWrapper: TestWrapper;
 
-	let createTestWrapper = (callback: NavigationListener, options: HistoryOptions):HistoryAdapter => {
+	let createTestWrapper = (callback: NavigationListener, options: HistoryOptions): HistoryAdapter => {
 		let testWrapperInstance = {
 			callback,
 			options: options,
@@ -27,12 +28,13 @@ describe("History", () =>{
 			go: jest.fn(),
 			modifyPath: jest.fn(),
 			getLength: jest.fn(),
+			setOptions: jest.fn(),
 		};
 		testWrapper = testWrapperInstance;
 		return testWrapperInstance;
 	};
 
-    it("is constructed properly", ()=>{
+	it("is constructed properly", () => {
 		// es geht voran!
 		let history = new History(createTestWrapper);
 		expect(history).toBeTruthy();
@@ -52,7 +54,7 @@ describe("History", () =>{
 		})
 	});
 
-	it("sets option defaults, if necessary", ()=>{
+	it("sets option defaults, if necessary", () => {
 		// es geht voran!
 		const mockWrapper = jest.fn(createTestWrapper);
 		new History(mockWrapper);
@@ -68,14 +70,14 @@ describe("History", () =>{
 		)
 	});
 
-	it("uses provided options in full.", ()=>{
+	it("uses provided options in full.", () => {
 		// es geht voran!
 		const mockWrapper = jest.fn(createTestWrapper);
 		const options = {
 			basename: "/ui/",
 			keyLength: 8,
 			getUserConfirmation: () => true,
-			createBlocker: () => {},
+			createBlocker: () => { },
 		}
 		new History(mockWrapper, options);
 
@@ -90,7 +92,7 @@ describe("History", () =>{
 		)
 	});
 
-	it("uses getLocation for the initial location", () =>{
+	it("uses getLocation for the initial location", () => {
 		let history = new History(createTestWrapper);
 		expect(history.location).toEqual({
 			pathname: "/mock/path",
@@ -104,7 +106,7 @@ describe("History", () =>{
 	it("listens and unlistens properly", () => {
 		let history = new History(createTestWrapper);
 
-		let listener = () => {};
+		let listener = () => { };
 		history.listen(listener);
 
 		expect(() => {
@@ -113,7 +115,7 @@ describe("History", () =>{
 		}).not.toThrow();
 	});
 
-	it("calls wrapper.pushState on history.push() and updates location", () =>{
+	it("calls wrapper.pushState on history.push() and updates location", () => {
 		let history = new History(createTestWrapper);
 		history.push("/foo");
 
@@ -131,8 +133,8 @@ describe("History", () =>{
 		expect(history.location.pathname).toBe("/foo");
 	});
 
-	describe("block()", ()=>{
-		it("returns and unblock functions that works.", ()=>{
+	describe("block()", () => {
+		it("returns and unblock functions that works.", () => {
 			let history = new History(createTestWrapper);
 
 			let unblock = history.block("hello!");
@@ -141,10 +143,10 @@ describe("History", () =>{
 			expect(() => unblock()).not.toThrow();
 
 			expect(() => unblock()).not.toThrow();
-		})
+		});
 	});
 
-	it("updates location if wrapper.listen() callback is invoked", () =>{
+	it("updates location if wrapper.listen() callback is invoked", () => {
 		let history = new History(createTestWrapper);
 
 		expect(history.location.pathname).toBe("/mock/path");
@@ -166,7 +168,7 @@ describe("History", () =>{
 
 	it("calls wrapper.modifyPath on history.createPath() with a constructed path string", () => {
 		let history = new History(createTestWrapper);
-		let location = {pathname: "/pathname/to/transmogrify", hash: "", search: ""};
+		let location = { pathname: "/pathname/to/transmogrify", hash: "", search: "" };
 		history.createHref(location);
 
 		expect(testWrapper.modifyPath).toBeCalledTimes(1);
@@ -175,10 +177,23 @@ describe("History", () =>{
 
 	it("does not resolve the location on .createHref()", () => {
 		let history = new History(createTestWrapper);
-		let location = {pathname: "transmogrify", hash: "", search: ""};
+		let location = { pathname: "transmogrify", hash: "", search: "" };
 		history.createHref(location);
 
 		expect(testWrapper.modifyPath).toBeCalledTimes(1);
 		expect(testWrapper.modifyPath).toBeCalledWith("transmogrify");
-	})
+	});
+
+	it("calls adapter.setOptions after history.setOption", () => {
+		let history = new History(createTestWrapper);
+		history.setOption("basename", "/ui/");
+
+		expect(testWrapper.setOptions).toBeCalledTimes(1);
+		expect(testWrapper.setOptions).toBeCalledWith({
+			keyLength: 6,
+			basename: "/ui/",
+			createBlocker: LegacyBlocker,
+			getUserConfirmation: expect.anything(),
+		});
+	});
 });
