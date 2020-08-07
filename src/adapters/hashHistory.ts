@@ -5,13 +5,12 @@ import { stripTrailingSlash, addLeadingSlash, stripBasename, stripLeadingSlash }
 
 /** @ignore */
 function getHashBase(): string {
-	if (!document || !document.querySelector("base")?.href) {
+	if (!document.querySelector("base[href]")) {
 		return "";
 	}
-	return document.location.href.indexOf("#") < 0
-		? document.location.href
-		: document.location.href.slice(0, document.location.href.indexOf("#"));
+	return document.location.origin + document.location.pathname + document.location.search;
 }
+
 
 /**
  * Creates an adapter to interface the HMTL 5 history API with the history instance for hash based history.

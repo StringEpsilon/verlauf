@@ -50,7 +50,7 @@ export const createMemoryAdapter = (historyListener: OnAdapterLocationChange, op
 			return entries[activeEntry];
 		},
 
-		listen() {},
+		listen() {/* Nothing to listen to. */},
 
 		go(steps: number) {
 			let targetIndex = activeEntry + steps;
