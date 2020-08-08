@@ -8,10 +8,10 @@ Is a (work in progress) reimplementation of history version 4, aiming to keep co
 
 Major differences:
 
-* Modular. You can implement your own middleware to interface with the browser history.
-* Removed URL encoding and decoding, though you can work around that, if you need to.
-* You can implement your own transition blocking logic.
-* Single file bundling. Meaning you can't import `verlauf/createBrowserHistory`.
+-   Modular. You can implement your own middleware to interface with the browser history.
+-   Removed URL encoding and decoding, though you can work around that, if you need to.
+-   You can implement your own transition blocking logic.
+-   Single file bundling. Meaning you can't import `verlauf/createBrowserHistory`.
 
 Detailed documentation can [be found here](./docs/differences.md), including all the minor differences in behavior.
 
@@ -21,27 +21,22 @@ Detailed documentation can [be found here](./docs/differences.md), including all
 
 **1.0**:
 
-* [ ] Write tests for setOption()
-* [ ] Write documentation for setOption() 
-  - why and how to use it and when it's safe to change specific options.
+-   [ ] Write tests for setOption()
+-   [ ] Backport bugfixes that were made in history@5, as compatability allows
+    -   [ ] Correctly parse and utilize `<base/>` tag in hashHistoryAdapter
+-   [ ] Final pass over names and calling conventions of Verlauf specific APIs
+-   [ ] **Ensure compatibility:**
+    -   [ ] pass existing history test suite
+    -   [x] pass react-router test suite
+    -   [ ] Test behavior in demos and test applications.
+-   [ ] Complete documentation.
+-   [ ] Complete unit test coverage.
 
-* [ ] Backport bugfixes that were made in history@5, as compatability allows
-  * [ ] Correctly parse and utilize `<base/>` tag in hashHistoryAdapter
-* [ ] Final pass over names and calling conventions of Verlauf specific APIs
-* [ ] **Ensure compatibility:**
-    * [ ] pass existing history test suite
-    * [x] pass react-router test suite
-    * [ ] Test behavior in demos and test applications.
-* [ ] Complete documentation.
-* [ ] Complete unit test coverage.
-* [ ] Allow to toggle forceRefresh after History was instantiated.
+**Future**:
 
-**Future**: 
-
-* [ ] Replace all code borrowed from history.
-    * [ ] createLocation()
-    * [ ] Unit tests.
-* Make preserveSearch = true the default.
+-   [ ] Replace all code borrowed from history.
+    -   [ ] Unit tests.
+-   Make preserveSearch = true the default.
 
 ## Name
 

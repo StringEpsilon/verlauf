@@ -13,11 +13,6 @@ const config = [
 				plugins: [terser({ numWorkers: 1 })],
 			},
 			{
-				file: `dist/esm/${pkg.name}.js`,
-				format: "esm",
-				plugins: [terser({ numWorkers: 1 })],
-			},
-			{
 				file: `dist/umd/${pkg.name}.js`,
 				format: "umd",
 				plugins: [terser({ numWorkers: 1 })],
