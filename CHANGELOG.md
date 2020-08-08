@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.1:
+
+-   Dropped unminfied bundle.
+-   Build ESM bundle with ES6 target and ESNext module type.
+
 ## 0.6.0:
 
 **Features:**
