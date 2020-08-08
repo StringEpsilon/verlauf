@@ -1,6 +1,14 @@
 import { resolveLocation } from "./utils/resolveLocation";
 import { createPath } from "./utils/createPath";
-import { Location, NavigationListener, HistoryAdapter, HistoryOptions, TransitionBlocker, OnAdapterLocationChange, getUserConfirmation } from "./types";
+import {
+	Location,
+	NavigationListener,
+	HistoryAdapter,
+	HistoryOptions,
+	TransitionBlocker,
+	OnAdapterLocationChange,
+	getUserConfirmation,
+} from "./types";
 import { LegacyBlocker } from "./LegacyBlocker";
 import { createKey } from "./utils/createKey";
 
@@ -13,7 +21,7 @@ export const ACTION = {
 
 const defaultUserConfirmation: getUserConfirmation = (message, callback) => {
 	callback(window.confirm(message));
-}
+};
 
 /**
  * History object, providing all APIs to interact with browser, hash or memory history.
@@ -38,8 +46,11 @@ export class History {
 	 * @param options The options for the History instance and the HistoryAdapter.
 	 */
 	constructor(
-		createAdapter: (listner: OnAdapterLocationChange, options: HistoryOptions) => HistoryAdapter,
-		options?: HistoryOptions,
+		createAdapter: (
+			listner: OnAdapterLocationChange,
+			options: HistoryOptions
+		) => HistoryAdapter,
+		options?: HistoryOptions
 	) {
 		this._options = options || {};
 		if (!this._options.basename) {
@@ -55,28 +66,34 @@ export class History {
 			this._options.createBlocker = LegacyBlocker;
 		}
 
-		this._blocker = this._options.createBlocker(this._options.getUserConfirmation);
+		this._blocker = this._options.createBlocker(
+			this._options.getUserConfirmation
+		);
 
 		const historyListener = (newLocation: Location) => {
 			const oldLocation = this.location;
-			this._transition(newLocation, ACTION.POP,
+			this._transition(
+				newLocation,
+				ACTION.POP,
 				() => {
 					this.location = newLocation;
 					this._alertListeners(ACTION.POP);
 				},
 				() => {
 					this.location = oldLocation;
-					this._historyAdapter.replaceState(oldLocation, createPath(oldLocation))
+					this._historyAdapter.replaceState(
+						oldLocation,
+						createPath(oldLocation)
+					);
 					this._alertListeners(ACTION.PUSH);
 				}
-			)
-		}
+			);
+		};
 
 		this._historyAdapter = createAdapter(historyListener, this._options);
 		this._historyAdapter.listen();
 		this.location = this._historyAdapter.getLocation();
 		this.length = this._historyAdapter.getLength();
-
 
 		this.listen = this.listen.bind(this);
 		this.createHref = this.createHref.bind(this);
@@ -90,12 +107,21 @@ export class History {
 	}
 
 	private _alertListeners(action: string) {
-		this._listeners.forEach(listener => listener(this.location, action))
+		this._listeners.forEach((listener) => listener(this.location, action));
 	}
 
-	private _transition(target: string | Location, action: string, onSuccess: Function, onFailure?: Function) {
-		let newLocation = resolveLocation(this.location, target, this._options.preserveSearch);
-		let isBlocked = this._blocker.isBlocked(newLocation, action)
+	private _transition(
+		target: string | Location,
+		action: string,
+		onSuccess: Function,
+		onFailure?: Function
+	) {
+		let newLocation = resolveLocation(
+			this.location,
+			target,
+			this._options.preserveSearch
+		);
+		let isBlocked = this._blocker.isBlocked(newLocation, action);
 		if (isBlocked) {
 			onFailure && onFailure();
 			return;
@@ -115,7 +141,7 @@ export class History {
 		this._listeners.push(listener);
 		return () => {
 			this.unlisten(listener);
-		}
+		};
 	}
 
 	/**
@@ -146,23 +172,27 @@ export class History {
 	 * @param method Specify the method to use for navigation. Either "PUSH" or "REPLACE".
 	 * Default: PUSH.
 	 */
-	navigate(target: string | Location, state: object | null, method: string = "PUSH") {
-		let newLocation = resolveLocation(this.location, target, this._options.preserveSearch);
+	navigate(
+		target: string | Location,
+		state: object | null,
+		method: string = "PUSH"
+	) {
+		let newLocation = resolveLocation(
+			this.location,
+			target,
+			this._options.preserveSearch
+		);
 		let newPath = createPath(newLocation);
 		newLocation.state = state;
 
-		this._transition(
-			target,
-			method,
-			() => {
-				method === ACTION.PUSH
-					? this._historyAdapter.pushState(newLocation, newPath)
-					: this._historyAdapter.replaceState(newLocation, newPath)
-				this.location = newLocation;
-				this.location.key = createKey(this._options.keyLength);
-				this._alertListeners(method);
-			}
-		)
+		this._transition(target, method, () => {
+			method === ACTION.PUSH
+				? this._historyAdapter.pushState(newLocation, newPath)
+				: this._historyAdapter.replaceState(newLocation, newPath);
+			this.location = newLocation;
+			this.location.key = createKey(this._options.keyLength);
+			this._alertListeners(method);
+		});
 	}
 
 	/**

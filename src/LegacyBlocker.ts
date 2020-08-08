@@ -5,16 +5,18 @@ import { Location, getUserConfirmation, TransitionBlocker } from "./types";
  *
  * @param getUserConfirmation Function used to get confirmation from the user for a blocked transition.
  */
-export function LegacyBlocker(getUserConfirmation: getUserConfirmation): TransitionBlocker {
+export function LegacyBlocker(
+	getUserConfirmation: getUserConfirmation
+): TransitionBlocker {
 	var _blocked = false;
 	var _blockingHook: Function = null;
-	var _blockingMessage = ""
+	var _blockingMessage = "";
 
 	return {
 		unblock() {
 			_blocked = false;
 			_blockingHook = null;
-			_blockingMessage = ""
+			_blockingMessage = "";
 		},
 
 		/**
@@ -31,7 +33,8 @@ export function LegacyBlocker(getUserConfirmation: getUserConfirmation): Transit
 		block(prompt: string | Function) {
 			_blocked = true;
 			_blockingHook = typeof prompt === "function" ? prompt : null;
-			_blockingMessage = (prompt && typeof prompt === "string") ? prompt : "";
+			_blockingMessage =
+				prompt && typeof prompt === "string" ? prompt : "";
 			return () => {
 				this.unblock();
 			};
@@ -54,19 +57,17 @@ export function LegacyBlocker(getUserConfirmation: getUserConfirmation): Transit
 					needsConfirm = true;
 					confirmMessage = hookResult;
 					_blockingMessage = hookResult;
-				}
-				else {
+				} else {
 					isBlocked = !hookResult;
 					needsConfirm = false;
 				}
 			}
 			if (isBlocked && needsConfirm) {
-				getUserConfirmation(
-					confirmMessage,
-					(unblock) => { isBlocked = !unblock; }
-				);
+				getUserConfirmation(confirmMessage, (unblock) => {
+					isBlocked = !unblock;
+				});
 			}
 			return isBlocked;
-		}
+		},
 	};
 }

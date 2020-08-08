@@ -1,23 +1,39 @@
 import { History } from "../History";
-import { HistoryAdapter, Location, OnAdapterLocationChange, HashHistoryOptions } from "../types";
+import {
+	HistoryAdapter,
+	Location,
+	OnAdapterLocationChange,
+	HashHistoryOptions,
+} from "../types";
 import { parsePath } from "../utils/parsePath";
-import { stripTrailingSlash, addLeadingSlash, stripBasename, stripLeadingSlash } from "../basenameUtils";
+import {
+	stripTrailingSlash,
+	addLeadingSlash,
+	stripBasename,
+	stripLeadingSlash,
+} from "../basenameUtils";
 
 /** @ignore */
 function getHashBase(): string {
 	if (!document.querySelector("base[href]")) {
 		return "";
 	}
-	return document.location.origin + document.location.pathname + document.location.search;
+	return (
+		document.location.origin +
+		document.location.pathname +
+		document.location.search
+	);
 }
-
 
 /**
  * Creates an adapter to interface the HMTL 5 history API with the history instance for hash based history.
  * @param historyListener Callback for history events (onhashchange).
  * @param options Hash history options.
  */
-export const createHashAdapter = (historyListener: OnAdapterLocationChange, options: HashHistoryOptions): HistoryAdapter => {
+export const createHashAdapter = (
+	historyListener: OnAdapterLocationChange,
+	options: HashHistoryOptions
+): HistoryAdapter => {
 	let basename: string;
 	let _window: Window;
 	let hash: string;
@@ -33,7 +49,7 @@ export const createHashAdapter = (historyListener: OnAdapterLocationChange, opti
 			hash = "#";
 		}
 		if (options.hashType === "hashbang") {
-			hash = "#!/"
+			hash = "#!/";
 		}
 	}
 
@@ -52,7 +68,7 @@ export const createHashAdapter = (historyListener: OnAdapterLocationChange, opti
 			_window.history.pushState(
 				{ key: newLocation.key, state: newLocation.state },
 				"",
-				this.modifyPath(target),
+				this.modifyPath(target)
 			);
 		},
 
@@ -60,7 +76,7 @@ export const createHashAdapter = (historyListener: OnAdapterLocationChange, opti
 			_window.history.replaceState(
 				{ key: newLocation.key, state: newLocation.state },
 				"",
-				this.modifyPath(target),
+				this.modifyPath(target)
 			);
 		},
 
@@ -68,14 +84,16 @@ export const createHashAdapter = (historyListener: OnAdapterLocationChange, opti
 			let result = parsePath(_window.location.hash.substr(hash.length));
 			result.state = _window.history.state?.state || null;
 			result.key = _window.history.state?.key || "";
-			result.pathname = addLeadingSlash(stripBasename(addLeadingSlash(result.pathname), basename));
+			result.pathname = addLeadingSlash(
+				stripBasename(addLeadingSlash(result.pathname), basename)
+			);
 			return result;
 		},
 
 		listen(): void {
 			_window.onhashchange = () => {
-				historyListener(this.getLocation())
-			}
+				historyListener(this.getLocation());
+			};
 		},
 
 		go(steps): void {
@@ -88,9 +106,9 @@ export const createHashAdapter = (historyListener: OnAdapterLocationChange, opti
 			}
 
 			return hashBase + hash + stripLeadingSlash(path);
-		}
+		},
 	};
-}
+};
 
 /**
  * Creates a History instance that keeps all location information in the hash portion of the URL.

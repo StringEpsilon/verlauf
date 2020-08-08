@@ -3,26 +3,24 @@ import { parsePath } from "../../utils/parsePath";
 
 describe("createBrowserAdapter()", () => {
 	describe("adds basename to path", () => {
-
 		it("in modifyPath() - without basename", () => {
 			let wrapper = createBrowserAdapter(jest.fn(), {});
 
-			expect(
-				wrapper.modifyPath("/foo")
-			).toBe("/foo");
+			expect(wrapper.modifyPath("/foo")).toBe("/foo");
 		});
 
 		it("in modifyPath() - with basename", () => {
-			let wrapper = createBrowserAdapter(jest.fn(), {basename: "/base"});
+			let wrapper = createBrowserAdapter(jest.fn(), {
+				basename: "/base",
+			});
 
-			expect(
-				wrapper.modifyPath("/foo")
-			).toBe("/base/foo");
+			expect(wrapper.modifyPath("/foo")).toBe("/base/foo");
 		});
 
-
 		it("in replaceState() - with basename", () => {
-			let wrapper = createBrowserAdapter(jest.fn(), {basename: "/base"});
+			let wrapper = createBrowserAdapter(jest.fn(), {
+				basename: "/base",
+			});
 			window.history.replaceState = jest.fn();
 			wrapper.replaceState(parsePath("/foo"), "/foo");
 
@@ -34,7 +32,7 @@ describe("createBrowserAdapter()", () => {
 		});
 
 		it("in replaceState() - without basename", () => {
-			let wrapper = createBrowserAdapter(jest.fn(), {basename: ""});
+			let wrapper = createBrowserAdapter(jest.fn(), { basename: "" });
 			window.history.replaceState = jest.fn();
 			wrapper.replaceState(parsePath("/foo"), "/foo");
 
@@ -60,11 +58,13 @@ describe("createBrowserAdapter()", () => {
 		});
 
 		it("sets document.location.href with forceRefresh option", () => {
-			let wrapper = createBrowserAdapter(jest.fn(), {forceRefresh: true});
+			let wrapper = createBrowserAdapter(jest.fn(), {
+				forceRefresh: true,
+			});
 			let location = Object.assign({}, window.location);
 			delete global.window.location;
 			window = Object.create(window);
-			window.location = {...location, href: ""};
+			window.location = { ...location, href: "" };
 			wrapper.pushState(parsePath("/foo"), "/foo");
 
 			expect(window.location.href).toBe("/foo");
@@ -81,7 +81,7 @@ describe("createBrowserAdapter()", () => {
 			expect(window.history.go).toBeCalledTimes(1);
 			expect(window.history.go).toBeCalledWith(-1);
 		});
-	})
+	});
 
 	describe(".replaceState()", () => {
 		it("calls history.replaceState with correct paraters", () => {
@@ -97,25 +97,25 @@ describe("createBrowserAdapter()", () => {
 		});
 
 		it("calls document.location.replace with forceRefresh option", () => {
-			let wrapper = createBrowserAdapter(jest.fn(), {forceRefresh: true});
+			let wrapper = createBrowserAdapter(jest.fn(), {
+				forceRefresh: true,
+			});
 			let location = Object.assign({}, window.location);
 			delete global.window.location;
 			window = Object.create(window);
-			window.location = {...location, replace: jest.fn()};
+			window.location = { ...location, replace: jest.fn() };
 			wrapper.replaceState(parsePath("/foo"), "/foo");
 
-			expect(window.location.replace).toBeCalledWith(
-				"/foo"
-			);
+			expect(window.location.replace).toBeCalledWith("/foo");
 		});
 	});
 
-	describe(".getLength()", ()=> {
-		it("returns non-initial length from window.history", ()=>{
+	describe(".getLength()", () => {
+		it("returns non-initial length from window.history", () => {
 			// Mock history.length:
 			Object.defineProperty(window.history, "length", {
 				value: 42,
-				configurable: true
+				configurable: true,
 			});
 
 			let wrapper = createBrowserAdapter(jest.fn(), {});
@@ -125,18 +125,20 @@ describe("createBrowserAdapter()", () => {
 			Object.defineProperty(
 				window.history,
 				"length",
-				Object.getOwnPropertyDescriptor(Object.getPrototypeOf(window.history), "length")
+				Object.getOwnPropertyDescriptor(
+					Object.getPrototypeOf(window.history),
+					"length"
+				)
 			);
 		});
 
-		it("returns initial length from window.history", ()=>{
+		it("returns initial length from window.history", () => {
 			let wrapper = createBrowserAdapter(jest.fn(), {});
 			expect(wrapper.getLength()).toBe(1);
 		});
 	});
 
-
-	describe(".listen()", ()=>{
+	describe(".listen()", () => {
 		it("registers for the onpopstate event of the window", () => {
 			const listener = jest.fn();
 			let wrapper = createBrowserAdapter(listener, {});
@@ -151,5 +153,5 @@ describe("createBrowserAdapter()", () => {
 
 			expect(listener).toBeCalledTimes(1);
 		});
-	})
+	});
 });

@@ -1,7 +1,7 @@
 import { createMemoryHistory } from "../memoryHistory";
 
-describe("createMemoryHistory()", () =>{
-    it("creates history with default location", ()=>{
+describe("createMemoryHistory()", () => {
+	it("creates history with default location", () => {
 		let history = createMemoryHistory();
 
 		expect(history).not.toBeFalsy();
@@ -11,18 +11,20 @@ describe("createMemoryHistory()", () =>{
 			search: "",
 			state: null,
 			key: expect.anything(),
-		})
+		});
 	});
 
-	describe(".createHref()", () =>{
+	describe(".createHref()", () => {
 		it("returns the path unaltered", () => {
 			let history = createMemoryHistory();
-			expect(history.createHref({pathname: "/foo/bar"})).toBe("/foo/bar");
+			expect(history.createHref({ pathname: "/foo/bar" })).toBe(
+				"/foo/bar"
+			);
 		});
-	})
+	});
 
-	describe("creates history with location from initialEntries", ()=>{
-		it("and no initialIndex", ()=>{
+	describe("creates history with location from initialEntries", () => {
+		it("and no initialIndex", () => {
 			let history = createMemoryHistory({
 				initialEntries: ["/foo", "/bar"],
 			});
@@ -30,9 +32,9 @@ describe("createMemoryHistory()", () =>{
 			expect(history).not.toBeFalsy();
 			expect(history.location).toMatchObject({
 				pathname: "/foo",
-			})
+			});
 		});
-		it("and set initialIndex", ()=>{
+		it("and set initialIndex", () => {
 			let history = createMemoryHistory({
 				initialEntries: ["/foo", "/bar"],
 				initialIndex: 1,
@@ -41,18 +43,18 @@ describe("createMemoryHistory()", () =>{
 			expect(history).not.toBeFalsy();
 			expect(history.location).toMatchObject({
 				pathname: "/bar",
-			})
+			});
 		});
-		it("with proper ILocation entries", ()=> {
+		it("with proper ILocation entries", () => {
 			let history = createMemoryHistory({
-				initialEntries: [{pathname: "/foo", search: "", hash: ""}],
+				initialEntries: [{ pathname: "/foo", search: "", hash: "" }],
 			});
 
 			expect(history).not.toBeFalsy();
 			expect(history.location).toMatchObject({
 				pathname: "/foo",
-			})
-		})
+			});
+		});
 	});
 
 	describe("goBack()", () => {
@@ -70,7 +72,7 @@ describe("createMemoryHistory()", () =>{
 		it("stays on the first entry", () => {
 			let history = createMemoryHistory({
 				initialEntries: ["/foo", "/bar"],
-				initialIndex:0,
+				initialIndex: 0,
 			});
 
 			const callback = jest.fn();
@@ -80,7 +82,7 @@ describe("createMemoryHistory()", () =>{
 
 			history.goBack();
 
-			expect(callback).not.toBeCalled
+			expect(callback).not.toBeCalled;
 			expect(history.location.pathname).toBe("/foo");
 		});
 	});
@@ -100,7 +102,7 @@ describe("createMemoryHistory()", () =>{
 	});
 
 	describe("listen() / unlisten()", () => {
-		it("calls the listen callback on push", ()=>{
+		it("calls the listen callback on push", () => {
 			const history = createMemoryHistory();
 			const callback = jest.fn();
 			const unlisten = history.listen(callback);
@@ -116,7 +118,7 @@ describe("createMemoryHistory()", () =>{
 					state: null,
 					key: expect.anything(),
 				},
-				"PUSH",
+				"PUSH"
 			);
 			expect(typeof unlisten).toBe("function");
 			unlisten();
@@ -125,7 +127,7 @@ describe("createMemoryHistory()", () =>{
 			expect(callback).toBeCalledTimes(1); // still only one call.
 		});
 
-		it("calls the listen callback on replace", ()=>{
+		it("calls the listen callback on replace", () => {
 			const history = createMemoryHistory();
 			const callback = jest.fn();
 			const unlisten = history.listen(callback);
@@ -141,7 +143,7 @@ describe("createMemoryHistory()", () =>{
 					state: null,
 					key: expect.anything(),
 				},
-				"REPLACE",
+				"REPLACE"
 			);
 			expect(typeof unlisten).toBe("function");
 			unlisten();
@@ -149,7 +151,7 @@ describe("createMemoryHistory()", () =>{
 			history.push("/push/it/real/good");
 			expect(callback).toBeCalledTimes(1); // still only one call.
 		});
-	})
+	});
 
 	describe("replace()", () => {
 		it("goes forward to the latest entry", () => {
@@ -177,14 +179,20 @@ describe("createMemoryHistory()", () =>{
 
 			expect(history.location.pathname).toBe("/foo");
 
-			history.listen(callback)
+			history.listen(callback);
 			history.goForward();
 
 			expect(history.location.pathname).toBe("/bar");
 			expect(callback).toBeCalledWith(
-				{ pathname: "/bar", hash: "", search: "", state: null, key: expect.anything() },
-				"POP",
-			)
+				{
+					pathname: "/bar",
+					hash: "",
+					search: "",
+					state: null,
+					key: expect.anything(),
+				},
+				"POP"
+			);
 		});
 
 		it("stays on the last entry", () => {

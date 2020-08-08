@@ -1,6 +1,16 @@
 import { History } from "../History";
-import { HistoryAdapter, Location, OnAdapterLocationChange, BrowserHistoryOptions, HistoryOptions } from "../types";
-import { stripBasename, addLeadingSlash, stripTrailingSlash } from "../basenameUtils";
+import {
+	HistoryAdapter,
+	Location,
+	OnAdapterLocationChange,
+	BrowserHistoryOptions,
+	HistoryOptions,
+} from "../types";
+import {
+	stripBasename,
+	addLeadingSlash,
+	stripTrailingSlash,
+} from "../basenameUtils";
 
 function getOrigin(): string {
 	if (!document.querySelector("base[href]")) {
@@ -14,7 +24,10 @@ function getOrigin(): string {
  * @param historyListener Callback for history events (onpopstate).
  * @param options Browser History options.
  */
-export const createBrowserAdapter = (historyListener: OnAdapterLocationChange, options: BrowserHistoryOptions): HistoryAdapter => {
+export const createBrowserAdapter = (
+	historyListener: OnAdapterLocationChange,
+	options: BrowserHistoryOptions
+): HistoryAdapter => {
 	let basename: string;
 	let originPrefix: string;
 	let _window: Window;
@@ -43,7 +56,7 @@ export const createBrowserAdapter = (historyListener: OnAdapterLocationChange, o
 				_window.history.pushState(
 					{ key: newLocation.key, state: newLocation.state },
 					"",
-					this.modifyPath(target),
+					this.modifyPath(target)
 				);
 			}
 		},
@@ -55,7 +68,7 @@ export const createBrowserAdapter = (historyListener: OnAdapterLocationChange, o
 				_window.history.replaceState(
 					{ key: newLocation.key, state: newLocation.state },
 					"",
-					this.modifyPath(target),
+					this.modifyPath(target)
 				);
 			}
 		},
@@ -77,8 +90,8 @@ export const createBrowserAdapter = (historyListener: OnAdapterLocationChange, o
 
 		listen(): void {
 			_window.onpopstate = () => {
-				historyListener(this.getLocation())
-			}
+				historyListener(this.getLocation());
+			};
 		},
 
 		go(steps) {
@@ -90,10 +103,9 @@ export const createBrowserAdapter = (historyListener: OnAdapterLocationChange, o
 				path = basename + path;
 			}
 			return originPrefix + addLeadingSlash(path);
-		}
-	}
+		},
+	};
 };
-
 
 /**
  * Creates a History instance with the browser history adapter.

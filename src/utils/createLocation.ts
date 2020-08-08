@@ -12,7 +12,13 @@ import { parsePath } from "./parsePath";
  * @param preserveSearch preserve the search fragment when only the hash changes.
  * @returns The resolved new location.
  */
-export function createLocation(path: string | Location, state?: any, key?: any, currentLocation?: Location, preserveSearch: boolean = false) {
+export function createLocation(
+	path: string | Location,
+	state?: any,
+	key?: any,
+	currentLocation?: Location,
+	preserveSearch: boolean = false
+) {
 	let location: Location;
 	if (typeof path === "string") {
 		location = parsePath(path);
@@ -20,15 +26,18 @@ export function createLocation(path: string | Location, state?: any, key?: any, 
 	} else {
 		location = {
 			pathname: path.pathname || "",
-			search: (path.search && path.search !== "?")
-				? path.search.replace(/^\??/, "?")
-				: "",
-			hash: (path.hash && path.hash !== "#")
-				? path.hash.replace(/^#?/, "#")
-				: "",
-			state: (state !== undefined && path.state === undefined)
-				? state
-				: path.state,
+			search:
+				path.search && path.search !== "?"
+					? path.search.replace(/^\??/, "?")
+					: "",
+			hash:
+				path.hash && path.hash !== "#"
+					? path.hash.replace(/^#?/, "#")
+					: "",
+			state:
+				state !== undefined && path.state === undefined
+					? state
+					: path.state,
 		};
 	}
 
@@ -36,8 +45,8 @@ export function createLocation(path: string | Location, state?: any, key?: any, 
 		location.key = key;
 	}
 
-	if(preserveSearch){
-		if (!location.pathname && !location.search){
+	if (preserveSearch) {
+		if (!location.pathname && !location.search) {
 			location.search = currentLocation.search;
 		}
 	}
@@ -46,7 +55,6 @@ export function createLocation(path: string | Location, state?: any, key?: any, 
 		location.pathname,
 		currentLocation?.pathname
 	);
-
 
 	return location;
 }

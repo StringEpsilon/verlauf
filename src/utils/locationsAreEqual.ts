@@ -7,11 +7,12 @@ import { Location } from "../types";
  * @returns true, if the locations are equal.
  */
 export function locationsAreEqual(a: Location, b: Location) {
-	return a === b || (
-		a.pathname === b.pathname &&
-		a.search === b.search &&
-		a.hash === b.hash &&
-		a.key === b.key &&
-		a.state === b.state
+	return (
+		a === b ||
+		(a.pathname === b.pathname &&
+			a.search === b.search &&
+			a.hash === b.hash &&
+			a.key === b.key &&
+			a.state === b.state)
 	);
 }

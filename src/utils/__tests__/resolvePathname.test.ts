@@ -25,9 +25,9 @@ describe("resolvePathname", () => {
 		// Add "to" to "from":
 		{ to: "./4/5/6", from: "/1/2/3/", result: "/1/2/3/4/5/6" },
 		{ to: "3/4", from: "/1/2/3", result: "/1/2/3/4" },
-	]
+	];
 
-	testCases.forEach(x => {
+	testCases.forEach((x) => {
 		it(`(${x.from}, ${x.to}) returns ${x.result}`, () => {
 			expect(resolvePathname(x.to, x.from)).toBe(x.result);
 		});

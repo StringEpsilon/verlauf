@@ -1,10 +1,18 @@
 import { History } from "../History";
-import { HistoryAdapter, Location, OnAdapterLocationChange, MemoryHistoryOptions } from "../types";
+import {
+	HistoryAdapter,
+	Location,
+	OnAdapterLocationChange,
+	MemoryHistoryOptions,
+} from "../types";
 import { parsePath } from "../utils/parsePath";
 import { createKey } from "../utils/createKey";
 
 /** @ignore */
-function normalizeEntries(entries: (string | Location)[], keyLength: number): Location[] {
+function normalizeEntries(
+	entries: (string | Location)[],
+	keyLength: number
+): Location[] {
 	return entries.map((entry: string | Location) => {
 		if (typeof entry === "string") {
 			let result = parsePath(entry);
@@ -13,7 +21,7 @@ function normalizeEntries(entries: (string | Location)[], keyLength: number): Lo
 			return result;
 		}
 		return entry;
-	})
+	});
 }
 
 /**
@@ -21,12 +29,18 @@ function normalizeEntries(entries: (string | Location)[], keyLength: number): Lo
  * @param historyListener Callback for history "events", invoked on `go()`, as the memory adapter doesn't listen to any browser events.
  * @param options Memory History options.
  */
-export const createMemoryAdapter = (historyListener: OnAdapterLocationChange, options: MemoryHistoryOptions): HistoryAdapter => {
+export const createMemoryAdapter = (
+	historyListener: OnAdapterLocationChange,
+	options: MemoryHistoryOptions
+): HistoryAdapter => {
 	let entries: Location[];
 	let activeEntry: number;
 
 	function initialize(options: MemoryHistoryOptions) {
-		entries = normalizeEntries(options.initialEntries || ["/"], options.keyLength)
+		entries = normalizeEntries(
+			options.initialEntries || ["/"],
+			options.keyLength
+		);
 		activeEntry = options.initialIndex ? options.initialIndex : 0;
 	}
 	initialize(options);
@@ -41,7 +55,7 @@ export const createMemoryAdapter = (historyListener: OnAdapterLocationChange, op
 		},
 
 		modifyPath(path: string): string {
-			return path
+			return path;
 		},
 
 		pushState(newLocation: Location, target: string) {
@@ -57,17 +71,19 @@ export const createMemoryAdapter = (historyListener: OnAdapterLocationChange, op
 			return entries[activeEntry];
 		},
 
-		listen() {/* Nothing to listen to. */ },
+		listen() {
+			/* Nothing to listen to. */
+		},
 
 		go(steps: number) {
 			let targetIndex = activeEntry + steps;
 			if (targetIndex >= 0 && targetIndex < entries.length) {
-				activeEntry = targetIndex
+				activeEntry = targetIndex;
 				historyListener(entries[targetIndex]);
 			}
 		},
-	}
-}
+	};
+};
 /**
  * Creates a history instance using only internal memory for keeping track of locations.
  * Compatible with node.js environments.

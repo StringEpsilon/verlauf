@@ -5,7 +5,7 @@ import { parsePath } from "../parsePath";
 // Original copyright: History contributors.
 
 describe("createLocation()", () => {
-	describe("with preserveSearch = true", ()=>{
+	describe("with preserveSearch = true", () => {
 		it("preserves the search fragment when only the hash changes", () => {
 			expect(
 				createLocation(
@@ -18,7 +18,7 @@ describe("createLocation()", () => {
 			).toMatchObject({
 				pathname: "/path",
 				search: "?search",
-				hash: "#hash"
+				hash: "#hash",
 			});
 		});
 
@@ -34,7 +34,7 @@ describe("createLocation()", () => {
 			).toMatchObject({
 				pathname: "/path",
 				search: "?newSearch",
-				hash: "#hash"
+				hash: "#hash",
 			});
 		});
 
@@ -50,7 +50,7 @@ describe("createLocation()", () => {
 			).toMatchObject({
 				pathname: "/",
 				search: "",
-				hash: ""
+				hash: "",
 			});
 		});
 	});
@@ -60,22 +60,26 @@ describe("createLocation()", () => {
 			expect(createLocation("")).toMatchObject({
 				pathname: "/",
 				search: "",
-				hash: ""
+				hash: "",
 			});
 		});
 		it("uses to path", () => {
 			expect(createLocation("/to")).toMatchObject({
 				pathname: "/to",
 				search: "",
-				hash: ""
+				hash: "",
 			});
 		});
 
 		it("uses from path", () => {
-			expect(createLocation({ pathname: "" }, null, null, { pathname: "/from" })).toMatchObject({
+			expect(
+				createLocation({ pathname: "" }, null, null, {
+					pathname: "/from",
+				})
+			).toMatchObject({
 				pathname: "/from",
 				search: "",
-				hash: ""
+				hash: "",
 			});
 		});
 	});
@@ -83,10 +87,12 @@ describe("createLocation()", () => {
 	describe("with a full path", () => {
 		describe("given as a string", () => {
 			it("has the correct properties", () => {
-				expect(createLocation("/the/path?the=query#the-hash")).toMatchObject({
+				expect(
+					createLocation("/the/path?the=query#the-hash")
+				).toMatchObject({
 					pathname: "/the/path",
 					search: "?the=query",
-					hash: "#the-hash"
+					hash: "#the-hash",
 				});
 			});
 		});
@@ -97,12 +103,12 @@ describe("createLocation()", () => {
 					createLocation({
 						pathname: "/the/path",
 						search: "?the=query",
-						hash: "#the-hash"
+						hash: "#the-hash",
 					})
 				).toMatchObject({
 					pathname: "/the/path",
 					search: "?the=query",
-					hash: "#the-hash"
+					hash: "#the-hash",
 				});
 			});
 		});
@@ -111,10 +117,12 @@ describe("createLocation()", () => {
 	describe("with a relative path", () => {
 		describe("given as a string", () => {
 			it("has the correct properties", () => {
-				expect(createLocation("the/path?the=query#the-hash")).toMatchObject({
+				expect(
+					createLocation("the/path?the=query#the-hash")
+				).toMatchObject({
 					pathname: "the/path",
 					search: "?the=query",
-					hash: "#the-hash"
+					hash: "#the-hash",
 				});
 			});
 		});
@@ -125,12 +133,12 @@ describe("createLocation()", () => {
 					createLocation({
 						pathname: "the/path",
 						search: "?the=query",
-						hash: "#the-hash"
+						hash: "#the-hash",
 					})
 				).toMatchObject({
 					pathname: "the/path",
 					search: "?the=query",
-					hash: "#the-hash"
+					hash: "#the-hash",
 				});
 			});
 		});
@@ -142,11 +150,10 @@ describe("createLocation()", () => {
 				expect(createLocation("?the=query#the-hash")).toMatchObject({
 					pathname: "/",
 					search: "?the=query",
-					hash: "#the-hash"
+					hash: "#the-hash",
 				});
 			});
 		});
-
 	});
 
 	describe("with a path with no search", () => {
@@ -155,7 +162,7 @@ describe("createLocation()", () => {
 				expect(createLocation("/the/path#the-hash")).toMatchObject({
 					pathname: "/the/path",
 					search: "",
-					hash: "#the-hash"
+					hash: "#the-hash",
 				});
 			});
 		});
@@ -167,7 +174,7 @@ describe("createLocation()", () => {
 				).toMatchObject({
 					pathname: "/the/path",
 					search: "",
-					hash: "#the-hash"
+					hash: "#the-hash",
 				});
 			});
 		});
@@ -179,7 +186,7 @@ describe("createLocation()", () => {
 				expect(createLocation("/the/path?the=query")).toMatchObject({
 					pathname: "/the/path",
 					search: "?the=query",
-					hash: ""
+					hash: "",
 				});
 			});
 		});
@@ -187,11 +194,14 @@ describe("createLocation()", () => {
 		describe("given as an object", () => {
 			it("has the correct properties", () => {
 				expect(
-					createLocation({ pathname: "/the/path", search: "?the=query" })
+					createLocation({
+						pathname: "/the/path",
+						search: "?the=query",
+					})
 				).toMatchObject({
 					pathname: "/the/path",
 					search: "?the=query",
-					hash: ""
+					hash: "",
 				});
 			});
 		});

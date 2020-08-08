@@ -7,11 +7,11 @@ import { Location } from "../types";
  */
 export function parsePath(path: string): Location {
 	const PATH_REGEX = /([^#?]*)?(\?[^#]*)?(#.*)?/g;
-	let matches = PATH_REGEX.exec(path || '/');
+	let matches = PATH_REGEX.exec(path || "/");
 
 	return {
 		pathname: matches[1] || "",
-		search: (matches[2] && matches[2] !== "?") ? matches[2] : "",
-		hash: (matches[3] && matches[3] !== "#") ? matches[3] : "",
+		search: matches[2] && matches[2] !== "?" ? matches[2] : "",
+		hash: matches[3] && matches[3] !== "#" ? matches[3] : "",
 	};
 }

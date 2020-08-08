@@ -34,10 +34,11 @@ export function resolvePathname(to: string, from: string = ""): string {
 					resultParts.pop();
 					stackPosition--;
 					resultParts[stackPosition] = "";
-				} else if (fromRelative) { // if "from" is absolute, don't attempt to navigate back from root.
+				} else if (fromRelative) {
+					// if "from" is absolute, don't attempt to navigate back from root.
 					reachedRoot = true;
 					resultParts.unshift("..");
-					stackPosition++
+					stackPosition++;
 				}
 			} else if (toParts[i] === ".") {
 				resultParts[stackPosition] = "";

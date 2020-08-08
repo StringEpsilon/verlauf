@@ -1,40 +1,32 @@
 import { createHashAdapter } from "../hashHistory";
 import { parsePath } from "../../utils/parsePath";
 
-
 describe("createHashAdapter()", () => {
 	describe("modifies path with correct hash type", () => {
 		it("on modifyPath - default", () => {
 			let wrapper = createHashAdapter(jest.fn(), {});
 
-			expect(
-				wrapper.modifyPath("/foo")
-			).toBe("#/foo");
+			expect(wrapper.modifyPath("/foo")).toBe("#/foo");
 		});
 
 		it("on modifyPath - noslash", () => {
 			let wrapper = createHashAdapter(jest.fn(), { hashType: "noslash" });
 
-			expect(
-				wrapper.modifyPath("/foo")
-			).toBe("#foo");
+			expect(wrapper.modifyPath("/foo")).toBe("#foo");
 		});
 
 		it("on modifyPath - noslash - at /", () => {
 			let wrapper = createHashAdapter(jest.fn(), { hashType: "noslash" });
 
-			expect(
-				wrapper.modifyPath("/")
-			).toBe("#");
+			expect(wrapper.modifyPath("/")).toBe("#");
 		});
 
-
 		it("on modifyPath - hashbang", () => {
-			let wrapper = createHashAdapter(jest.fn(), { hashType: "hashbang" });
+			let wrapper = createHashAdapter(jest.fn(), {
+				hashType: "hashbang",
+			});
 
-			expect(
-				wrapper.modifyPath("/foo")
-			).toBe("#!/foo");
+			expect(wrapper.modifyPath("/foo")).toBe("#!/foo");
 		});
 
 		describe("in pushState()", () => {
@@ -51,7 +43,9 @@ describe("createHashAdapter()", () => {
 			});
 
 			it("noslash", () => {
-				let wrapper = createHashAdapter(jest.fn(), { hashType: "noslash" });
+				let wrapper = createHashAdapter(jest.fn(), {
+					hashType: "noslash",
+				});
 				window.history.pushState = jest.fn();
 				wrapper.pushState(parsePath("/foo"), "/foo");
 
@@ -70,7 +64,9 @@ describe("createHashAdapter()", () => {
 			});
 
 			it("hashbang", () => {
-				let wrapper = createHashAdapter(jest.fn(), { hashType: "hashbang" });
+				let wrapper = createHashAdapter(jest.fn(), {
+					hashType: "hashbang",
+				});
 				window.history.pushState = jest.fn();
 				wrapper.pushState(parsePath("/foo"), "/foo");
 
@@ -96,7 +92,9 @@ describe("createHashAdapter()", () => {
 			});
 
 			it("noslash", () => {
-				let wrapper = createHashAdapter(jest.fn(), { hashType: "noslash" });
+				let wrapper = createHashAdapter(jest.fn(), {
+					hashType: "noslash",
+				});
 				window.history.replaceState = jest.fn();
 				wrapper.replaceState(parsePath("/foo"), "/foo");
 
@@ -108,7 +106,9 @@ describe("createHashAdapter()", () => {
 			});
 
 			it("hashbang", () => {
-				let wrapper = createHashAdapter(jest.fn(), { hashType: "hashbang" });
+				let wrapper = createHashAdapter(jest.fn(), {
+					hashType: "hashbang",
+				});
 				window.history.replaceState = jest.fn();
 				wrapper.replaceState(parsePath("/foo"), "/foo");
 
@@ -126,7 +126,7 @@ describe("createHashAdapter()", () => {
 			// Mock history.length:
 			Object.defineProperty(window.history, "length", {
 				value: 42,
-				configurable: true
+				configurable: true,
 			});
 
 			let wrapper = createHashAdapter(jest.fn(), {});
@@ -136,7 +136,10 @@ describe("createHashAdapter()", () => {
 			Object.defineProperty(
 				window.history,
 				"length",
-				Object.getOwnPropertyDescriptor(Object.getPrototypeOf(window.history), "length")
+				Object.getOwnPropertyDescriptor(
+					Object.getPrototypeOf(window.history),
+					"length"
+				)
 			);
 		});
 
@@ -172,7 +175,9 @@ describe("createHashAdapter()", () => {
 			// Mock history.length:
 			window.location.hash = "#!/current/path";
 
-			let wrapper = createHashAdapter(jest.fn(), { hashType: "hashbang" });
+			let wrapper = createHashAdapter(jest.fn(), {
+				hashType: "hashbang",
+			});
 			expect(wrapper.getLocation()).toMatchObject({
 				pathname: "/current/path",
 			});
@@ -212,7 +217,9 @@ describe("createHashAdapter()", () => {
 	describe("listens to onhashchange", () => {
 		const _window = {
 			onhashchange: jest.fn(),
-			location: new URL("http://www.example.com/index.html#/hashlocation"),
+			location: new URL(
+				"http://www.example.com/index.html#/hashlocation"
+			),
 			history: {},
 		};
 		const changeListener = jest.fn();
@@ -229,7 +236,7 @@ describe("createHashAdapter()", () => {
 			key: "",
 			pathname: "/hashlocation",
 			search: "",
-			state: null
+			state: null,
 		});
 	});
 
@@ -248,6 +255,6 @@ describe("createHashAdapter()", () => {
 
 			expect(_window.history.go).toBeCalledTimes(1);
 			expect(_window.history.go).toBeCalledWith(-1);
-		})
+		});
 	});
 });

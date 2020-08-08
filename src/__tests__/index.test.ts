@@ -2,7 +2,6 @@ import * as index from "../index";
 
 describe("index", () => {
 	it("exports all public functions and classes", () => {
-
 		expect(index.History).toBeDefined();
 		expect(index.createPath).toBeDefined();
 		expect(index.createLocation).toBeDefined();
@@ -13,5 +12,5 @@ describe("index", () => {
 		expect(index.createBrowserHistory).toBeDefined();
 		expect(index.createMemoryAdapter).toBeDefined();
 		expect(index.createMemoryHistory).toBeDefined();
-	})
+	});
 });
