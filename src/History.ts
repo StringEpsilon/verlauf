@@ -38,6 +38,7 @@ export class History {
 	location: Location;
 	/** Last action performen on the history stack. Initial value is always POP. */
 	action: string = ACTION.POP;
+	_pendingTransition: boolean = false;
 
 	/**
 	 * Creates a new History instance.
@@ -116,6 +117,7 @@ export class History {
 		onSuccess: Function,
 		onFailure?: Function
 	) {
+		this._pendingTransition = true;
 		let newLocation = resolveLocation(
 			this.location,
 			target,
@@ -128,6 +130,7 @@ export class History {
 		} else {
 			onSuccess();
 		}
+		this._pendingTransition = false;
 		this.action = action;
 		this.length = this._historyAdapter.getLength();
 	}
@@ -277,5 +280,12 @@ export class History {
 	setOption(key: string, value: any) {
 		this._options[key] = value;
 		this._historyAdapter.setOptions(this._options);
+	}
+
+	/**
+	 * Returns true, if there is a transition currently in progress.
+	 */
+	isInTransition() {
+		return this._pendingTransition;
 	}
 }

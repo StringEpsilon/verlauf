@@ -198,4 +198,25 @@ describe("History", () => {
 			getUserConfirmation: expect.anything(),
 		});
 	});
+
+	describe(".isInTransition()", () => {
+		it("returns false by default", () => {
+			let history = new History(createTestWrapper);
+			expect(history.isInTransition()).toBe(false);
+		});
+
+		it("returns true if a transition is blocking and waiting for a function to execute", () => {
+			let history = new History(createTestWrapper);
+			let unblock = history.block(() => {
+				expect(history.isInTransition()).toBe(true);
+				return true;
+			});
+
+			expect(history.isInTransition()).toBe(false);
+			history.push("/foo");
+			expect(history.isInTransition()).toBe(false);
+			unblock();
+			expect.assertions(3);
+		});
+	});
 });

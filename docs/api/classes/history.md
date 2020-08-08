@@ -16,6 +16,7 @@ History object, providing all APIs to interact with browser, hash or memory hist
 
 ### Properties
 
+* [_pendingTransition](history.md#_pendingtransition)
 * [action](history.md#action)
 * [length](history.md#length)
 * [location](history.md#location)
@@ -27,6 +28,7 @@ History object, providing all APIs to interact with browser, hash or memory hist
 * [go](history.md#go)
 * [goBack](history.md#goback)
 * [goForward](history.md#goforward)
+* [isInTransition](history.md#isintransition)
 * [listen](history.md#listen)
 * [navigate](history.md#navigate)
 * [push](history.md#push)
@@ -65,6 +67,12 @@ The options for the History instance and the HistoryAdapter.
 **Returns:** *[History](history.md)*
 
 ## Properties
+
+###  _pendingTransition
+
+• **_pendingTransition**: *boolean* = false
+
+___
 
 ###  action
 
@@ -164,6 +172,16 @@ ___
 Shorthand for go(-1). Go forward in history by one entry.
 
 **Returns:** *void*
+
+___
+
+###  isInTransition
+
+▸ **isInTransition**(): *boolean*
+
+Returns true, if there is a transition currently in progress.
+
+**Returns:** *boolean*
 
 ___
 
