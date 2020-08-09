@@ -1,6 +1,6 @@
 ![CI Build](https://github.com/StringEpsilon/verlauf/workflows/CI%20Build/badge.svg)
-![npm bundle size](https://img.shields.io/bundlephobia/min/verlauf)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/verlauf)
+[![npm bundle size](https://badgen.net/bundlephobia/min/verlauf@latest)](https://bundlephobia.com/result?p=verlauf)
+[![npm bundle size](https://badgen.net/bundlephobia/minzip/verlauf@latest)](https://bundlephobia.com/result?p=verlauf)
 
 # Verlauf
 
