@@ -71,7 +71,10 @@ export class History {
 			this._options.getUserConfirmation
 		);
 
-		this._historyAdapter = createAdapter(this._adapterCallback, this._options);
+		this._historyAdapter = createAdapter(
+			this._adapterCallback,
+			this._options
+		);
 		this._historyAdapter.listen();
 		this.location = this._historyAdapter.getLocation();
 		this.length = this._historyAdapter.getLength();
@@ -99,7 +102,7 @@ export class History {
 
 	private _alertListeners = (action: string) => {
 		this._listeners.forEach((listener) => listener(this.location, action));
-	}
+	};
 
 	private _transition = (
 		target: Location,
@@ -118,7 +121,7 @@ export class History {
 		this._pendingTransition = false;
 		this.action = action;
 		this.length = this._historyAdapter.getLength();
-	}
+	};
 
 	/**
 	 * Register a listener for all changes in location.
@@ -130,7 +133,7 @@ export class History {
 		return () => {
 			this.unlisten(listener);
 		};
-	}
+	};
 
 	/**
 	 * Removes / disables a listener.
@@ -142,7 +145,7 @@ export class History {
 		if (index >= 0) {
 			this._listeners.splice(index, 1);
 		}
-	}
+	};
 
 	/**
 	 *
@@ -150,7 +153,7 @@ export class History {
 	 */
 	createHref = (target: Location): string => {
 		return this._historyAdapter.modifyPath(createPath(target));
-	}
+	};
 
 	/**
 	 * Navigate to a location with the specified method.
@@ -170,7 +173,7 @@ export class History {
 			state,
 			createKey(this._options.keyLength),
 			this.location,
-			this._options.preserveSearch,
+			this._options.preserveSearch
 		);
 		let newPath = createPath(newLocation);
 		this._transition(newLocation, method, () => {
@@ -180,7 +183,7 @@ export class History {
 			this.location = newLocation;
 			this._alertListeners(method);
 		});
-	}
+	};
 
 	/**
 	 * Push a new location to the history stack and navigate to it.
@@ -190,7 +193,7 @@ export class History {
 	 */
 	push = (target: string | Location, state: object | null = null): void => {
 		this.navigate(target, state, ACTION.PUSH);
-	}
+	};
 
 	/**
 	 * Replace the current location and state on the stack.
@@ -198,9 +201,12 @@ export class History {
 	 * @param target Location or pathname to navigate to.
 	 * @param state Desired state
 	 */
-	replace = (target: string | Location, state: object | null = null): void => {
+	replace = (
+		target: string | Location,
+		state: object | null = null
+	): void => {
 		this.navigate(target, state, ACTION.REPLACE);
-	}
+	};
 
 	/**
 	 * Configure a transition block. {@link LegacyBlocker}
@@ -208,30 +214,30 @@ export class History {
 	 * @param args - Arguments passed to {@link LegacyBlocker.block}
 	 * @returns A callback to remove the block.
 	 */
-	block = (...args: any[]): () => void => {
+	block = (...args: any[]): (() => void) => {
 		return this._blocker.block.apply(this._blocker, args);
-	}
+	};
 
 	/**
 	 * Remove the currently configured blocker.
 	 */
 	unblock = (): void => {
 		this._blocker.unblock();
-	}
+	};
 
 	/**
 	 * Shorthand for go(1). Go forward in history by one entry.
 	 */
 	goBack = (): void => {
 		this.go(-1);
-	}
+	};
 
 	/**
 	 * Shorthand for go(-1). Go forward in history by one entry.
 	 */
 	goForward = (): void => {
 		this.go(1);
-	}
+	};
 
 	/**
 	 * Goes forwards or backwards in history. If the value is out of bounds, it will go as far as it can (i.E. to the first or last entry).
@@ -246,7 +252,7 @@ export class History {
 	 */
 	go = (steps: number): void => {
 		this._historyAdapter.go(steps);
-	}
+	};
 
 	/**
 	 * Change any options via it's name. Keep in mind that depending on the option and when it's changed,
@@ -261,15 +267,15 @@ export class History {
 	 * history.setOptions("basename", "/en-UK/");
 	 * // Keep in mind that changing the basename option will not trigger a location change.
 	 */
-	setOption = (key: string, value: any) =>{
+	setOption = (key: string, value: any) => {
 		this._options[key] = value;
 		this._historyAdapter.setOptions(this._options);
-	}
+	};
 
 	/**
 	 * Returns true, if there is a transition currently in progress.
 	 */
 	isInTransition = () => {
 		return this._pendingTransition;
-	}
+	};
 }

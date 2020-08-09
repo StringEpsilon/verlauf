@@ -107,7 +107,7 @@ export function createHashAdapter(
 			return hashBase + hash + stripLeadingSlash(path);
 		},
 	};
-};
+}
 
 /**
  * Creates a History instance that keeps all location information in the hash portion of the URL.
