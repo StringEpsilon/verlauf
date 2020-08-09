@@ -1,5 +1,8 @@
 # Changelog
 
+## Future:
+* Removed `.bind(this)` overhead, reducing CJS and ESM bundle size by .5 KB.
+
 ## 0.6.1:
 
 -   Dropped unminfied bundle.

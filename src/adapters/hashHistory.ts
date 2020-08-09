@@ -30,10 +30,10 @@ function getHashBase(): string {
  * @param historyListener Callback for history events (onhashchange).
  * @param options Hash history options.
  */
-export const createHashAdapter = (
+export function createHashAdapter(
 	historyListener: OnAdapterLocationChange,
 	options: HashHistoryOptions
-): HistoryAdapter => {
+): HistoryAdapter {
 	let basename: string;
 	let _window: Window;
 	let hash: string;
@@ -52,7 +52,6 @@ export const createHashAdapter = (
 			hash = "#!/";
 		}
 	}
-
 	initialize(options);
 
 	return {
