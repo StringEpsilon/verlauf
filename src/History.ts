@@ -1,4 +1,3 @@
-import { resolveLocation } from "./utils/resolveLocation";
 import { createPath } from "./utils/createPath";
 import {
 	Location,
@@ -11,6 +10,7 @@ import {
 } from "./types";
 import { LegacyBlocker } from "./LegacyBlocker";
 import { createKey } from "./utils/createKey";
+import { createLocation } from "./utils/createLocation";
 
 /** @ignore */
 export const ACTION = {
@@ -102,18 +102,13 @@ export class History {
 	}
 
 	private _transition = (
-		target: string | Location,
+		target: Location,
 		action: string,
 		onSuccess: Function,
 		onFailure?: Function
 	) => {
 		this._pendingTransition = true;
-		let newLocation = resolveLocation(
-			this.location,
-			target,
-			this._options.preserveSearch
-		);
-		let isBlocked = this._blocker.isBlocked(newLocation, action);
+		let isBlocked = this._blocker.isBlocked(target, action);
 		if (isBlocked) {
 			onFailure && onFailure();
 			return;
@@ -170,20 +165,19 @@ export class History {
 		state: object | null,
 		method: string = "PUSH"
 	) => {
-		let newLocation = resolveLocation(
-			this.location,
+		let newLocation = createLocation(
 			target,
-			this._options.preserveSearch
+			state,
+			createKey(this._options.keyLength),
+			this.location,
+			this._options.preserveSearch,
 		);
 		let newPath = createPath(newLocation);
-		newLocation.state = state;
-
-		this._transition(target, method, () => {
+		this._transition(newLocation, method, () => {
 			method === ACTION.PUSH
 				? this._historyAdapter.pushState(newLocation, newPath)
 				: this._historyAdapter.replaceState(newLocation, newPath);
 			this.location = newLocation;
-			this.location.key = createKey(this._options.keyLength);
 			this._alertListeners(method);
 		});
 	}

@@ -29,7 +29,7 @@
 * [LegacyBlocker](README.md#legacyblocker)
 * [createBrowserAdapter](README.md#const-createbrowseradapter)
 * [createBrowserHistory](README.md#createbrowserhistory)
-* [createHashAdapter](README.md#const-createhashadapter)
+* [createHashAdapter](README.md#createhashadapter)
 * [createHashHistory](README.md#createhashhistory)
 * [createLocation](README.md#createlocation)
 * [createMemoryAdapter](README.md#const-creatememoryadapter)
@@ -39,7 +39,6 @@
 * [getOrigin](README.md#getorigin)
 * [locationsAreEqual](README.md#locationsareequal)
 * [parsePath](README.md#parsepath)
-* [resolveLocation](README.md#resolvelocation)
 * [resolvePathname](README.md#resolvepathname)
 
 ## Type aliases
@@ -177,7 +176,7 @@ Name | Type | Description |
 
 ___
 
-### `Const` createHashAdapter
+###  createHashAdapter
 
 ▸ **createHashAdapter**(`historyListener`: [OnAdapterLocationChange](README.md#onadapterlocationchange), `options`: [HashHistoryOptions](interfaces/hashhistoryoptions.md)): *[HistoryAdapter](interfaces/historyadapter.md)*
 
@@ -348,22 +347,6 @@ Name | Type | Description |
 **Returns:** *[Location](interfaces/location.md)*
 
 parsed location object. Defaults to {pathname: "/": search: "", hash: ""} for invalid strings.
-
-___
-
-###  resolveLocation
-
-▸ **resolveLocation**(`from`: [Location](interfaces/location.md), `to`: string | [Location](interfaces/location.md), `preserveSearch`: boolean): *[Location](interfaces/location.md)*
-
-**Parameters:**
-
-Name | Type | Default |
------- | ------ | ------ |
-`from` | [Location](interfaces/location.md) | - |
-`to` | string &#124; [Location](interfaces/location.md) | - |
-`preserveSearch` | boolean | true |
-
-**Returns:** *[Location](interfaces/location.md)*
 
 ___
 
