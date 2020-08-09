@@ -1,6 +1,6 @@
 # Changelog
 
-## Future:
+## 0.6.2:
 * Removed `.bind(this)` overhead, reducing CJS and ESM bundle size by .5 KB.
 * Removed internal helper function, further reducing bundle size by ~.1 KB.
 
