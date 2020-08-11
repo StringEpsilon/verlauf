@@ -8,8 +8,11 @@ Currently, the following differences in APi and behavior might affect compatibil
 -   The algorithm to resolve relative paths has been reimplemented from scratch and might differ in some edge cases.
 -   The blocking callback might receive a `location.key` where it would not in history 4.
 -   The blocking callback might receive a difference action type in some circumstances.
--   The package does not have the same file structure. Some import statements may break as a result.
-    -   You can alias these, if need be.
+-   Some top-level files are absent from the package. You might need to alias these separately:
+    - `DOMUtils.js`
+    - `LocationUtils.js`
+    - `PathUtils.js`
+-   The direct imports for createBrowserHistory, createHashHistory and createMemory history are ESM instead of CJS now. Depending on your bundler, that may cause some issues. I might change this before 1.0.
 -   The UMD bundle uses a different namespace.
 -   Verlauf does not issue any warnings. History for example warns about incomplete basenames and re-pushing the same location.
 
