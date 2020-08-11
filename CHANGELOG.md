@@ -1,7 +1,8 @@
 # Changelog
 
-## Future:
-* Flattened package file structure.
+## 0.7
+
+* Flattened package file structure. Note: if you imported from `verlauf/dist/esm` or similar, you need to chop off the "dist/" part.
 * Added createHashHistory.js, createMemoryHistory.js and createBrowserHistory.js to the package root.
 
 ## 0.6.2:
