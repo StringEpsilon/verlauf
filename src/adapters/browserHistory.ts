@@ -105,7 +105,7 @@ export function createBrowserAdapter(
 			return originPrefix + addLeadingSlash(path);
 		},
 	};
-};
+}
 
 /**
  * Creates a History instance with the browser history adapter.

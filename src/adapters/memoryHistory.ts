@@ -83,7 +83,8 @@ export function createMemoryAdapter(
 			}
 		},
 	};
-};
+}
+
 /**
  * Creates a history instance using only internal memory for keeping track of locations.
  * Compatible with node.js environments.

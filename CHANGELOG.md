@@ -1,5 +1,9 @@
 # Changelog
 
+## Future:
+* Flattened package file structure.
+* Added createHashHistory.js, createMemoryHistory.js and createBrowserHistory.js to the package root.
+
 ## 0.6.2:
 * Removed `.bind(this)` overhead, reducing CJS and ESM bundle size by .5 KB.
 * Removed internal helper function, further reducing bundle size by ~.1 KB.
