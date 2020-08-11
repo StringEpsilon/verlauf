@@ -29,10 +29,10 @@ function normalizeEntries(
  * @param historyListener Callback for history "events", invoked on `go()`, as the memory adapter doesn't listen to any browser events.
  * @param options Memory History options.
  */
-export const createMemoryAdapter = (
+export function createMemoryAdapter(
 	historyListener: OnAdapterLocationChange,
 	options: MemoryHistoryOptions
-): HistoryAdapter => {
+): HistoryAdapter {
 	let entries: Location[];
 	let activeEntry: number;
 

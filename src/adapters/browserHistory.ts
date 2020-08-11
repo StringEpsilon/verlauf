@@ -4,7 +4,6 @@ import {
 	Location,
 	OnAdapterLocationChange,
 	BrowserHistoryOptions,
-	HistoryOptions,
 } from "../types";
 import {
 	stripBasename,
@@ -12,6 +11,7 @@ import {
 	stripTrailingSlash,
 } from "../basenameUtils";
 
+/** @ignore */
 function getOrigin(): string {
 	if (!document.querySelector("base[href]")) {
 		return "";
@@ -24,10 +24,10 @@ function getOrigin(): string {
  * @param historyListener Callback for history events (onpopstate).
  * @param options Browser History options.
  */
-export const createBrowserAdapter = (
+export function createBrowserAdapter(
 	historyListener: OnAdapterLocationChange,
 	options: BrowserHistoryOptions
-): HistoryAdapter => {
+): HistoryAdapter {
 	let basename: string;
 	let originPrefix: string;
 	let _window: Window;

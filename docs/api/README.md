@@ -27,16 +27,15 @@
 ### Functions
 
 * [LegacyBlocker](README.md#legacyblocker)
-* [createBrowserAdapter](README.md#const-createbrowseradapter)
+* [createBrowserAdapter](README.md#createbrowseradapter)
 * [createBrowserHistory](README.md#createbrowserhistory)
 * [createHashAdapter](README.md#createhashadapter)
 * [createHashHistory](README.md#createhashhistory)
 * [createLocation](README.md#createlocation)
-* [createMemoryAdapter](README.md#const-creatememoryadapter)
+* [createMemoryAdapter](README.md#creatememoryadapter)
 * [createMemoryHistory](README.md#creatememoryhistory)
 * [createPath](README.md#createpath)
 * [defaultUserConfirmation](README.md#const-defaultuserconfirmation)
-* [getOrigin](README.md#getorigin)
 * [locationsAreEqual](README.md#locationsareequal)
 * [parsePath](README.md#parsepath)
 * [resolvePathname](README.md#resolvepathname)
@@ -130,7 +129,7 @@ Name | Type | Description |
 
 ___
 
-### `Const` createBrowserAdapter
+###  createBrowserAdapter
 
 ▸ **createBrowserAdapter**(`historyListener`: [OnAdapterLocationChange](README.md#onadapterlocationchange), `options`: [BrowserHistoryOptions](interfaces/browserhistoryoptions.md)): *[HistoryAdapter](interfaces/historyadapter.md)*
 
@@ -231,7 +230,7 @@ The resolved new location.
 
 ___
 
-### `Const` createMemoryAdapter
+###  createMemoryAdapter
 
 ▸ **createMemoryAdapter**(`historyListener`: [OnAdapterLocationChange](README.md#onadapterlocationchange), `options`: [MemoryHistoryOptions](interfaces/memoryhistoryoptions.md)): *[HistoryAdapter](interfaces/historyadapter.md)*
 
@@ -302,14 +301,6 @@ Name | Type |
 `confirmNavigation` | boolean |
 
 **Returns:** *void*
-
-___
-
-###  getOrigin
-
-▸ **getOrigin**(): *string*
-
-**Returns:** *string*
 
 ___
 

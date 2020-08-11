@@ -11,4 +11,5 @@ module.exports = {
     "!src/*.test.ts",
   ],
   collectCoverage: true,
+  coverageReporters: ["html"]
 };
