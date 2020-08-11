@@ -19,9 +19,6 @@
 		"check_prettier": "prettier -c src/**",
 		"prettier": "prettier --write src/**"
 	},
-	"files": [
-		"dist/**"
-	],
 	"devDependencies": {
 		"@rollup/plugin-commonjs": "^14.0.0",
 		"@types/jest": "^26.0.9",
