@@ -21,7 +21,7 @@ export function resolvePathname(to: string, from: string = ""): string {
 		return to;
 	}
 	const toParts = to.split("/");
-	if(to[0] === "/"){ // Short-circuit absolute resolution
+	if (to[0] === "/") { // Short-circuit absolute resolution
 		return toParts.filter(part => part !== "..").join("/");
 	}
 
