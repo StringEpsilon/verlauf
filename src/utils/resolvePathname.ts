@@ -21,48 +21,43 @@ export function resolvePathname(to: string, from: string = ""): string {
 		return to;
 	}
 	const toParts = to.split("/");
+	if(to[0] === "/"){ // Short-circuit absolute resolution
+		return toParts.filter(part => part !== "..").join("/");
+	}
+
 	let resultParts = from.split("/");
 	const fromRelative = from[0] !== "/";
 	let stackPosition = resultParts.length - 1;
 
-	if (to[0] !== "/") {
-		let push = false;
-		let reachedRoot = false;
-		for (let i = 0; i < toParts.length; i++) {
-			if (toParts[i] === "..") {
-				if (stackPosition > 0 && !reachedRoot) {
-					resultParts.pop();
-					stackPosition--;
-					resultParts[stackPosition] = "";
-				} else if (fromRelative) {
-					// if "from" is absolute, don't attempt to navigate back from root.
-					reachedRoot = true;
-					resultParts.unshift("..");
-					stackPosition++;
-				}
-			} else if (toParts[i] === ".") {
+	let push = false;
+	let reachedRoot = false;
+	for (let i = 0; i < toParts.length; i++) {
+		if (toParts[i] === "..") {
+			if (stackPosition > 0 && !reachedRoot) {
+				resultParts.pop();
+				stackPosition--;
 				resultParts[stackPosition] = "";
-			} else {
-				if (push) {
-					resultParts.push(toParts[i]);
-					stackPosition++;
-				} else {
-					resultParts[stackPosition] = toParts[i];
-					push = true;
-				}
+			} else if (fromRelative) {
+				// if "from" is absolute, don't attempt to navigate back from root.
+				reachedRoot = true;
+				resultParts.unshift("..");
+				stackPosition++;
 			}
-		}
-	} else {
-		resultParts = [];
-		for (let i = 0; i < toParts.length; i++) {
-			if (toParts[i] !== "..") {
+		} else if (toParts[i] === ".") {
+			resultParts[stackPosition] = "";
+		} else {
+			if (push) {
 				resultParts.push(toParts[i]);
+				stackPosition++;
+			} else {
+				resultParts[stackPosition] = toParts[i];
+				push = true;
 			}
 		}
 	}
 	let result = resultParts.join("/");
 	if (!fromRelative && result[0] !== "/") {
-		result = "/" + result;
+		return "/" + result;
 	}
 	return result;
 }

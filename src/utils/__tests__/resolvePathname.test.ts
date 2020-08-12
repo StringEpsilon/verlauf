@@ -9,8 +9,9 @@ describe("resolvePathname", () => {
 		{ to: "/foo", from: "", result: "/foo" },
 		{ to: "/foo", from: "/bar", result: "/foo" },
 		{ to: "/foo", from: "/bar/baz", result: "/foo" },
-		{ to: "./foo", from: "/bar/baz", result: "/bar/foo" },
+		{ to: "/foo", from: "bar/baz", result: "/foo" },
 		// Relative shenanigangs:
+		{ to: "./foo", from: "/bar/baz", result: "/bar/foo" },
 		{ to: "..", from: "/bar/baz", result: "/" },
 		{ to: "..", from: "/bar/baz/", result: "/bar/" },
 		{ to: "../../..", from: "/bar/baz", result: "/" },
