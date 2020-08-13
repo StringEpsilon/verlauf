@@ -21,43 +21,45 @@ export function resolvePathname(to: string, from: string = ""): string {
 		return to;
 	}
 	const toParts = to.split("/");
-	if (to[0] === "/") { // Short-circuit absolute resolution
-		return toParts.filter(part => part !== "..").join("/");
+	if (to[0] === "/") {
+		return toParts
+			.filter((item, i) => {
+				return item !== ".." && (i < 1 || toParts[i + 1] !== "..");
+			})
+			.join("/");
 	}
 
 	let resultParts = from.split("/");
-	const fromRelative = from[0] !== "/";
-	let stackPosition = resultParts.length - 1;
-
+	let position = resultParts.length - 1;
 	let push = false;
-	let reachedRoot = false;
-	for (let i = 0; i < toParts.length; i++) {
+	let i = 0;
+	while (toParts[i] === "..") {
+		if (position > 0) {
+			resultParts.pop();
+			position--;
+		}
+		i++;
+	}
+	resultParts[position] = "";
+	for (; i < toParts.length; i++) {
 		if (toParts[i] === "..") {
-			if (stackPosition > 0 && !reachedRoot) {
+			if (i === toParts.length - 1) {
+				resultParts[position] = "";
+			} else {
 				resultParts.pop();
-				stackPosition--;
-				resultParts[stackPosition] = "";
-			} else if (fromRelative) {
-				// if "from" is absolute, don't attempt to navigate back from root.
-				reachedRoot = true;
-				resultParts.unshift("..");
-				stackPosition++;
+				position--;
 			}
 		} else if (toParts[i] === ".") {
-			resultParts[stackPosition] = "";
+			resultParts[position] = "";
 		} else {
 			if (push) {
-				resultParts.push(toParts[i]);
-				stackPosition++;
-			} else {
-				resultParts[stackPosition] = toParts[i];
-				push = true;
+				resultParts.push();
+				position++;
 			}
+			resultParts[position] = toParts[i];
+			push = true;
 		}
 	}
 	let result = resultParts.join("/");
-	if (!fromRelative && result[0] !== "/") {
-		return "/" + result;
-	}
-	return result;
+	return result[0] !== "/" ? "/" + result : result;
 }
