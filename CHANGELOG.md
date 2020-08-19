@@ -1,13 +1,20 @@
 # Changelog
 
-## 0.7
+## 0.7.2
 
-* Flattened package file structure. Note: if you imported from `verlauf/dist/esm` or similar, you need to chop off the "dist/" part.
-* Added createHashHistory.js, createMemoryHistory.js and createBrowserHistory.js to the package root.
+-   Fixed some edgecases in resolvePathname
+-   Some performance and size optimizations for resolvePathname
+-   Fixed package.json pointing at "verlauf.min.js" for browser and unpkg, after it has been renamed to "verlauf.js".
+
+## 0.7.1 (0.7.0 had a packaging mistake)
+
+-   Flattened package file structure. Note: if you imported from `verlauf/dist/esm` or similar, you need to chop off the "dist/" part.
+-   Added createHashHistory.js, createMemoryHistory.js and createBrowserHistory.js to the package root.
 
 ## 0.6.2:
-* Removed `.bind(this)` overhead, reducing CJS and ESM bundle size by .5 KB.
-* Removed internal helper function, further reducing bundle size by ~.1 KB.
+
+-   Removed `.bind(this)` overhead, reducing CJS and ESM bundle size by .5 KB.
+-   Removed internal helper function, further reducing bundle size by ~.1 KB.
 
 ## 0.6.1:
 
