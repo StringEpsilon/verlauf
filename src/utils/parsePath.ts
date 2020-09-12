@@ -9,6 +9,13 @@ export function parsePath(path: string): Location {
 	const PATH_REGEX = /([^#?]*)?(\?[^#]*)?(#.*)?/g;
 	let matches = PATH_REGEX.exec(path || "/");
 
+	if (!matches) {
+		return {
+			pathname: "",
+			search: "",
+			hash: "",
+		};
+	}
 	return {
 		pathname: matches[1] || "",
 		search: matches[2] && matches[2] !== "?" ? matches[2] : "",

@@ -31,14 +31,14 @@ export class History {
 	private _historyAdapter: HistoryAdapter;
 	private _options: HistoryOptions;
 	private _blocker: TransitionBlocker;
+	private _pendingTransition: boolean = false;
 
 	/** Current length of the history. Value is retrived from historyAdapter.getLength() after each action (push, replace, pop). */
-	length: number;
+	public length: number;
 	/** Current location. Value is retrieved from historyAdapter.getLocation() after each action (push, replace, pop). */
-	location: Location;
+	public location: Location;
 	/** Last action performen on the history stack. Initial value is always POP. */
-	action: string = ACTION.POP;
-	_pendingTransition: boolean = false;
+	public action: string = ACTION.POP;
 
 	/**
 	 * Creates a new History instance.
@@ -148,7 +148,7 @@ export class History {
 	};
 
 	/**
-	 *
+	 * Creates an appropriate href target string for a given location.
 	 * @param target
 	 */
 	createHref = (target: Location): string => {
@@ -267,15 +267,17 @@ export class History {
 	 * history.setOptions("basename", "/en-UK/");
 	 * // Keep in mind that changing the basename option will not trigger a location change.
 	 */
-	setOption = (key: string, value: any) => {
+	setOption = (key: string, value: any): void => {
 		this._options[key] = value;
 		this._historyAdapter.setOptions(this._options);
 	};
 
 	/**
-	 * Returns true, if there is a transition currently in progress.
+	 * Checks whether or not the history is currently processing a transition.
+	 *
+	 * @returns True, if there is a transition currently in progress.
 	 */
-	isInTransition = () => {
+	isInTransition = (): boolean => {
 		return this._pendingTransition;
 	};
 }

@@ -20,7 +20,7 @@
 
 ### `Optional` hash
 
-• **hash**? : *string*
+• **hash**? : *undefined | string*
 
 Fragment portion, including the '#'.
 
@@ -28,7 +28,7 @@ ___
 
 ### `Optional` key
 
-• **key**? : *string*
+• **key**? : *undefined | string*
 
 Unique string for this location.
 
@@ -44,7 +44,7 @@ ___
 
 ### `Optional` search
 
-• **search**? : *string*
+• **search**? : *undefined | string*
 
 Query portion, including the '?'
 

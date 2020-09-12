@@ -33,7 +33,7 @@ Options specific to the BrowserHistory.
 
 ### `Optional` basename
 
-• **basename**? : *string*
+• **basename**? : *undefined | string*
 
 *Inherited from [HistoryOptions](historyoptions.md).[basename](historyoptions.md#optional-basename)*
 
@@ -53,7 +53,7 @@ ___
 
 ### `Optional` forceRefresh
 
-• **forceRefresh**? : *boolean*
+• **forceRefresh**? : *undefined | false | true*
 
 Force refresh the page on every navigation.
 Default: false
@@ -73,7 +73,7 @@ ___
 
 ### `Optional` keepPage
 
-• **keepPage**? : *boolean*
+• **keepPage**? : *undefined | false | true*
 
 Keep the application on the page, even if a <base/> tag points to another domain.
 
@@ -83,7 +83,7 @@ ___
 
 ### `Optional` keyLength
 
-• **keyLength**? : *number*
+• **keyLength**? : *undefined | number*
 
 *Inherited from [HistoryOptions](historyoptions.md).[keyLength](historyoptions.md#optional-keylength)*
 
@@ -93,7 +93,7 @@ ___
 
 ### `Optional` preserveSearch
 
-• **preserveSearch**? : *boolean*
+• **preserveSearch**? : *undefined | false | true*
 
 *Inherited from [HistoryOptions](historyoptions.md).[preserveSearch](historyoptions.md#optional-preservesearch)*
 

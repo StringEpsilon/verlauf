@@ -16,7 +16,6 @@ History object, providing all APIs to interact with browser, hash or memory hist
 
 ### Properties
 
-* [_pendingTransition](history.md#_pendingtransition)
 * [action](history.md#action)
 * [length](history.md#length)
 * [location](history.md#location)
@@ -68,12 +67,6 @@ The options for the History instance and the HistoryAdapter.
 
 ## Properties
 
-###  _pendingTransition
-
-• **_pendingTransition**: *boolean* = false
-
-___
-
 ###  action
 
 • **action**: *string* = ACTION.POP
@@ -121,6 +114,8 @@ ___
 ###  createHref
 
 ▸ **createHref**(`target`: [Location](../interfaces/location.md)): *string*
+
+Creates an appropriate href target string for a given location.
 
 **Parameters:**
 
@@ -179,9 +174,11 @@ ___
 
 ▸ **isInTransition**(): *boolean*
 
-Returns true, if there is a transition currently in progress.
+Checks whether or not the history is currently processing a transition.
 
 **Returns:** *boolean*
+
+True, if there is a transition currently in progress.
 
 ___
 

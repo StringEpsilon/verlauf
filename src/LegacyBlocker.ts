@@ -9,7 +9,7 @@ export function LegacyBlocker(
 	getUserConfirmation: getUserConfirmation
 ): TransitionBlocker {
 	var _blocked = false;
-	var _blockingHook: Function = null;
+	var _blockingHook: Function | null = null;
 	var _blockingMessage = "";
 
 	return {

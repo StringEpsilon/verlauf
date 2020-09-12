@@ -1,5 +1,11 @@
 # Changelog
 
+## Future
+
+-   Marked _pendingTransition as private
+-   Marked length, location, and action explicelty as public
+-   Enabled typescript strict mode.
+
 ## 0.7.2
 
 -   Fixed some edgecases in resolvePathname

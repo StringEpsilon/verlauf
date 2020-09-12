@@ -32,7 +32,7 @@ Options specific to the MemoryHistory.
 
 ### `Optional` basename
 
-• **basename**? : *string*
+• **basename**? : *undefined | string*
 
 *Inherited from [HistoryOptions](historyoptions.md).[basename](historyoptions.md#optional-basename)*
 
@@ -72,7 +72,7 @@ ___
 
 ### `Optional` initialIndex
 
-• **initialIndex**? : *number*
+• **initialIndex**? : *undefined | number*
 
 Set the current location index from the provided initialEntries.
 Default: The last item or initialEntries or 0
@@ -81,7 +81,7 @@ ___
 
 ### `Optional` keyLength
 
-• **keyLength**? : *number*
+• **keyLength**? : *undefined | number*
 
 *Inherited from [HistoryOptions](historyoptions.md).[keyLength](historyoptions.md#optional-keylength)*
 
@@ -91,7 +91,7 @@ ___
 
 ### `Optional` preserveSearch
 
-• **preserveSearch**? : *boolean*
+• **preserveSearch**? : *undefined | false | true*
 
 *Inherited from [HistoryOptions](historyoptions.md).[preserveSearch](historyoptions.md#optional-preservesearch)*
 

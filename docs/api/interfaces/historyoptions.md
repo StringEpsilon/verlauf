@@ -34,7 +34,7 @@ Gernal options for all History variants.
 
 ### `Optional` basename
 
-• **basename**? : *string*
+• **basename**? : *undefined | string*
 
 Basename that will be appended to pathnames. Default: none.
 
@@ -59,7 +59,7 @@ ___
 
 ### `Optional` keyLength
 
-• **keyLength**? : *number*
+• **keyLength**? : *undefined | number*
 
 Length of the 'key' for each history entry. Default: 6.
 
@@ -67,7 +67,7 @@ ___
 
 ### `Optional` preserveSearch
 
-• **preserveSearch**? : *boolean*
+• **preserveSearch**? : *undefined | false | true*
 
 Tell history to preserve the search fragment when only the hash changes.
 Default is false.

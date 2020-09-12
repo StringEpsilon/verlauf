@@ -11,7 +11,7 @@ import { createKey } from "../utils/createKey";
 /** @ignore */
 function normalizeEntries(
 	entries: (string | Location)[],
-	keyLength: number
+	keyLength?: number
 ): Location[] {
 	return entries.map((entry: string | Location) => {
 		if (typeof entry === "string") {

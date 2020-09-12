@@ -32,7 +32,7 @@ Options specific to the HashHistory.
 
 ### `Optional` basename
 
-• **basename**? : *string*
+• **basename**? : *undefined | string*
 
 *Inherited from [HistoryOptions](historyoptions.md).[basename](historyoptions.md#optional-basename)*
 
@@ -77,7 +77,7 @@ ___
 
 ### `Optional` keyLength
 
-• **keyLength**? : *number*
+• **keyLength**? : *undefined | number*
 
 *Inherited from [HistoryOptions](historyoptions.md).[keyLength](historyoptions.md#optional-keylength)*
 
@@ -87,7 +87,7 @@ ___
 
 ### `Optional` preserveSearch
 
-• **preserveSearch**? : *boolean*
+• **preserveSearch**? : *undefined | false | true*
 
 *Inherited from [HistoryOptions](historyoptions.md).[preserveSearch](historyoptions.md#optional-preservesearch)*
 

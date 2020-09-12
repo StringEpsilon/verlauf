@@ -1,6 +1,6 @@
 /*! @License: CC0 1.0, by MDN contributors (escapeRegex)*/
 /**@ignore */
-function escapeRegex(value: string) {
+function escapeRegex(value: string): string {
 	return value.replace(/[.*+\-?^${}()|[\]\\]/g, "\\$&");
 }
 
@@ -16,16 +16,16 @@ export function stripBasename(path: string, prefix?: string): string {
 }
 
 /** @ignore */
-export function addLeadingSlash(path: string) {
+export function addLeadingSlash(path: string): string {
 	return path.replace(/^(\/)?/, "/");
 }
 
 /** @ignore */
-export function stripLeadingSlash(path: string) {
+export function stripLeadingSlash(path: string): string {
 	return path.replace(/^\//, "");
 }
 
 /** @ignore */
-export function stripTrailingSlash(path: string) {
+export function stripTrailingSlash(path: string): string {
 	return path.replace(/\/$/, "");
 }

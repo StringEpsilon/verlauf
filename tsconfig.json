@@ -8,7 +8,9 @@
 		"esModuleInterop": true,
 		"target": "es5",
 		"allowUnreachableCode": false,
-		"noImplicitAny": true
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"strict": true
 	},
 	"include": [
 		"src"
