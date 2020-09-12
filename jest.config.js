@@ -11,5 +11,12 @@ module.exports = {
     "!src/*.test.ts",
   ],
   collectCoverage: true,
-  coverageReporters: ["html"]
+  coverageReporters: ["html"],
+  globals: {
+    'ts-jest': {
+      tsConfig: {
+        strict: false
+      }
+    }
+  }
 };
