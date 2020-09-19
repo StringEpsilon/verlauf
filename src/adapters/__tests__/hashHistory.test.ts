@@ -32,7 +32,7 @@ describe("createHashAdapter()", () => {
 		it("on modifyPath - with a basename", () => {
 			let wrapper = createHashAdapter(jest.fn(), {
 				hashType: "hashbang",
-				basename: "/base/name/"
+				basename: "/base/name/",
 			});
 
 			expect(wrapper.modifyPath("/foo")).toBe("#!/base/name/foo");
