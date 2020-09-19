@@ -29,6 +29,15 @@ describe("createHashAdapter()", () => {
 			expect(wrapper.modifyPath("/foo")).toBe("#!/foo");
 		});
 
+		it("on modifyPath - with a basename", () => {
+			let wrapper = createHashAdapter(jest.fn(), {
+				hashType: "hashbang",
+				basename: "/base/name/"
+			});
+
+			expect(wrapper.modifyPath("/foo")).toBe("#!/base/name/foo");
+		});
+
 		describe("in pushState()", () => {
 			it("default", () => {
 				let wrapper = createHashAdapter(jest.fn(), {});
