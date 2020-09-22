@@ -1,4 +1,6 @@
-[verlauf](../README.md) › [HistoryOptions](historyoptions.md)
+**verlauf**
+
+> [Globals](../README.md) / HistoryOptions
 
 # Interface: HistoryOptions
 
@@ -16,7 +18,7 @@ Gernal options for all History variants.
 
 ## Indexable
 
-* \[ **indexer**: *string*\]: any
+▪ [indexer: string]: any
 
 Gernal options for all History variants.
 
@@ -24,50 +26,50 @@ Gernal options for all History variants.
 
 ### Properties
 
-* [basename](historyoptions.md#optional-basename)
-* [createBlocker](historyoptions.md#optional-createblocker)
-* [getUserConfirmation](historyoptions.md#optional-getuserconfirmation)
-* [keyLength](historyoptions.md#optional-keylength)
-* [preserveSearch](historyoptions.md#optional-preservesearch)
+* [basename](historyoptions.md#basename)
+* [createBlocker](historyoptions.md#createblocker)
+* [getUserConfirmation](historyoptions.md#getuserconfirmation)
+* [keyLength](historyoptions.md#keylength)
+* [preserveSearch](historyoptions.md#preservesearch)
 
 ## Properties
 
-### `Optional` basename
+### basename
 
-• **basename**? : *undefined | string*
+• `Optional` **basename**: undefined \| string
 
 Basename that will be appended to pathnames. Default: none.
 
 ___
 
-### `Optional` createBlocker
+### createBlocker
 
-• **createBlocker**? : *Function*
+• `Optional` **createBlocker**: Function
 
 Optional override for the history.block() behavior.
 
 ___
 
-### `Optional` getUserConfirmation
+### getUserConfirmation
 
-• **getUserConfirmation**? : *[getUserConfirmation](historyoptions.md#optional-getuserconfirmation)*
+• `Optional` **getUserConfirmation**: [getUserConfirmation](historyoptions.md#getuserconfirmation)
 
 Callback to ask the user to confirm or abort a page transition when blocking is active.
 Default: Uses window.confirm.
 
 ___
 
-### `Optional` keyLength
+### keyLength
 
-• **keyLength**? : *undefined | number*
+• `Optional` **keyLength**: undefined \| number
 
 Length of the 'key' for each history entry. Default: 6.
 
 ___
 
-### `Optional` preserveSearch
+### preserveSearch
 
-• **preserveSearch**? : *undefined | false | true*
+• `Optional` **preserveSearch**: undefined \| false \| true
 
 Tell history to preserve the search fragment when only the hash changes.
 Default is false.

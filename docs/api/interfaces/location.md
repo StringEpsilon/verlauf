@@ -1,4 +1,6 @@
-[verlauf](../README.md) › [Location](location.md)
+**verlauf**
+
+> [Globals](../README.md) / Location
 
 # Interface: Location
 
@@ -10,48 +12,48 @@
 
 ### Properties
 
-* [hash](location.md#optional-hash)
-* [key](location.md#optional-key)
+* [hash](location.md#hash)
+* [key](location.md#key)
 * [pathname](location.md#pathname)
-* [search](location.md#optional-search)
-* [state](location.md#optional-state)
+* [search](location.md#search)
+* [state](location.md#state)
 
 ## Properties
 
-### `Optional` hash
+### hash
 
-• **hash**? : *undefined | string*
+• `Optional` **hash**: undefined \| string
 
 Fragment portion, including the '#'.
 
 ___
 
-### `Optional` key
+### key
 
-• **key**? : *undefined | string*
+• `Optional` **key**: undefined \| string
 
 Unique string for this location.
 
 ___
 
-###  pathname
+### pathname
 
-• **pathname**: *string*
+•  **pathname**: string
 
 Path portion of the location.
 
 ___
 
-### `Optional` search
+### search
 
-• **search**? : *undefined | string*
+• `Optional` **search**: undefined \| string
 
 Query portion, including the '?'
 
 ___
 
-### `Optional` state
+### state
 
-• **state**? : *any*
+• `Optional` **state**: any
 
 State value associated with the location.

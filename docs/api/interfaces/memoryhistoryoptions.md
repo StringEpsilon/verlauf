@@ -1,4 +1,6 @@
-[verlauf](../README.md) › [MemoryHistoryOptions](memoryhistoryoptions.md)
+**verlauf**
+
+> [Globals](../README.md) / MemoryHistoryOptions
 
 # Interface: MemoryHistoryOptions
 
@@ -12,7 +14,7 @@ Options specific to the MemoryHistory.
 
 ## Indexable
 
-* \[ **indexer**: *string*\]: any
+▪ [indexer: string]: any
 
 Options specific to the MemoryHistory.
 
@@ -20,80 +22,80 @@ Options specific to the MemoryHistory.
 
 ### Properties
 
-* [basename](memoryhistoryoptions.md#optional-basename)
-* [createBlocker](memoryhistoryoptions.md#optional-createblocker)
-* [getUserConfirmation](memoryhistoryoptions.md#optional-getuserconfirmation)
-* [initialEntries](memoryhistoryoptions.md#optional-initialentries)
-* [initialIndex](memoryhistoryoptions.md#optional-initialindex)
-* [keyLength](memoryhistoryoptions.md#optional-keylength)
-* [preserveSearch](memoryhistoryoptions.md#optional-preservesearch)
+* [basename](memoryhistoryoptions.md#basename)
+* [createBlocker](memoryhistoryoptions.md#createblocker)
+* [getUserConfirmation](memoryhistoryoptions.md#getuserconfirmation)
+* [initialEntries](memoryhistoryoptions.md#initialentries)
+* [initialIndex](memoryhistoryoptions.md#initialindex)
+* [keyLength](memoryhistoryoptions.md#keylength)
+* [preserveSearch](memoryhistoryoptions.md#preservesearch)
 
 ## Properties
 
-### `Optional` basename
+### basename
 
-• **basename**? : *undefined | string*
+• `Optional` **basename**: undefined \| string
 
-*Inherited from [HistoryOptions](historyoptions.md).[basename](historyoptions.md#optional-basename)*
+*Inherited from [HistoryOptions](historyoptions.md).[basename](historyoptions.md#basename)*
 
 Basename that will be appended to pathnames. Default: none.
 
 ___
 
-### `Optional` createBlocker
+### createBlocker
 
-• **createBlocker**? : *Function*
+• `Optional` **createBlocker**: Function
 
-*Inherited from [HistoryOptions](historyoptions.md).[createBlocker](historyoptions.md#optional-createblocker)*
+*Inherited from [HistoryOptions](historyoptions.md).[createBlocker](historyoptions.md#createblocker)*
 
 Optional override for the history.block() behavior.
 
 ___
 
-### `Optional` getUserConfirmation
+### getUserConfirmation
 
-• **getUserConfirmation**? : *[getUserConfirmation](memoryhistoryoptions.md#optional-getuserconfirmation)*
+• `Optional` **getUserConfirmation**: [getUserConfirmation](memoryhistoryoptions.md#getuserconfirmation)
 
-*Inherited from [HistoryOptions](historyoptions.md).[getUserConfirmation](historyoptions.md#optional-getuserconfirmation)*
+*Inherited from [HistoryOptions](historyoptions.md).[getUserConfirmation](historyoptions.md#getuserconfirmation)*
 
 Callback to ask the user to confirm or abort a page transition when blocking is active.
 Default: Uses window.confirm.
 
 ___
 
-### `Optional` initialEntries
+### initialEntries
 
-• **initialEntries**? : *(string | [Location](location.md))[]*
+• `Optional` **initialEntries**: (string \| [Location](location.md))[]
 
 Preset the entries of the memory history.
 Default: [ "/" ].
 
 ___
 
-### `Optional` initialIndex
+### initialIndex
 
-• **initialIndex**? : *undefined | number*
+• `Optional` **initialIndex**: undefined \| number
 
 Set the current location index from the provided initialEntries.
 Default: The last item or initialEntries or 0
 
 ___
 
-### `Optional` keyLength
+### keyLength
 
-• **keyLength**? : *undefined | number*
+• `Optional` **keyLength**: undefined \| number
 
-*Inherited from [HistoryOptions](historyoptions.md).[keyLength](historyoptions.md#optional-keylength)*
+*Inherited from [HistoryOptions](historyoptions.md).[keyLength](historyoptions.md#keylength)*
 
 Length of the 'key' for each history entry. Default: 6.
 
 ___
 
-### `Optional` preserveSearch
+### preserveSearch
 
-• **preserveSearch**? : *undefined | false | true*
+• `Optional` **preserveSearch**: undefined \| false \| true
 
-*Inherited from [HistoryOptions](historyoptions.md).[preserveSearch](historyoptions.md#optional-preservesearch)*
+*Inherited from [HistoryOptions](historyoptions.md).[preserveSearch](historyoptions.md#preservesearch)*
 
 Tell history to preserve the search fragment when only the hash changes.
 Default is false.

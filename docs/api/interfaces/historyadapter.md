@@ -1,4 +1,6 @@
-[verlauf](../README.md) › [HistoryAdapter](historyadapter.md)
+**verlauf**
+
+> [Globals](../README.md) / HistoryAdapter
 
 # Interface: HistoryAdapter
 
@@ -23,126 +25,62 @@ An adapter between [History](../classes/history.md) and `window.history` or cust
 
 ## Properties
 
-###  getLength
+### getLength
 
-• **getLength**: *function*
+•  **getLength**: () => number
 
 Return the current size of the history stack.
 
-#### Type declaration:
-
-▸ (): *number*
-
 ___
 
-###  getLocation
+### getLocation
 
-• **getLocation**: *function*
+•  **getLocation**: () => [Location](location.md)
 
 Get the current location on stack.
 
-#### Type declaration:
-
-▸ (): *[Location](location.md)*
-
 ___
 
-###  go
+### go
 
-• **go**: *function*
+•  **go**: (steps: number) => void
 
 Go n steps backwards or forwards on the history stack
 
-#### Type declaration:
-
-▸ (`steps`: number): *void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`steps` | number |
-
 ___
 
-###  listen
+### listen
 
-• **listen**: *function*
+•  **listen**: () => void
 
 Registers the relevant event listeners.
 
-#### Type declaration:
-
-▸ (): *void*
-
 ___
 
-###  modifyPath
+### modifyPath
 
-• **modifyPath**: *function*
+•  **modifyPath**: (path: string) => string
 
 To modify a given path according to the [HistoryOptions](historyoptions.md) and the history type.
 
-#### Type declaration:
-
-▸ (`path`: string): *string*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`path` | string |
-
 ___
 
-###  pushState
+### pushState
 
-• **pushState**: *function*
+•  **pushState**: (state: [Location](location.md),target: string) => void
 
 Provides the method to push a new location to the stack
 
-#### Type declaration:
-
-▸ (`state`: [Location](location.md), `target`: string): *void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`state` | [Location](location.md) |
-`target` | string |
-
 ___
 
-###  replaceState
+### replaceState
 
-• **replaceState**: *function*
+•  **replaceState**: (state: [Location](location.md),target: string) => void
 
 Provides the method to replace the current location on the stack
 
-#### Type declaration:
-
-▸ (`state`: [Location](location.md), `target`: string): *void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`state` | [Location](location.md) |
-`target` | string |
-
 ___
 
-###  setOptions
+### setOptions
 
-• **setOptions**: *function*
-
-#### Type declaration:
-
-▸ (`newOptions`: [HistoryOptions](historyoptions.md)): *void*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`newOptions` | [HistoryOptions](historyoptions.md) |
+•  **setOptions**: (newOptions: [HistoryOptions](historyoptions.md)) => void

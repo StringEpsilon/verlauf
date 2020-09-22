@@ -1,4 +1,6 @@
-[verlauf](../README.md) › [BrowserHistoryOptions](browserhistoryoptions.md)
+**verlauf**
+
+> [Globals](../README.md) / BrowserHistoryOptions
 
 # Interface: BrowserHistoryOptions
 
@@ -12,7 +14,7 @@ Options specific to the BrowserHistory.
 
 ## Indexable
 
-* \[ **indexer**: *string*\]: any
+▪ [indexer: string]: any
 
 Options specific to the BrowserHistory.
 
@@ -20,60 +22,60 @@ Options specific to the BrowserHistory.
 
 ### Properties
 
-* [basename](browserhistoryoptions.md#optional-basename)
-* [createBlocker](browserhistoryoptions.md#optional-createblocker)
-* [forceRefresh](browserhistoryoptions.md#optional-forcerefresh)
-* [getUserConfirmation](browserhistoryoptions.md#optional-getuserconfirmation)
-* [keepPage](browserhistoryoptions.md#optional-keeppage)
-* [keyLength](browserhistoryoptions.md#optional-keylength)
-* [preserveSearch](browserhistoryoptions.md#optional-preservesearch)
-* [window](browserhistoryoptions.md#optional-window)
+* [basename](browserhistoryoptions.md#basename)
+* [createBlocker](browserhistoryoptions.md#createblocker)
+* [forceRefresh](browserhistoryoptions.md#forcerefresh)
+* [getUserConfirmation](browserhistoryoptions.md#getuserconfirmation)
+* [keepPage](browserhistoryoptions.md#keeppage)
+* [keyLength](browserhistoryoptions.md#keylength)
+* [preserveSearch](browserhistoryoptions.md#preservesearch)
+* [window](browserhistoryoptions.md#window)
 
 ## Properties
 
-### `Optional` basename
+### basename
 
-• **basename**? : *undefined | string*
+• `Optional` **basename**: undefined \| string
 
-*Inherited from [HistoryOptions](historyoptions.md).[basename](historyoptions.md#optional-basename)*
+*Inherited from [HistoryOptions](historyoptions.md).[basename](historyoptions.md#basename)*
 
 Basename that will be appended to pathnames. Default: none.
 
 ___
 
-### `Optional` createBlocker
+### createBlocker
 
-• **createBlocker**? : *Function*
+• `Optional` **createBlocker**: Function
 
-*Inherited from [HistoryOptions](historyoptions.md).[createBlocker](historyoptions.md#optional-createblocker)*
+*Inherited from [HistoryOptions](historyoptions.md).[createBlocker](historyoptions.md#createblocker)*
 
 Optional override for the history.block() behavior.
 
 ___
 
-### `Optional` forceRefresh
+### forceRefresh
 
-• **forceRefresh**? : *undefined | false | true*
+• `Optional` **forceRefresh**: undefined \| false \| true
 
 Force refresh the page on every navigation.
 Default: false
 
 ___
 
-### `Optional` getUserConfirmation
+### getUserConfirmation
 
-• **getUserConfirmation**? : *[getUserConfirmation](browserhistoryoptions.md#optional-getuserconfirmation)*
+• `Optional` **getUserConfirmation**: [getUserConfirmation](browserhistoryoptions.md#getuserconfirmation)
 
-*Inherited from [HistoryOptions](historyoptions.md).[getUserConfirmation](historyoptions.md#optional-getuserconfirmation)*
+*Inherited from [HistoryOptions](historyoptions.md).[getUserConfirmation](historyoptions.md#getuserconfirmation)*
 
 Callback to ask the user to confirm or abort a page transition when blocking is active.
 Default: Uses window.confirm.
 
 ___
 
-### `Optional` keepPage
+### keepPage
 
-• **keepPage**? : *undefined | false | true*
+• `Optional` **keepPage**: undefined \| false \| true
 
 Keep the application on the page, even if a <base/> tag points to another domain.
 
@@ -81,30 +83,30 @@ Default: False.
 
 ___
 
-### `Optional` keyLength
+### keyLength
 
-• **keyLength**? : *undefined | number*
+• `Optional` **keyLength**: undefined \| number
 
-*Inherited from [HistoryOptions](historyoptions.md).[keyLength](historyoptions.md#optional-keylength)*
+*Inherited from [HistoryOptions](historyoptions.md).[keyLength](historyoptions.md#keylength)*
 
 Length of the 'key' for each history entry. Default: 6.
 
 ___
 
-### `Optional` preserveSearch
+### preserveSearch
 
-• **preserveSearch**? : *undefined | false | true*
+• `Optional` **preserveSearch**: undefined \| false \| true
 
-*Inherited from [HistoryOptions](historyoptions.md).[preserveSearch](historyoptions.md#optional-preservesearch)*
+*Inherited from [HistoryOptions](historyoptions.md).[preserveSearch](historyoptions.md#preservesearch)*
 
 Tell history to preserve the search fragment when only the hash changes.
 Default is false.
 
 ___
 
-### `Optional` window
+### window
 
-• **window**? : *Window*
+• `Optional` **window**: Window
 
 Which window object to use to interface with the HTML history API. Can be useful for iframes.
 Default: The global window object.
