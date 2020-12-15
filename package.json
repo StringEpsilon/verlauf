@@ -1,10 +1,10 @@
 {
 	"name": "verlauf",
-	"version": "0.7.3",
+	"version": "0.8.0",
 	"description": "History abstraction",
 	"main": "cjs/verlauf.js",
 	"module": "esm/verlauf.js",
-	"types": "verlauf.d.ts",
+	"types": "types.d.ts",
 	"browser": "umd/verlauf.js",
 	"unpkg": "umd/verlauf.js",
 	"license": "MIT",
