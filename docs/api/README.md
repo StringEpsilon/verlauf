@@ -1,4 +1,4 @@
-**verlauf**
+**[verlauf](README.md)**
 
 > Globals
 
@@ -46,7 +46,7 @@
 
 ### NavigationListener
 
-Ƭ  **NavigationListener**: (newLocation: [Location](interfaces/location.md),action: string) => void
+Ƭ  **NavigationListener**: (newLocation: [Location](interfaces/location.md), action: string) => void
 
 Callback for history.listen(). Invoked on every navigation (push, replace, go back, go forward).
 
@@ -66,7 +66,7 @@ ___
 
 ### getUserConfirmation
 
-Ƭ  **getUserConfirmation**: (message: string,callback: (confirmNavigation: boolean) => void) => void
+Ƭ  **getUserConfirmation**: (message: string, callback: (confirmNavigation: boolean) => void) => void
 
 Callback to ask the user to confirm or deny a transition in LegacyBlocker.
 
@@ -173,7 +173,7 @@ ___
 
 ### createLocation
 
-▸ **createLocation**(`path`: string \| [Location](interfaces/location.md), `state?`: any, `key?`: any, `currentLocation?`: [Location](interfaces/location.md), `preserveSearch`: boolean): [Location](interfaces/location.md)
+▸ **createLocation**(`path`: string \| [Location](interfaces/location.md), `state?`: any, `key?`: any, `currentLocation?`: [Location](interfaces/location.md), `preserveSearch?`: boolean): [Location](interfaces/location.md)
 
 Creates a new location object for a target path / location resolving the pathnames from the current location.
 
@@ -188,6 +188,8 @@ Name | Type | Default value | Description |
 `preserveSearch` | boolean | false | preserve the search fragment when only the hash changes. |
 
 **Returns:** [Location](interfaces/location.md)
+
+The resolved new location.
 
 ___
 
@@ -239,6 +241,8 @@ Name | Type | Description |
 
 **Returns:** string
 
+the path string.
+
 ___
 
 ### defaultUserConfirmation
@@ -271,6 +275,8 @@ Name | Type | Description |
 
 **Returns:** boolean
 
+true, if the locations are equal.
+
 ___
 
 ### parsePath
@@ -287,11 +293,13 @@ Name | Type | Description |
 
 **Returns:** [Location](interfaces/location.md)
 
+parsed location object. Defaults to {pathname: "/": search: "", hash: ""} for invalid strings.
+
 ___
 
 ### resolvePathname
 
-▸ **resolvePathname**(`to`: string, `from`: string): string
+▸ **resolvePathname**(`to`: string, `from?`: string): string
 
 Resolve one path relative to another.
 

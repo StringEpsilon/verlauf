@@ -1,4 +1,4 @@
-**verlauf**
+**[verlauf](../README.md)**
 
 > [Globals](../README.md) / HistoryAdapter
 
@@ -67,7 +67,7 @@ ___
 
 ### pushState
 
-•  **pushState**: (state: [Location](location.md),target: string) => void
+•  **pushState**: (state: [Location](location.md), target: string) => void
 
 Provides the method to push a new location to the stack
 
@@ -75,7 +75,7 @@ ___
 
 ### replaceState
 
-•  **replaceState**: (state: [Location](location.md),target: string) => void
+•  **replaceState**: (state: [Location](location.md), target: string) => void
 
 Provides the method to replace the current location on the stack
 

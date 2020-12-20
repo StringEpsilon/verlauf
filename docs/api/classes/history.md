@@ -1,4 +1,4 @@
-**verlauf**
+**[verlauf](../README.md)**
 
 > [Globals](../README.md) / History
 
@@ -42,7 +42,7 @@ History object, providing all APIs to interact with browser, hash or memory hist
 
 ### constructor
 
-\+ **new History**(`createAdapter`: (listner: [OnAdapterLocationChange](../README.md#onadapterlocationchange),options: [HistoryOptions](../interfaces/historyoptions.md)) => [HistoryAdapter](../interfaces/historyadapter.md), `options?`: [HistoryOptions](../interfaces/historyoptions.md)): [History](history.md)
+\+ **new History**(`createAdapter`: (listner: [OnAdapterLocationChange](../README.md#onadapterlocationchange), options: [HistoryOptions](../interfaces/historyoptions.md)) => [HistoryAdapter](../interfaces/historyadapter.md), `options?`: [HistoryOptions](../interfaces/historyoptions.md)): [History](history.md)
 
 Creates a new History instance.
 
@@ -50,7 +50,7 @@ Creates a new History instance.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`createAdapter` | (listner: [OnAdapterLocationChange](../README.md#onadapterlocationchange),options: [HistoryOptions](../interfaces/historyoptions.md)) => [HistoryAdapter](../interfaces/historyadapter.md) | The function to create a [HistoryAdapter](../interfaces/historyadapter.md) instance. |
+`createAdapter` | (listner: [OnAdapterLocationChange](../README.md#onadapterlocationchange), options: [HistoryOptions](../interfaces/historyoptions.md)) => [HistoryAdapter](../interfaces/historyadapter.md) | The function to create a [HistoryAdapter](../interfaces/historyadapter.md) instance. |
 `options?` | [HistoryOptions](../interfaces/historyoptions.md) | The options for the History instance and the HistoryAdapter.  |
 
 **Returns:** [History](history.md)
@@ -94,6 +94,8 @@ Name | Type | Description |
 `...args` | any[] | Arguments passed to {@link LegacyBlocker.block} |
 
 **Returns:** function
+
+A callback to remove the block.
 
 ___
 
@@ -164,6 +166,8 @@ Checks whether or not the history is currently processing a transition.
 
 **Returns:** boolean
 
+True, if there is a transition currently in progress.
+
 ___
 
 ### listen
@@ -180,11 +184,13 @@ Name | Type | Description |
 
 **Returns:** function
 
+A callback to unregister the newly added listener.
+
 ___
 
 ### navigate
 
-▸ **navigate**(`target`: string \| [Location](../interfaces/location.md), `state`: object \| null, `method`: string): void
+▸ **navigate**(`target`: string \| [Location](../interfaces/location.md), `state`: object \| null, `method?`: string): void
 
 Navigate to a location with the specified method.
 
@@ -202,7 +208,7 @@ ___
 
 ### push
 
-▸ **push**(`target`: string \| [Location](../interfaces/location.md), `state`: object \| null): void
+▸ **push**(`target`: string \| [Location](../interfaces/location.md), `state?`: object \| null): void
 
 Push a new location to the history stack and navigate to it.
 
@@ -219,7 +225,7 @@ ___
 
 ### replace
 
-▸ **replace**(`target`: string \| [Location](../interfaces/location.md), `state`: object \| null): void
+▸ **replace**(`target`: string \| [Location](../interfaces/location.md), `state?`: object \| null): void
 
 Replace the current location and state on the stack.
 
