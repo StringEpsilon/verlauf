@@ -1,3 +1,4 @@
+export * from "./types";
 export { History } from "./History";
 import { createHashAdapter, createHashHistory } from "./adapters/hashHistory";
 import {
@@ -11,6 +12,7 @@ import {
 export { createPath } from "./utils/createPath";
 export { createLocation } from "./utils/createLocation";
 export { locationsAreEqual } from "./utils/locationsAreEqual";
+export { LegacyBlocker } from "./LegacyBlocker";
 
 export {
 	createHashAdapter,

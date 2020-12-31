@@ -1,6 +1,4 @@
-**[verlauf](../README.md)**
-
-> [Globals](../README.md) / HistoryAdapter
+[verlauf](../README.md) / HistoryAdapter
 
 # Interface: HistoryAdapter
 
@@ -27,7 +25,7 @@ An adapter between [History](../classes/history.md) and `window.history` or cust
 
 ### getLength
 
-•  **getLength**: () => number
+• **getLength**: () => *number*
 
 Return the current size of the history stack.
 
@@ -35,7 +33,7 @@ ___
 
 ### getLocation
 
-•  **getLocation**: () => [Location](location.md)
+• **getLocation**: () => [*Location*](location.md)
 
 Get the current location on stack.
 
@@ -43,7 +41,7 @@ ___
 
 ### go
 
-•  **go**: (steps: number) => void
+• **go**: (`steps`: *number*) => *void*
 
 Go n steps backwards or forwards on the history stack
 
@@ -51,7 +49,7 @@ ___
 
 ### listen
 
-•  **listen**: () => void
+• **listen**: () => *void*
 
 Registers the relevant event listeners.
 
@@ -59,7 +57,7 @@ ___
 
 ### modifyPath
 
-•  **modifyPath**: (path: string) => string
+• **modifyPath**: (`path`: *string*) => *string*
 
 To modify a given path according to the [HistoryOptions](historyoptions.md) and the history type.
 
@@ -67,7 +65,7 @@ ___
 
 ### pushState
 
-•  **pushState**: (state: [Location](location.md), target: string) => void
+• **pushState**: (`state`: [*Location*](location.md), `target`: *string*) => *void*
 
 Provides the method to push a new location to the stack
 
@@ -75,7 +73,7 @@ ___
 
 ### replaceState
 
-•  **replaceState**: (state: [Location](location.md), target: string) => void
+• **replaceState**: (`state`: [*Location*](location.md), `target`: *string*) => *void*
 
 Provides the method to replace the current location on the stack
 
@@ -83,4 +81,4 @@ ___
 
 ### setOptions
 
-•  **setOptions**: (newOptions: [HistoryOptions](historyoptions.md)) => void
+• **setOptions**: (`newOptions`: [*HistoryOptions*](historyoptions.md)) => *void*

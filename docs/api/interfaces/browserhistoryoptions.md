@@ -1,6 +1,4 @@
-**[verlauf](../README.md)**
-
-> [Globals](../README.md) / BrowserHistoryOptions
+[verlauf](../README.md) / BrowserHistoryOptions
 
 # Interface: BrowserHistoryOptions
 
@@ -8,15 +6,9 @@ Options specific to the BrowserHistory.
 
 ## Hierarchy
 
-* [HistoryOptions](historyoptions.md)
+* [*HistoryOptions*](historyoptions.md)
 
   ↳ **BrowserHistoryOptions**
-
-## Indexable
-
-▪ [indexer: string]: any
-
-Options specific to the BrowserHistory.
 
 ## Index
 
@@ -35,11 +27,11 @@ Options specific to the BrowserHistory.
 
 ### basename
 
-• `Optional` **basename**: undefined \| string
-
-*Inherited from [HistoryOptions](historyoptions.md).[basename](historyoptions.md#basename)*
+• `Optional` **basename**: *string*
 
 Basename that will be appended to pathnames. Default: none.
+
+Inherited from: [HistoryOptions](historyoptions.md).[basename](historyoptions.md#basename)
 
 ___
 
@@ -47,15 +39,15 @@ ___
 
 • `Optional` **createBlocker**: Function
 
-*Inherited from [HistoryOptions](historyoptions.md).[createBlocker](historyoptions.md#createblocker)*
-
 Optional override for the history.block() behavior.
+
+Inherited from: [HistoryOptions](historyoptions.md).[createBlocker](historyoptions.md#createblocker)
 
 ___
 
 ### forceRefresh
 
-• `Optional` **forceRefresh**: undefined \| false \| true
+• `Optional` **forceRefresh**: *boolean*
 
 Force refresh the page on every navigation.
 Default: false
@@ -64,18 +56,18 @@ ___
 
 ### getUserConfirmation
 
-• `Optional` **getUserConfirmation**: [getUserConfirmation](browserhistoryoptions.md#getuserconfirmation)
-
-*Inherited from [HistoryOptions](historyoptions.md).[getUserConfirmation](historyoptions.md#getuserconfirmation)*
+• `Optional` **getUserConfirmation**: [*getUserConfirmation*](../README.md#getuserconfirmation)
 
 Callback to ask the user to confirm or abort a page transition when blocking is active.
 Default: Uses window.confirm.
+
+Inherited from: [HistoryOptions](historyoptions.md).[getUserConfirmation](historyoptions.md#getuserconfirmation)
 
 ___
 
 ### keepPage
 
-• `Optional` **keepPage**: undefined \| false \| true
+• `Optional` **keepPage**: *boolean*
 
 Keep the application on the page, even if a <base/> tag points to another domain.
 
@@ -85,22 +77,22 @@ ___
 
 ### keyLength
 
-• `Optional` **keyLength**: undefined \| number
-
-*Inherited from [HistoryOptions](historyoptions.md).[keyLength](historyoptions.md#keylength)*
+• `Optional` **keyLength**: *number*
 
 Length of the 'key' for each history entry. Default: 6.
+
+Inherited from: [HistoryOptions](historyoptions.md).[keyLength](historyoptions.md#keylength)
 
 ___
 
 ### preserveSearch
 
-• `Optional` **preserveSearch**: undefined \| false \| true
-
-*Inherited from [HistoryOptions](historyoptions.md).[preserveSearch](historyoptions.md#preservesearch)*
+• `Optional` **preserveSearch**: *boolean*
 
 Tell history to preserve the search fragment when only the hash changes.
 Default is false.
+
+Inherited from: [HistoryOptions](historyoptions.md).[preserveSearch](historyoptions.md#preservesearch)
 
 ___
 

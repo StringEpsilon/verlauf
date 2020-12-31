@@ -1,6 +1,4 @@
-**[verlauf](../README.md)**
-
-> [Globals](../README.md) / TransitionBlocker
+[verlauf](../README.md) / TransitionBlocker
 
 # Interface: TransitionBlocker
 
@@ -22,7 +20,7 @@ Interface for the transition blocking subsystem.
 
 ### block
 
-▸ **block**(...`args`: any[]): function
+▸ **block**(...`args`: *any*[]): function
 
 Method to set a / the blocker.
 
@@ -30,7 +28,7 @@ Method to set a / the blocker.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`...args` | any[] | generic arguments.  |
+`...args` | *any*[] | generic arguments.    |
 
 **Returns:** function
 
@@ -38,7 +36,7 @@ ___
 
 ### isBlocked
 
-▸ **isBlocked**(`newLocation`: [Location](location.md), `action`: string): boolean
+▸ **isBlocked**(`newLocation`: [*Location*](location.md), `action`: *string*): *boolean*
 
 Method to dertime whether or not a given transition is blocked.
 
@@ -46,16 +44,16 @@ Method to dertime whether or not a given transition is blocked.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`newLocation` | [Location](location.md) | Target location of the pending transition. |
-`action` | string | Action related to the pending transition.  |
+`newLocation` | [*Location*](location.md) | Target location of the pending transition.   |
+`action` | *string* | Action related to the pending transition.    |
 
-**Returns:** boolean
+**Returns:** *boolean*
 
 ___
 
 ### unblock
 
-▸ **unblock**(...`args`: any[]): void
+▸ **unblock**(...`args`: *any*[]): *void*
 
 Unblock everything.
 
@@ -63,6 +61,6 @@ Unblock everything.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`...args` | any[] | generic arguments  |
+`...args` | *any*[] | generic arguments    |
 
-**Returns:** void
+**Returns:** *void*

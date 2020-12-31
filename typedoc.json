@@ -1,10 +1,10 @@
 {
-    "inputFiles": ["./src/index.ts", "./src/types.d.ts"],
-    "mode": "file",
-    "out": "docs/api",
-    "excludePrivate": true,
-    "readme": "none",
-    "hideSources": true,
-    "includeDeclarations": true,
-    "excludeExternals": true
+	"entryPoints": [
+		"./src/index.ts"
+	],
+	"out": "docs/api",
+	"readme": "none",
+	"excludeExternals": true,
+	"excludePrivate": true,
+	"disableSources": true
 }

@@ -1,6 +1,4 @@
-**[verlauf](../README.md)**
-
-> [Globals](../README.md) / Location
+[verlauf](../README.md) / Location
 
 # Interface: Location
 
@@ -22,7 +20,7 @@
 
 ### hash
 
-• `Optional` **hash**: undefined \| string
+• `Optional` **hash**: *string*
 
 Fragment portion, including the '#'.
 
@@ -30,7 +28,7 @@ ___
 
 ### key
 
-• `Optional` **key**: undefined \| string
+• `Optional` **key**: *string*
 
 Unique string for this location.
 
@@ -38,7 +36,7 @@ ___
 
 ### pathname
 
-•  **pathname**: string
+• **pathname**: *string*
 
 Path portion of the location.
 
@@ -46,7 +44,7 @@ ___
 
 ### search
 
-• `Optional` **search**: undefined \| string
+• `Optional` **search**: *string*
 
 Query portion, including the '?'
 
@@ -54,6 +52,6 @@ ___
 
 ### state
 
-• `Optional` **state**: any
+• `Optional` **state**: *any*
 
 State value associated with the location.

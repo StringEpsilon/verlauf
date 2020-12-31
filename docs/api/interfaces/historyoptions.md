@@ -1,6 +1,4 @@
-**[verlauf](../README.md)**
-
-> [Globals](../README.md) / HistoryOptions
+[verlauf](../README.md) / HistoryOptions
 
 # Interface: HistoryOptions
 
@@ -10,15 +8,15 @@ Gernal options for all History variants.
 
 * **HistoryOptions**
 
-  ↳ [HashHistoryOptions](hashhistoryoptions.md)
+  ↳ [*HashHistoryOptions*](hashhistoryoptions.md)
 
-  ↳ [BrowserHistoryOptions](browserhistoryoptions.md)
+  ↳ [*BrowserHistoryOptions*](browserhistoryoptions.md)
 
-  ↳ [MemoryHistoryOptions](memoryhistoryoptions.md)
+  ↳ [*MemoryHistoryOptions*](memoryhistoryoptions.md)
 
 ## Indexable
 
-▪ [indexer: string]: any
+▪ [indexer: *string*]: *any*
 
 Gernal options for all History variants.
 
@@ -36,7 +34,7 @@ Gernal options for all History variants.
 
 ### basename
 
-• `Optional` **basename**: undefined \| string
+• `Optional` **basename**: *string*
 
 Basename that will be appended to pathnames. Default: none.
 
@@ -52,7 +50,7 @@ ___
 
 ### getUserConfirmation
 
-• `Optional` **getUserConfirmation**: [getUserConfirmation](historyoptions.md#getuserconfirmation)
+• `Optional` **getUserConfirmation**: [*getUserConfirmation*](../README.md#getuserconfirmation)
 
 Callback to ask the user to confirm or abort a page transition when blocking is active.
 Default: Uses window.confirm.
@@ -61,7 +59,7 @@ ___
 
 ### keyLength
 
-• `Optional` **keyLength**: undefined \| number
+• `Optional` **keyLength**: *number*
 
 Length of the 'key' for each history entry. Default: 6.
 
@@ -69,7 +67,7 @@ ___
 
 ### preserveSearch
 
-• `Optional` **preserveSearch**: undefined \| false \| true
+• `Optional` **preserveSearch**: *boolean*
 
 Tell history to preserve the search fragment when only the hash changes.
 Default is false.
