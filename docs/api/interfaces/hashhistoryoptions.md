@@ -26,7 +26,7 @@ Options specific to the HashHistory.
 
 ### basename
 
-• `Optional` **basename**: *string*
+• `Optional` **basename**: *undefined* \| *string*
 
 Basename that will be appended to pathnames. Default: none.
 
@@ -36,7 +36,7 @@ ___
 
 ### createBlocker
 
-• `Optional` **createBlocker**: Function
+• `Optional` **createBlocker**: *undefined* \| Function
 
 Optional override for the history.block() behavior.
 
@@ -46,7 +46,7 @@ ___
 
 ### getUserConfirmation
 
-• `Optional` **getUserConfirmation**: [*getUserConfirmation*](../README.md#getuserconfirmation)
+• `Optional` **getUserConfirmation**: *undefined* \| [*getUserConfirmation*](../README.md#getuserconfirmation)
 
 Callback to ask the user to confirm or abort a page transition when blocking is active.
 Default: Uses window.confirm.
@@ -57,7 +57,7 @@ ___
 
 ### hashType
 
-• `Optional` **hashType**: *hashbang* \| *noslash* \| *slash*
+• `Optional` **hashType**: *undefined* \| *hashbang* \| *noslash* \| *slash*
 
 Allows to change the formatting of the hash portion of the URI. Options are:
 
@@ -71,7 +71,7 @@ ___
 
 ### keyLength
 
-• `Optional` **keyLength**: *number*
+• `Optional` **keyLength**: *undefined* \| *number*
 
 Length of the 'key' for each history entry. Default: 6.
 
@@ -81,7 +81,7 @@ ___
 
 ### preserveSearch
 
-• `Optional` **preserveSearch**: *boolean*
+• `Optional` **preserveSearch**: *undefined* \| *boolean*
 
 Tell history to preserve the search fragment when only the hash changes.
 Default is false.
@@ -92,7 +92,7 @@ ___
 
 ### window
 
-• `Optional` **window**: Window
+• `Optional` **window**: *undefined* \| Window
 
 Which window object to use to interface with the HTML history API. Can be useful for iframes.
 

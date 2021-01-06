@@ -22,9 +22,6 @@ History object, providing all APIs to interact with browser, hash or memory hist
 
 ### Methods
 
-* [\_adapterCallback](history.md#_adaptercallback)
-* [\_alertListeners](history.md#_alertlisteners)
-* [\_transition](history.md#_transition)
 * [block](history.md#block)
 * [createHref](history.md#createhref)
 * [go](history.md#go)
@@ -81,51 +78,6 @@ ___
 Current location. Value is retrieved from historyAdapter.getLocation() after each action (push, replace, pop).
 
 ## Methods
-
-### \_adapterCallback
-
-▸ **_adapterCallback**(`newLocation`: [*Location*](../interfaces/location.md)): *void*
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`newLocation` | [*Location*](../interfaces/location.md) |
-
-**Returns:** *void*
-
-___
-
-### \_alertListeners
-
-▸ **_alertListeners**(`action`: *string*): *void*
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`action` | *string* |
-
-**Returns:** *void*
-
-___
-
-### \_transition
-
-▸ **_transition**(`target`: [*Location*](../interfaces/location.md), `action`: *string*, `onSuccess`: Function, `onFailure?`: Function): *void*
-
-#### Parameters:
-
-Name | Type |
------- | ------ |
-`target` | [*Location*](../interfaces/location.md) |
-`action` | *string* |
-`onSuccess` | Function |
-`onFailure?` | Function |
-
-**Returns:** *void*
-
-___
 
 ### block
 
