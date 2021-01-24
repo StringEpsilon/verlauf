@@ -2,40 +2,40 @@ verlauf
 
 # verlauf
 
-## Index
+## Table of contents
 
 ### Classes
 
-* [History](classes/history.md)
+- [History](classes/history.md)
 
 ### Interfaces
 
-* [BrowserHistoryOptions](interfaces/browserhistoryoptions.md)
-* [HashHistoryOptions](interfaces/hashhistoryoptions.md)
-* [HistoryAdapter](interfaces/historyadapter.md)
-* [HistoryOptions](interfaces/historyoptions.md)
-* [Location](interfaces/location.md)
-* [MemoryHistoryOptions](interfaces/memoryhistoryoptions.md)
-* [TransitionBlocker](interfaces/transitionblocker.md)
+- [BrowserHistoryOptions](interfaces/browserhistoryoptions.md)
+- [HashHistoryOptions](interfaces/hashhistoryoptions.md)
+- [HistoryAdapter](interfaces/historyadapter.md)
+- [HistoryOptions](interfaces/historyoptions.md)
+- [Location](interfaces/location.md)
+- [MemoryHistoryOptions](interfaces/memoryhistoryoptions.md)
+- [TransitionBlocker](interfaces/transitionblocker.md)
 
 ### Type aliases
 
-* [NavigationListener](README.md#navigationlistener)
-* [OnAdapterLocationChange](README.md#onadapterlocationchange)
-* [getUserConfirmation](README.md#getuserconfirmation)
+- [NavigationListener](README.md#navigationlistener)
+- [OnAdapterLocationChange](README.md#onadapterlocationchange)
+- [getUserConfirmation](README.md#getuserconfirmation)
 
 ### Functions
 
-* [LegacyBlocker](README.md#legacyblocker)
-* [createBrowserAdapter](README.md#createbrowseradapter)
-* [createBrowserHistory](README.md#createbrowserhistory)
-* [createHashAdapter](README.md#createhashadapter)
-* [createHashHistory](README.md#createhashhistory)
-* [createLocation](README.md#createlocation)
-* [createMemoryAdapter](README.md#creatememoryadapter)
-* [createMemoryHistory](README.md#creatememoryhistory)
-* [createPath](README.md#createpath)
-* [locationsAreEqual](README.md#locationsareequal)
+- [LegacyBlocker](README.md#legacyblocker)
+- [createBrowserAdapter](README.md#createbrowseradapter)
+- [createBrowserHistory](README.md#createbrowserhistory)
+- [createHashAdapter](README.md#createhashadapter)
+- [createHashHistory](README.md#createhashhistory)
+- [createLocation](README.md#createlocation)
+- [createMemoryAdapter](README.md#creatememoryadapter)
+- [createMemoryHistory](README.md#creatememoryhistory)
+- [createPath](README.md#createpath)
+- [locationsAreEqual](README.md#locationsareequal)
 
 ## Type aliases
 
@@ -168,7 +168,7 @@ ___
 
 ### createLocation
 
-▸ **createLocation**(`path`: *string* \| [*Location*](interfaces/location.md), `state?`: *any*, `key?`: *any*, `currentLocation?`: [*Location*](interfaces/location.md), `preserveSearch?`: *boolean*): [*Location*](interfaces/location.md)
+▸ **createLocation**(`path`: *string* | [*Location*](interfaces/location.md), `state?`: *any*, `key?`: *any*, `currentLocation?`: [*Location*](interfaces/location.md), `preserveSearch?`: *boolean*): [*Location*](interfaces/location.md)
 
 Creates a new location object for a target path / location resolving the pathnames from the current location.
 
@@ -176,7 +176,7 @@ Creates a new location object for a target path / location resolving the pathnam
 
 Name | Type | Default value | Description |
 ------ | ------ | ------ | ------ |
-`path` | *string* \| [*Location*](interfaces/location.md) | - | Target path or location object to resolve to.   |
+`path` | *string* | [*Location*](interfaces/location.md) | - | Target path or location object to resolve to.   |
 `state?` | *any* | - | Desired state of the new location   |
 `key?` | *any* | - | Key for the new location.   |
 `currentLocation?` | [*Location*](interfaces/location.md) | - | The location to resolve from   |

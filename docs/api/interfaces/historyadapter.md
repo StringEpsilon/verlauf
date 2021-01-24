@@ -8,18 +8,18 @@ An adapter between [History](../classes/history.md) and `window.history` or cust
 
 * **HistoryAdapter**
 
-## Index
+## Table of contents
 
 ### Properties
 
-* [getLength](historyadapter.md#getlength)
-* [getLocation](historyadapter.md#getlocation)
-* [go](historyadapter.md#go)
-* [listen](historyadapter.md#listen)
-* [modifyPath](historyadapter.md#modifypath)
-* [pushState](historyadapter.md#pushstate)
-* [replaceState](historyadapter.md#replacestate)
-* [setOptions](historyadapter.md#setoptions)
+- [getLength](historyadapter.md#getlength)
+- [getLocation](historyadapter.md#getlocation)
+- [go](historyadapter.md#go)
+- [listen](historyadapter.md#listen)
+- [modifyPath](historyadapter.md#modifypath)
+- [pushState](historyadapter.md#pushstate)
+- [replaceState](historyadapter.md#replacestate)
+- [setOptions](historyadapter.md#setoptions)
 
 ## Properties
 

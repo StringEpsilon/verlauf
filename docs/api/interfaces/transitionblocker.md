@@ -8,19 +8,19 @@ Interface for the transition blocking subsystem.
 
 * **TransitionBlocker**
 
-## Index
+## Table of contents
 
 ### Methods
 
-* [block](transitionblocker.md#block)
-* [isBlocked](transitionblocker.md#isblocked)
-* [unblock](transitionblocker.md#unblock)
+- [block](transitionblocker.md#block)
+- [isBlocked](transitionblocker.md#isblocked)
+- [unblock](transitionblocker.md#unblock)
 
 ## Methods
 
 ### block
 
-▸ **block**(...`args`: *any*[]): function
+▸ **block**(...`args`: *any*[]): *function*
 
 Method to set a / the blocker.
 
@@ -30,7 +30,7 @@ Name | Type | Description |
 ------ | ------ | ------ |
 `...args` | *any*[] | generic arguments.    |
 
-**Returns:** function
+**Returns:** *function*
 
 ___
 

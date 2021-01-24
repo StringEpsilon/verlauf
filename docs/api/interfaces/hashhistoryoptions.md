@@ -10,23 +10,23 @@ Options specific to the HashHistory.
 
   ↳ **HashHistoryOptions**
 
-## Index
+## Table of contents
 
 ### Properties
 
-* [basename](hashhistoryoptions.md#basename)
-* [createBlocker](hashhistoryoptions.md#createblocker)
-* [getUserConfirmation](hashhistoryoptions.md#getuserconfirmation)
-* [hashType](hashhistoryoptions.md#hashtype)
-* [keyLength](hashhistoryoptions.md#keylength)
-* [preserveSearch](hashhistoryoptions.md#preservesearch)
-* [window](hashhistoryoptions.md#window)
+- [basename](hashhistoryoptions.md#basename)
+- [createBlocker](hashhistoryoptions.md#createblocker)
+- [getUserConfirmation](hashhistoryoptions.md#getuserconfirmation)
+- [hashType](hashhistoryoptions.md#hashtype)
+- [keyLength](hashhistoryoptions.md#keylength)
+- [preserveSearch](hashhistoryoptions.md#preservesearch)
+- [window](hashhistoryoptions.md#window)
 
 ## Properties
 
 ### basename
 
-• `Optional` **basename**: *undefined* \| *string*
+• `Optional` **basename**: *undefined* | *string*
 
 Basename that will be appended to pathnames. Default: none.
 
@@ -36,7 +36,7 @@ ___
 
 ### createBlocker
 
-• `Optional` **createBlocker**: *undefined* \| Function
+• `Optional` **createBlocker**: *undefined* | Function
 
 Optional override for the history.block() behavior.
 
@@ -46,7 +46,7 @@ ___
 
 ### getUserConfirmation
 
-• `Optional` **getUserConfirmation**: *undefined* \| [*getUserConfirmation*](../README.md#getuserconfirmation)
+• `Optional` **getUserConfirmation**: *undefined* | [*getUserConfirmation*](../README.md#getuserconfirmation)
 
 Callback to ask the user to confirm or abort a page transition when blocking is active.
 Default: Uses window.confirm.
@@ -57,7 +57,7 @@ ___
 
 ### hashType
 
-• `Optional` **hashType**: *undefined* \| *hashbang* \| *noslash* \| *slash*
+• `Optional` **hashType**: *undefined* | *hashbang* | *noslash* | *slash*
 
 Allows to change the formatting of the hash portion of the URI. Options are:
 
@@ -71,7 +71,7 @@ ___
 
 ### keyLength
 
-• `Optional` **keyLength**: *undefined* \| *number*
+• `Optional` **keyLength**: *undefined* | *number*
 
 Length of the 'key' for each history entry. Default: 6.
 
@@ -81,7 +81,7 @@ ___
 
 ### preserveSearch
 
-• `Optional` **preserveSearch**: *undefined* \| *boolean*
+• `Optional` **preserveSearch**: *undefined* | *boolean*
 
 Tell history to preserve the search fragment when only the hash changes.
 Default is false.
@@ -92,7 +92,7 @@ ___
 
 ### window
 
-• `Optional` **window**: *undefined* \| Window
+• `Optional` **window**: *undefined* | Window
 
 Which window object to use to interface with the HTML history API. Can be useful for iframes.
 

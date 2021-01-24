@@ -8,33 +8,33 @@ History object, providing all APIs to interact with browser, hash or memory hist
 
 * **History**
 
-## Index
+## Table of contents
 
 ### Constructors
 
-* [constructor](history.md#constructor)
+- [constructor](history.md#constructor)
 
 ### Properties
 
-* [action](history.md#action)
-* [length](history.md#length)
-* [location](history.md#location)
+- [action](history.md#action)
+- [length](history.md#length)
+- [location](history.md#location)
 
 ### Methods
 
-* [block](history.md#block)
-* [createHref](history.md#createhref)
-* [go](history.md#go)
-* [goBack](history.md#goback)
-* [goForward](history.md#goforward)
-* [isInTransition](history.md#isintransition)
-* [listen](history.md#listen)
-* [navigate](history.md#navigate)
-* [push](history.md#push)
-* [replace](history.md#replace)
-* [setOption](history.md#setoption)
-* [unblock](history.md#unblock)
-* [unlisten](history.md#unlisten)
+- [block](history.md#block)
+- [createHref](history.md#createhref)
+- [go](history.md#go)
+- [goBack](history.md#goback)
+- [goForward](history.md#goforward)
+- [isInTransition](history.md#isintransition)
+- [listen](history.md#listen)
+- [navigate](history.md#navigate)
+- [push](history.md#push)
+- [replace](history.md#replace)
+- [setOption](history.md#setoption)
+- [unblock](history.md#unblock)
+- [unlisten](history.md#unlisten)
 
 ## Constructors
 
@@ -81,7 +81,7 @@ Current location. Value is retrieved from historyAdapter.getLocation() after eac
 
 ### block
 
-▸ **block**(...`args`: *any*[]): function
+▸ **block**(...`args`: *any*[]): *function*
 
 Configure a transition block. [LegacyBlocker](../README.md#legacyblocker)
 
@@ -91,7 +91,7 @@ Name | Type | Description |
 ------ | ------ | ------ |
 `...args` | *any*[] | Arguments passed to {@link LegacyBlocker.block}   |
 
-**Returns:** function
+**Returns:** *function*
 
 A callback to remove the block.
 
@@ -170,7 +170,7 @@ ___
 
 ### listen
 
-▸ **listen**(`listener`: [*NavigationListener*](../README.md#navigationlistener)): function
+▸ **listen**(`listener`: [*NavigationListener*](../README.md#navigationlistener)): *function*
 
 Register a listener for all changes in location.
 
@@ -180,7 +180,7 @@ Name | Type | Description |
 ------ | ------ | ------ |
 `listener` | [*NavigationListener*](../README.md#navigationlistener) | The callback to register. Will be called with [Location](../interfaces/location.md) and action.   |
 
-**Returns:** function
+**Returns:** *function*
 
 A callback to unregister the newly added listener.
 
@@ -188,7 +188,7 @@ ___
 
 ### navigate
 
-▸ **navigate**(`target`: *string* \| [*Location*](../interfaces/location.md), `state`: *null* \| *object*, `method?`: *string*): *void*
+▸ **navigate**(`target`: *string* | [*Location*](../interfaces/location.md), `state`: *null* | *object*, `method?`: *string*): *void*
 
 Navigate to a location with the specified method.
 
@@ -196,8 +196,8 @@ Navigate to a location with the specified method.
 
 Name | Type | Default value | Description |
 ------ | ------ | ------ | ------ |
-`target` | *string* \| [*Location*](../interfaces/location.md) | - | Target location.   |
-`state` | *null* \| *object* | - | Desired state for the location   |
+`target` | *string* | [*Location*](../interfaces/location.md) | - | Target location.   |
+`state` | *null* | *object* | - | Desired state for the location   |
 `method` | *string* | "PUSH" | Specify the method to use for navigation. Either "PUSH" or "REPLACE". Default: PUSH.    |
 
 **Returns:** *void*
@@ -206,7 +206,7 @@ ___
 
 ### push
 
-▸ **push**(`target`: *string* \| [*Location*](../interfaces/location.md), `state?`: *null* \| *object*): *void*
+▸ **push**(`target`: *string* | [*Location*](../interfaces/location.md), `state?`: *null* | *object*): *void*
 
 Push a new location to the history stack and navigate to it.
 
@@ -214,8 +214,8 @@ Push a new location to the history stack and navigate to it.
 
 Name | Type | Default value | Description |
 ------ | ------ | ------ | ------ |
-`target` | *string* \| [*Location*](../interfaces/location.md) | - | Location to go to. Either a pathname or a complete location object.   |
-`state` | *null* \| *object* | null | Optional state to push with the location.    |
+`target` | *string* | [*Location*](../interfaces/location.md) | - | Location to go to. Either a pathname or a complete location object.   |
+`state` | *null* | *object* | null | Optional state to push with the location.    |
 
 **Returns:** *void*
 
@@ -223,7 +223,7 @@ ___
 
 ### replace
 
-▸ **replace**(`target`: *string* \| [*Location*](../interfaces/location.md), `state?`: *null* \| *object*): *void*
+▸ **replace**(`target`: *string* | [*Location*](../interfaces/location.md), `state?`: *null* | *object*): *void*
 
 Replace the current location and state on the stack.
 
@@ -231,8 +231,8 @@ Replace the current location and state on the stack.
 
 Name | Type | Default value | Description |
 ------ | ------ | ------ | ------ |
-`target` | *string* \| [*Location*](../interfaces/location.md) | - | Location or pathname to navigate to.   |
-`state` | *null* \| *object* | null | Desired state    |
+`target` | *string* | [*Location*](../interfaces/location.md) | - | Location or pathname to navigate to.   |
+`state` | *null* | *object* | null | Desired state    |
 
 **Returns:** *void*
 
