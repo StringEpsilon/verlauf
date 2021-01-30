@@ -29,7 +29,10 @@ describe("createBrowserAdapter()", () => {
 		it("in modifyPath() - with option.keepPage, yes base href.", () => {
 			let newWindow = Object.create(window);
 			delete newWindow.location;
-			newWindow.location = { ...location, origin: "https://www.example.com/" };
+			newWindow.location = {
+				...location,
+				origin: "https://www.example.com/",
+			};
 			newWindow.document.querySelector = jest.fn(() => true);
 
 			let wrapper = createBrowserAdapter(jest.fn(), {
@@ -38,9 +41,10 @@ describe("createBrowserAdapter()", () => {
 				keepPage: true,
 			});
 
-			expect(wrapper.modifyPath("/foo")).toBe("https://www.example.com/base/foo");
+			expect(wrapper.modifyPath("/foo")).toBe(
+				"https://www.example.com/base/foo"
+			);
 		});
-
 
 		it("in replaceState() - with basename", () => {
 			let wrapper = createBrowserAdapter(jest.fn(), {

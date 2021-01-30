@@ -5,7 +5,11 @@ describe("parsePath()", () => {
 		expect(parsePath("")).toEqual({ pathname: "/", search: "", hash: "" });
 	});
 	it("Returns default location on null argument", () => {
-		expect(parsePath(null)).toEqual({ pathname: "/", search: "", hash: "" });
+		expect(parsePath(null)).toEqual({
+			pathname: "/",
+			search: "",
+			hash: "",
+		});
 	});
 
 	it("Returns silly locations too:", () => {

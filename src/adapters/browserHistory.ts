@@ -28,7 +28,9 @@ export function createBrowserAdapter(
 	historyListener: OnAdapterLocationChange,
 	options: BrowserHistoryOptions
 ): HistoryAdapter {
-	let basename: string = stripTrailingSlash(addLeadingSlash(options.basename || ""));
+	let basename: string = stripTrailingSlash(
+		addLeadingSlash(options.basename || "")
+	);
 	let _window: Window = options.window || window;
 	let originPrefix: string = options.keepPage ? getOrigin(_window) : "";
 
@@ -47,7 +49,6 @@ export function createBrowserAdapter(
 				"",
 				this.modifyPath(target)
 			);
-
 		},
 
 		replaceState(newLocation: Location, target: string): void {

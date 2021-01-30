@@ -185,7 +185,6 @@ describe("History", () => {
 		expect(testWrapper.modifyPath).toBeCalledWith("transmogrify");
 	});
 
-
 	describe(".isInTransition()", () => {
 		it("returns false by default", () => {
 			let history = new History(createTestWrapper);

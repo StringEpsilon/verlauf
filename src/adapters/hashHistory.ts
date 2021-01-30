@@ -34,7 +34,9 @@ export function createHashAdapter(
 	historyListener: OnAdapterLocationChange,
 	options: HashHistoryOptions
 ): HistoryAdapter {
-	let basename: string = stripTrailingSlash(addLeadingSlash(options.basename || ""));
+	let basename: string = stripTrailingSlash(
+		addLeadingSlash(options.basename || "")
+	);
 	let _window: Window = options.window || window;
 	let hash: string = "#/";
 	let hashBase: string = getHashBase();
