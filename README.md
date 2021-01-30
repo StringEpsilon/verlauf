@@ -25,16 +25,12 @@ Detailed documentation can [be found here](./docs/differences.md), including all
     -   [ ] Correctly parse and utilize `<base/>` tag in hashHistoryAdapter
 -   [ ] Final pass over names and calling conventions of Verlauf specific APIs
 -   [ ] **Ensure compatibility:**
-    -   [ ] pass existing history test suite
     -   [x] pass react-router test suite
     -   [ ] Test behavior in demos and test applications.
--   [ ] Complete documentation.
--   [ ] Complete unit test coverage.
 
 **Future**:
 
 -   [ ] Replace all code borrowed from history.
-    -   [ ] Unit tests.
 -   Make preserveSearch = true the default.
 
 ## Name
