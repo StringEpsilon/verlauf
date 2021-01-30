@@ -1,10 +1,10 @@
 # Verlauf documentation
 
-* [Getting started](./getting_started.md) (TODO.)
-
-* [Blocking transitions](./blocking.md) (TODO)
+* [Getting started](./getting_started.md)
 
 * [API documentation](./api/README.md) - Auto-generated
+
+* [Blocking transitions](./blocking.md) (TODO)
 
 * [Differences and minor incompatibilties](./differences.md) to history@4.10
 

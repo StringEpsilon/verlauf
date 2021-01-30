@@ -168,7 +168,7 @@ function createQueryAdapter(listener, options) {
 
 ### Putting it to use
 
-And finally, you want to create an actual history object you can work with:
+And finally, you want to create an actual history object you can do this:
 
 ```js
 // It's as easy as calling the History constructor with your new adapter:

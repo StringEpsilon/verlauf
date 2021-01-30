@@ -1,5 +1,7 @@
 # URI Decoding and encoding
 
+**Disclaimer: The following code is untested. It should work the same as path decoding in `history`, but you might need to tweak it in places.**
+
 If, for some reason, you rely on the old encoding and decoding behavior of History 4 and earlier, you can restore some compatibilty by adding a layer between the History instance and the HistoryAdapter you're using.
 
 ```ts

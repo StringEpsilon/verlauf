@@ -33,3 +33,7 @@ history.push("/foo); // Not blocked.
 
 history.push("/restricted"); // Blocked without a prompt.
 ```
+
+## Custom blocker
+
+**TODO**
