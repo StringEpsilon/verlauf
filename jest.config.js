@@ -14,7 +14,7 @@ module.exports = {
   coverageReporters: ["html"],
   globals: {
     'ts-jest': {
-      tsConfig: {
+      tsconfig: {
         strict: false
       }
     }

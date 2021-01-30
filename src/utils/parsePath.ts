@@ -9,6 +9,8 @@ export function parsePath(path: string): Location {
 	const PATH_REGEX = /([^#?]*)?(\?[^#]*)?(#.*)?/g;
 	let matches = PATH_REGEX.exec(path || "/");
 
+	// Can't really test this without typescript complaining.
+	/* istanbul ignore next */
 	if (!matches) {
 		return {
 			pathname: "",
