@@ -12,11 +12,11 @@ import {
 } from "../basenameUtils";
 
 /** @ignore */
-function getOrigin(): string {
-	if (!document.querySelector("base[href]")) {
+function getOrigin(window: Window): string {
+	if (!window.document.querySelector("base[href]")) {
 		return "";
 	}
-	return document.location.origin;
+	return stripTrailingSlash(window.location.origin);
 }
 
 /**
@@ -29,8 +29,8 @@ export function createBrowserAdapter(
 	options: BrowserHistoryOptions
 ): HistoryAdapter {
 	let basename: string = stripTrailingSlash(addLeadingSlash(options.basename || ""));
-	let originPrefix: string = options.keepPage ? getOrigin() : "";
 	let _window: Window = options.window || window;
+	let originPrefix: string = options.keepPage ? getOrigin(_window) : "";
 
 	return {
 		getLength(): number {
