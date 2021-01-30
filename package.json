@@ -1,6 +1,6 @@
 {
 	"name": "verlauf",
-	"version": "0.8.0",
+	"version": "0.9.0",
 	"description": "History abstraction",
 	"main": "cjs/verlauf.js",
 	"module": "esm/verlauf.js",
