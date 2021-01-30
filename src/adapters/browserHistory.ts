@@ -28,23 +28,11 @@ export function createBrowserAdapter(
 	historyListener: OnAdapterLocationChange,
 	options: BrowserHistoryOptions
 ): HistoryAdapter {
-	let basename: string;
-	let originPrefix: string;
-	let _window: Window;
-
-	function initialize(options: BrowserHistoryOptions) {
-		basename = stripTrailingSlash(addLeadingSlash(options.basename || ""));
-		originPrefix = options.keepPage ? getOrigin() : "";
-		_window = options.window || window;
-	}
-
-	initialize(options);
+	let basename: string = stripTrailingSlash(addLeadingSlash(options.basename || ""));
+	let originPrefix: string = options.keepPage ? getOrigin() : "";
+	let _window: Window = options.window || window;
 
 	return {
-		setOptions(options) {
-			initialize(options);
-		},
-
 		getLength(): number {
 			return _window.history.length;
 		},
@@ -52,25 +40,26 @@ export function createBrowserAdapter(
 		pushState(newLocation: Location, target: string): void {
 			if (options.forceRefresh) {
 				_window.location.href = target;
-			} else {
-				_window.history.pushState(
-					{ key: newLocation.key, state: newLocation.state },
-					"",
-					this.modifyPath(target)
-				);
+				return;
 			}
+			_window.history.pushState(
+				{ key: newLocation.key, state: newLocation.state },
+				"",
+				this.modifyPath(target)
+			);
+
 		},
 
 		replaceState(newLocation: Location, target: string): void {
 			if (options.forceRefresh) {
 				_window.location.replace(target);
-			} else {
-				_window.history.replaceState(
-					{ key: newLocation.key, state: newLocation.state },
-					"",
-					this.modifyPath(target)
-				);
+				return;
 			}
+			_window.history.replaceState(
+				{ key: newLocation.key, state: newLocation.state },
+				"",
+				this.modifyPath(target)
+			);
 		},
 
 		getLocation(): Location {

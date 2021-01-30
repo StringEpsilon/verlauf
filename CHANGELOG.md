@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.0
+
+### Breaking:
+- Removed `history.setOption()`. 
+
+It's potential to break things outweighs it's usefulness. And kicking it out makes the codebase a little easier and the bundle size smaller. 
+If you need some of the cut functionality, some of it can be achieved by implementing your own `HistoryAdapter`
+
 ## 0.8.0
 
 -   Marked _pendingTransition as private

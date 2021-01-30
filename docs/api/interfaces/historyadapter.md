@@ -19,7 +19,6 @@ An adapter between [History](../classes/history.md) and `window.history` or cust
 - [modifyPath](historyadapter.md#modifypath)
 - [pushState](historyadapter.md#pushstate)
 - [replaceState](historyadapter.md#replacestate)
-- [setOptions](historyadapter.md#setoptions)
 
 ## Properties
 
@@ -76,9 +75,3 @@ ___
 • **replaceState**: (`state`: [*Location*](location.md), `target`: *string*) => *void*
 
 Provides the method to replace the current location on the stack
-
-___
-
-### setOptions
-
-• **setOptions**: (`newOptions`: [*HistoryOptions*](historyoptions.md)) => *void*

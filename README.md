@@ -21,7 +21,6 @@ Detailed documentation can [be found here](./docs/differences.md), including all
 
 **1.0**:
 
--   [ ] Write tests for setOption()
 -   [ ] Backport bugfixes that were made in history@5, as compatability allows
     -   [ ] Correctly parse and utilize `<base/>` tag in hashHistoryAdapter
 -   [ ] Final pass over names and calling conventions of Verlauf specific APIs

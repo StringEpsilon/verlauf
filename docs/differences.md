@@ -26,7 +26,6 @@ Currently, the following differences in APi and behavior might affect compatibil
 -   Typescript definitions with intellisense come with the package.
 -   `preserveSearch` option. If set to true, Verlauf will keep the search fragment as is, if only the hash is changed in a push or replace.
     -   The default is false, just to avoid any breakage.
--   new `setOption()` function, allowing you to change settings after a history object was made.
 -   new `isInTransition()` function. Will return true while `History` is still processing a navigation.
 
 ## Bugfixes

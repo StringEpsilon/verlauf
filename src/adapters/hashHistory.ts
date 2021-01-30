@@ -34,31 +34,19 @@ export function createHashAdapter(
 	historyListener: OnAdapterLocationChange,
 	options: HashHistoryOptions
 ): HistoryAdapter {
-	let basename: string;
-	let _window: Window;
-	let hash: string;
-	let hashBase: string;
+	let basename: string = stripTrailingSlash(addLeadingSlash(options.basename || ""));
+	let _window: Window = options.window || window;
+	let hash: string = "#/";
+	let hashBase: string = getHashBase();
 
-	function initialize(options: HashHistoryOptions) {
-		basename = stripTrailingSlash(addLeadingSlash(options.basename || ""));
-		_window = options.window || window;
-		hash = "#/";
-		hashBase = getHashBase();
-
-		if (options.hashType === "noslash") {
-			hash = "#";
-		}
-		if (options.hashType === "hashbang") {
-			hash = "#!/";
-		}
+	if (options.hashType === "noslash") {
+		hash = "#";
 	}
-	initialize(options);
+	if (options.hashType === "hashbang") {
+		hash = "#!/";
+	}
 
 	return {
-		setOptions(options) {
-			initialize(options);
-		},
-
 		getLength(): number {
 			return _window.history.length;
 		},

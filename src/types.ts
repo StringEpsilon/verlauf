@@ -74,11 +74,6 @@ export interface HistoryAdapter {
 	modifyPath: (path: string) => string;
 	/** Return the current size of the history stack. */
 	getLength: () => number;
-
-	/**
-	 *
-	 */
-	setOptions: (newOptions: HistoryOptions) => void;
 }
 
 /** Gernal options for all History variants. */

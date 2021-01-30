@@ -30,7 +30,6 @@ describe("History", () => {
 			go: jest.fn(),
 			modifyPath: jest.fn(),
 			getLength: jest.fn(),
-			setOptions: jest.fn(),
 		};
 		testWrapper = testWrapperInstance;
 		return testWrapperInstance;
@@ -186,18 +185,6 @@ describe("History", () => {
 		expect(testWrapper.modifyPath).toBeCalledWith("transmogrify");
 	});
 
-	it("calls adapter.setOptions after history.setOption", () => {
-		let history = new History(createTestWrapper);
-		history.setOption("basename", "/ui/");
-
-		expect(testWrapper.setOptions).toBeCalledTimes(1);
-		expect(testWrapper.setOptions).toBeCalledWith({
-			keyLength: 6,
-			basename: "/ui/",
-			createBlocker: LegacyBlocker,
-			getUserConfirmation: expect.anything(),
-		});
-	});
 
 	describe(".isInTransition()", () => {
 		it("returns false by default", () => {

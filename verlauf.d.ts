@@ -52,11 +52,6 @@ interface HistoryAdapter {
 	modifyPath: (path: string) => string;
 	/** Return the current size of the history stack. */
 	getLength: () => number;
-
-	/**
-	 *
-	 */
-	setOptions: (newOptions: HistoryOptions) => void;
 }
 
 /** Gernal options for all History variants. */
@@ -230,20 +225,6 @@ declare class History {
      * ```
      */
     go: (steps: number) => void;
-    /**
-     * Change any options via it's name. Keep in mind that depending on the option and when it's changed,
-     * it could have unintended sideffects.
-     *
-     * @param key
-     * @param value
-     *
-     * @example
-     * // Change basename:
-     * history.setOptions("basename", "/en-US/");
-     * history.setOptions("basename", "/en-UK/");
-     * // Keep in mind that changing the basename option will not trigger a location change.
-     */
-    setOption: (key: string, value: any) => void;
     /**
      * Checks whether or not the history is currently processing a transition.
      *

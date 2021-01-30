@@ -34,22 +34,14 @@ export function createMemoryAdapter(
 	options: MemoryHistoryOptions
 ): HistoryAdapter {
 	let entries: Location[];
-	let activeEntry: number;
 
-	function initialize(options: MemoryHistoryOptions) {
-		entries = normalizeEntries(
-			options.initialEntries || ["/"],
-			options.keyLength
-		);
-		activeEntry = options.initialIndex ? options.initialIndex : 0;
-	}
-	initialize(options);
+	entries = normalizeEntries(
+		options.initialEntries || ["/"],
+		options.keyLength
+	);
+	let activeEntry: number = options.initialIndex ? options.initialIndex : 0;
 
 	return {
-		setOptions(options) {
-			initialize(options);
-		},
-
 		getLength(): number {
 			return entries.length;
 		},

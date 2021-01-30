@@ -12,4 +12,3 @@
 
 * [URI Encoding and Decoding](./URI_Decoding.md) - Example of changing a HistoryAdapter.
 
-* [setOption](./setOption.md) - changing settings after the fact.
