@@ -71,7 +71,7 @@ export function createMemoryAdapter(
 			let targetIndex = activeEntry + steps;
 			if (targetIndex >= 0 && targetIndex < entries.length) {
 				activeEntry = targetIndex;
-				historyListener(entries[targetIndex]);
+				historyListener(entries[activeEntry]);
 			}
 		},
 	};

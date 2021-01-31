@@ -57,36 +57,6 @@ describe("createMemoryHistory()", () => {
 		});
 	});
 
-	describe("goBack()", () => {
-		it("goes back to the first entry", () => {
-			let history = createMemoryHistory({
-				initialEntries: ["/foo", "/bar"],
-				initialIndex: 1,
-			});
-
-			expect(history.location.pathname).toBe("/bar");
-
-			history.goBack();
-		});
-
-		it("stays on the first entry", () => {
-			let history = createMemoryHistory({
-				initialEntries: ["/foo", "/bar"],
-				initialIndex: 0,
-			});
-
-			const callback = jest.fn();
-			history.listen(callback);
-
-			expect(history.location.pathname).toBe("/foo");
-
-			history.goBack();
-
-			expect(callback).not.toBeCalled;
-			expect(history.location.pathname).toBe("/foo");
-		});
-	});
-
 	describe("push()", () => {
 		it("goes forward to the latest entry", () => {
 			let history = createMemoryHistory();
@@ -209,6 +179,38 @@ describe("createMemoryHistory()", () => {
 
 			expect(history.location.pathname).toBe("/bar");
 			expect(callback).not.toBeCalled();
+		});
+	});
+
+	describe("goBack()", () => {
+		it("goes back to the first entry", () => {
+			let history = createMemoryHistory({
+				initialEntries: ["/foo", "/bar"],
+				initialIndex: 1,
+			});
+
+			expect(history.location.pathname).toBe("/bar");
+
+			history.goBack();
+
+			expect(history.location.pathname).toBe("/foo");
+		});
+
+		it("stays on the first entry", () => {
+			let history = createMemoryHistory({
+				initialEntries: ["/foo", "/bar"],
+				initialIndex: 0,
+			});
+
+			const callback = jest.fn();
+			history.listen(callback);
+
+			expect(history.location.pathname).toBe("/foo");
+
+			history.goBack();
+
+			expect(callback).not.toBeCalled;
+			expect(history.location.pathname).toBe("/foo");
 		});
 	});
 });
