@@ -15,10 +15,7 @@ interface Location {
  * @param newLocation The location that was navigated to.
  * @param action the action type associated with the navigation.
  */
-type NavigationListener = (
-	newLocation: Location,
-	action: string
-) => void;
+type NavigationListener = (newLocation: Location, action: string) => void;
 
 /**
  * Callback to ask the user to confirm or deny a transition in LegacyBlocker.
@@ -133,104 +130,114 @@ interface MemoryHistoryOptions extends HistoryOptions {
  * History object, providing all APIs to interact with browser, hash or memory history.
  */
 declare class History {
-    private _listeners;
-    private _historyAdapter;
-    private _options;
-    private _blocker;
-    private _pendingTransition;
-    /** Current length of the history. Value is retrived from historyAdapter.getLength() after each action (push, replace, pop). */
-    length: number;
-    /** Current location. Value is retrieved from historyAdapter.getLocation() after each action (push, replace, pop). */
-    location: Location;
-    /** Last action performen on the history stack. Initial value is always POP. */
-    action: string;
-    /**
-     * Creates a new History instance.
-     *
-     * @param createAdapter The function to create a {@link HistoryAdapter} instance.
-     * @param options The options for the History instance and the HistoryAdapter.
-     */
-    constructor(createAdapter: (listner: OnAdapterLocationChange, options: HistoryOptions) => HistoryAdapter, options?: HistoryOptions);
-    private _adapterCallback;
-    private _alertListeners;
-    private _transition;
-    /**
-     * Register a listener for all changes in location.
-     * @param listener The callback to register. Will be called with {@link Location} and action.
-     * @returns A callback to unregister the newly added listener.
-     */
-    listen: (listener: NavigationListener) => (() => void);
-    /**
-     * Removes / disables a listener.
-     *
-     * @param listener The listener to disable.
-     */
-    unlisten: (listener: NavigationListener) => void;
-    /**
-     * Creates an appropriate href target string for a given location.
-     * @param target
-     */
-    createHref: (target: Location) => string;
-    /**
-     * Navigate to a location with the specified method.
-     *
-     * @param target Target location.
-     * @param state Desired state for the location
-     * @param method Specify the method to use for navigation. Either "PUSH" or "REPLACE".
-     * Default: PUSH.
-     */
-    navigate: (target: string | Location, state: object | null, method?: string) => void;
-    /**
-     * Push a new location to the history stack and navigate to it.
-     *
-     * @param target Location to go to. Either a pathname or a complete location object.
-     * @param state Optional state to push with the location.
-     */
-    push: (target: string | Location, state?: object | null) => void;
-    /**
-     * Replace the current location and state on the stack.
-     *
-     * @param target Location or pathname to navigate to.
-     * @param state Desired state
-     */
-    replace: (target: string | Location, state?: object | null) => void;
-    /**
-     * Configure a transition block. {@link LegacyBlocker}
-     *
-     * @param args - Arguments passed to {@link LegacyBlocker.block}
-     * @returns A callback to remove the block.
-     */
-    block: (...args: any[]) => (() => void);
-    /**
-     * Remove the currently configured blocker.
-     */
-    unblock: () => void;
-    /**
-     * Shorthand for go(1). Go forward in history by one entry.
-     */
-    goBack: () => void;
-    /**
-     * Shorthand for go(-1). Go forward in history by one entry.
-     */
-    goForward: () => void;
-    /**
-     * Goes forwards or backwards in history. If the value is out of bounds, it will go as far as it can (i.E. to the first or last entry).
-     *
-     * @param steps Number of steps to go forward / backward.
-     * @example
-     * ```js
-     * history.go(-10); // go ten entries back.
-     *
-     * history.go(10) // go ten entries forward.
-     * ```
-     */
-    go: (steps: number) => void;
-    /**
-     * Checks whether or not the history is currently processing a transition.
-     *
-     * @returns True, if there is a transition currently in progress.
-     */
-    isInTransition: () => boolean;
+	private _listeners;
+	private _historyAdapter;
+	private _options;
+	private _blocker;
+	private _pendingTransition;
+	/** Current length of the history. Value is retrived from historyAdapter.getLength() after each action (push, replace, pop). */
+	length: number;
+	/** Current location. Value is retrieved from historyAdapter.getLocation() after each action (push, replace, pop). */
+	location: Location;
+	/** Last action performen on the history stack. Initial value is always POP. */
+	action: string;
+	/**
+	 * Creates a new History instance.
+	 *
+	 * @param createAdapter The function to create a {@link HistoryAdapter} instance.
+	 * @param options The options for the History instance and the HistoryAdapter.
+	 */
+	constructor(
+		createAdapter: (
+			listener: OnAdapterLocationChange,
+			options: HistoryOptions
+		) => HistoryAdapter,
+		options?: HistoryOptions
+	);
+	private _adapterCallback;
+	private _alertListeners;
+	private _transition;
+	/**
+	 * Register a listener for all changes in location.
+	 * @param listener The callback to register. Will be called with {@link Location} and action.
+	 * @returns A callback to unregister the newly added listener.
+	 */
+	listen: (listener: NavigationListener) => () => void;
+	/**
+	 * Removes / disables a listener.
+	 *
+	 * @param listener The listener to disable.
+	 */
+	unlisten: (listener: NavigationListener) => void;
+	/**
+	 * Creates an appropriate href target string for a given location.
+	 * @param target
+	 */
+	createHref: (target: Location) => string;
+	/**
+	 * Navigate to a location with the specified method.
+	 *
+	 * @param target Target location.
+	 * @param state Desired state for the location
+	 * @param method Specify the method to use for navigation. Either "PUSH" or "REPLACE".
+	 * Default: PUSH.
+	 */
+	navigate: (
+		target: string | Location,
+		state: object | null,
+		method?: string
+	) => void;
+	/**
+	 * Push a new location to the history stack and navigate to it.
+	 *
+	 * @param target Location to go to. Either a pathname or a complete location object.
+	 * @param state Optional state to push with the location.
+	 */
+	push: (target: string | Location, state?: object | null) => void;
+	/**
+	 * Replace the current location and state on the stack.
+	 *
+	 * @param target Location or pathname to navigate to.
+	 * @param state Desired state
+	 */
+	replace: (target: string | Location, state?: object | null) => void;
+	/**
+	 * Configure a transition block. {@link LegacyBlocker}
+	 *
+	 * @param args - Arguments passed to {@link LegacyBlocker.block}
+	 * @returns A callback to remove the block.
+	 */
+	block: (...args: any[]) => () => void;
+	/**
+	 * Remove the currently configured blocker.
+	 */
+	unblock: () => void;
+	/**
+	 * Shorthand for go(1). Go forward in history by one entry.
+	 */
+	goBack: () => void;
+	/**
+	 * Shorthand for go(-1). Go forward in history by one entry.
+	 */
+	goForward: () => void;
+	/**
+	 * Goes forwards or backwards in history. If the value is out of bounds, it will go as far as it can (i.E. to the first or last entry).
+	 *
+	 * @param steps Number of steps to go forward / backward.
+	 * @example
+	 * ```js
+	 * history.go(-10); // go ten entries back.
+	 *
+	 * history.go(10) // go ten entries forward.
+	 * ```
+	 */
+	go: (steps: number) => void;
+	/**
+	 * Checks whether or not the history is currently processing a transition.
+	 *
+	 * @returns True, if there is a transition currently in progress.
+	 */
+	isInTransition: () => boolean;
 }
 
 /**
@@ -238,7 +245,10 @@ declare class History {
  * @param historyListener Callback for history events (onhashchange).
  * @param options Hash history options.
  */
-declare function createHashAdapter(historyListener: OnAdapterLocationChange, options: HashHistoryOptions): HistoryAdapter;
+declare function createHashAdapter(
+	historyListener: OnAdapterLocationChange,
+	options: HashHistoryOptions
+): HistoryAdapter;
 /**
  * Creates a History instance that keeps all location information in the hash portion of the URL.
  * @param options Additional options for the hash histories behavior.
@@ -250,7 +260,10 @@ declare function createHashHistory(options?: HashHistoryOptions): History;
  * @param historyListener Callback for history events (onpopstate).
  * @param options Browser History options.
  */
-declare function createBrowserAdapter(historyListener: OnAdapterLocationChange, options: BrowserHistoryOptions): HistoryAdapter;
+declare function createBrowserAdapter(
+	historyListener: OnAdapterLocationChange,
+	options: BrowserHistoryOptions
+): HistoryAdapter;
 /**
  * Creates a History instance with the browser history adapter.
  *
@@ -276,7 +289,10 @@ declare function createBrowserHistory(options?: BrowserHistoryOptions): History;
  * @param historyListener Callback for history "events", invoked on `go()`, as the memory adapter doesn't listen to any browser events.
  * @param options Memory History options.
  */
-declare function createMemoryAdapter(historyListener: OnAdapterLocationChange, options: MemoryHistoryOptions): HistoryAdapter;
+declare function createMemoryAdapter(
+	historyListener: OnAdapterLocationChange,
+	options: MemoryHistoryOptions
+): HistoryAdapter;
 /**
  * Creates a history instance using only internal memory for keeping track of locations.
  * Compatible with node.js environments.
@@ -302,7 +318,13 @@ declare function createPath(location: Location): string;
  * @param preserveSearch preserve the search fragment when only the hash changes.
  * @returns The resolved new location.
  */
-declare function createLocation(path: string | Location, state?: any, key?: any, currentLocation?: Location, preserveSearch?: boolean): Location;
+declare function createLocation(
+	path: string | Location,
+	state?: any,
+	key?: any,
+	currentLocation?: Location,
+	preserveSearch?: boolean
+): Location;
 
 /**
  * Check if two locations are equal.

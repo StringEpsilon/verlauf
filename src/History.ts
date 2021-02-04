@@ -48,7 +48,7 @@ export class History {
 	 */
 	constructor(
 		createAdapter: (
-			listner: OnAdapterLocationChange,
+			listener: OnAdapterLocationChange,
 			options: HistoryOptions
 		) => HistoryAdapter,
 		options?: HistoryOptions

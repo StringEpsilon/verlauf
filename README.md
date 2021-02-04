@@ -4,7 +4,7 @@
 
 # Verlauf
 
-Is a (work in progress) reimplementation of history version 4, aiming to keep compatibility while still offering new features and bugfixes that can't be added to history@4 without breaking semantic versioning.
+Is a reimplementation of history version 4, aiming to keep compatibility while still offering new features and bugfixes that can't be added to history@4 without breaking semantic versioning.
 
 Major differences:
 
@@ -13,9 +13,9 @@ Major differences:
 -   You can implement your own transition blocking logic.
 -   Single file bundling. Meaning you can't import `verlauf/createBrowserHistory`.
 
-Detailed documentation can [be found here](./docs/differences.md), including all the minor differences in behavior.
+A complete overview of the differences can [be found here](./docs/differences.md), including all quirks.
 
-## [Documentation here](./docs/index.md)
+## [Complete documentation here](./docs/index.md)
 
 ## Roadmap:
 
@@ -30,8 +30,8 @@ Detailed documentation can [be found here](./docs/differences.md), including all
 
 **Future**:
 
--   [ ] Replace all code borrowed from history.
--   Make preserveSearch = true the default.
+-   [ ] Replace the code borrowed for unit tests.
+-   [ ] Make preserveSearch = true the default.
 
 ## Name
 

@@ -9,9 +9,9 @@ Currently, the following differences in APi and behavior might affect compatibil
 -   The blocking callback might receive a `location.key` where it would not in history 4.
 -   The blocking callback might receive a difference action type in some circumstances.
 -   Some top-level files are absent from the package. You might need to alias these separately:
-    - `DOMUtils.js`
-    - `LocationUtils.js`
-    - `PathUtils.js`
+    -   `DOMUtils.js`
+    -   `LocationUtils.js`
+    -   `PathUtils.js`
 -   The direct imports for createBrowserHistory, createHashHistory and createMemory history are ESM instead of CJS now. Depending on your bundler, that may cause some issues. I might change this before 1.0.
 -   The UMD bundle uses a different namespace.
 -   Verlauf does not issue any warnings. History for example warns about incomplete basenames and re-pushing the same location.
@@ -27,6 +27,7 @@ Currently, the following differences in APi and behavior might affect compatibil
 -   `preserveSearch` option. If set to true, Verlauf will keep the search fragment as is, if only the hash is changed in a push or replace.
     -   The default is false, just to avoid any breakage.
 -   new `isInTransition()` function. Will return true while `History` is still processing a navigation.
+-   browserHistory has a `keepPage` option that will prevent `push()` from leaving the current domain, even if `<base/>` points to another domain.
 
 ## Bugfixes
 
