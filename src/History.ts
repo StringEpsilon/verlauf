@@ -166,7 +166,7 @@ export class History {
 	navigate = (
 		target: string | Location,
 		state: object | null,
-		method: string = "PUSH"
+		method: string = ACTION.PUSH
 	) => {
 		let newLocation = createLocation(
 			target,

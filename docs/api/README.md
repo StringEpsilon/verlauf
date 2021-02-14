@@ -168,7 +168,7 @@ ___
 
 ### createLocation
 
-▸ **createLocation**(`path`: *string* | [*Location*](interfaces/location.md), `state?`: *any*, `key?`: *any*, `currentLocation?`: [*Location*](interfaces/location.md), `preserveSearch?`: *boolean*): [*Location*](interfaces/location.md)
+▸ **createLocation**(`path`: *string* \| [*Location*](interfaces/location.md), `state?`: *any*, `key?`: *any*, `currentLocation?`: [*Location*](interfaces/location.md), `preserveSearch?`: *boolean*): [*Location*](interfaces/location.md)
 
 Creates a new location object for a target path / location resolving the pathnames from the current location.
 
@@ -176,7 +176,7 @@ Creates a new location object for a target path / location resolving the pathnam
 
 Name | Type | Default value | Description |
 ------ | ------ | ------ | ------ |
-`path` | *string* | [*Location*](interfaces/location.md) | - | Target path or location object to resolve to.   |
+`path` | *string* \| [*Location*](interfaces/location.md) | - | Target path or location object to resolve to.   |
 `state?` | *any* | - | Desired state of the new location   |
 `key?` | *any* | - | Key for the new location.   |
 `currentLocation?` | [*Location*](interfaces/location.md) | - | The location to resolve from   |

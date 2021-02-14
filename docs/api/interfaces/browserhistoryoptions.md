@@ -27,7 +27,7 @@ Options specific to the BrowserHistory.
 
 ### basename
 
-• `Optional` **basename**: *undefined* | *string*
+• `Optional` **basename**: *undefined* \| *string*
 
 Basename that will be appended to pathnames. Default: none.
 
@@ -37,7 +37,7 @@ ___
 
 ### createBlocker
 
-• `Optional` **createBlocker**: *undefined* | Function
+• `Optional` **createBlocker**: *undefined* \| Function
 
 Optional override for the history.block() behavior.
 
@@ -47,7 +47,7 @@ ___
 
 ### forceRefresh
 
-• `Optional` **forceRefresh**: *undefined* | *boolean*
+• `Optional` **forceRefresh**: *undefined* \| *boolean*
 
 Force refresh the page on every navigation.
 Default: false
@@ -56,7 +56,7 @@ ___
 
 ### getUserConfirmation
 
-• `Optional` **getUserConfirmation**: *undefined* | [*getUserConfirmation*](../README.md#getuserconfirmation)
+• `Optional` **getUserConfirmation**: *undefined* \| [*getUserConfirmation*](../README.md#getuserconfirmation)
 
 Callback to ask the user to confirm or abort a page transition when blocking is active.
 Default: Uses window.confirm.
@@ -67,7 +67,7 @@ ___
 
 ### keepPage
 
-• `Optional` **keepPage**: *undefined* | *boolean*
+• `Optional` **keepPage**: *undefined* \| *boolean*
 
 Keep the application on the page, even if a <base/> tag points to another domain.
 
@@ -77,7 +77,7 @@ ___
 
 ### keyLength
 
-• `Optional` **keyLength**: *undefined* | *number*
+• `Optional` **keyLength**: *undefined* \| *number*
 
 Length of the 'key' for each history entry. Default: 6.
 
@@ -87,7 +87,7 @@ ___
 
 ### preserveSearch
 
-• `Optional` **preserveSearch**: *undefined* | *boolean*
+• `Optional` **preserveSearch**: *undefined* \| *boolean*
 
 Tell history to preserve the search fragment when only the hash changes.
 Default is false.
@@ -98,7 +98,7 @@ ___
 
 ### window
 
-• `Optional` **window**: *undefined* | Window
+• `Optional` **window**: *undefined* \| Window
 
 Which window object to use to interface with the HTML history API. Can be useful for iframes.
 Default: The global window object.

@@ -187,7 +187,7 @@ ___
 
 ### navigate
 
-▸ **navigate**(`target`: *string* | [*Location*](../interfaces/location.md), `state`: *null* | *object*, `method?`: *string*): *void*
+▸ **navigate**(`target`: *string* \| [*Location*](../interfaces/location.md), `state`: *null* \| *object*, `method?`: *string*): *void*
 
 Navigate to a location with the specified method.
 
@@ -195,9 +195,9 @@ Navigate to a location with the specified method.
 
 Name | Type | Default value | Description |
 ------ | ------ | ------ | ------ |
-`target` | *string* | [*Location*](../interfaces/location.md) | - | Target location.   |
-`state` | *null* | *object* | - | Desired state for the location   |
-`method` | *string* | "PUSH" | Specify the method to use for navigation. Either "PUSH" or "REPLACE". Default: PUSH.    |
+`target` | *string* \| [*Location*](../interfaces/location.md) | - | Target location.   |
+`state` | *null* \| *object* | - | Desired state for the location   |
+`method` | *string* | ... | Specify the method to use for navigation. Either "PUSH" or "REPLACE". Default: PUSH.    |
 
 **Returns:** *void*
 
@@ -205,7 +205,7 @@ ___
 
 ### push
 
-▸ **push**(`target`: *string* | [*Location*](../interfaces/location.md), `state?`: *null* | *object*): *void*
+▸ **push**(`target`: *string* \| [*Location*](../interfaces/location.md), `state?`: *null* \| *object*): *void*
 
 Push a new location to the history stack and navigate to it.
 
@@ -213,8 +213,8 @@ Push a new location to the history stack and navigate to it.
 
 Name | Type | Default value | Description |
 ------ | ------ | ------ | ------ |
-`target` | *string* | [*Location*](../interfaces/location.md) | - | Location to go to. Either a pathname or a complete location object.   |
-`state` | *null* | *object* | null | Optional state to push with the location.    |
+`target` | *string* \| [*Location*](../interfaces/location.md) | - | Location to go to. Either a pathname or a complete location object.   |
+`state` | *null* \| *object* | null | Optional state to push with the location.    |
 
 **Returns:** *void*
 
@@ -222,7 +222,7 @@ ___
 
 ### replace
 
-▸ **replace**(`target`: *string* | [*Location*](../interfaces/location.md), `state?`: *null* | *object*): *void*
+▸ **replace**(`target`: *string* \| [*Location*](../interfaces/location.md), `state?`: *null* \| *object*): *void*
 
 Replace the current location and state on the stack.
 
@@ -230,8 +230,8 @@ Replace the current location and state on the stack.
 
 Name | Type | Default value | Description |
 ------ | ------ | ------ | ------ |
-`target` | *string* | [*Location*](../interfaces/location.md) | - | Location or pathname to navigate to.   |
-`state` | *null* | *object* | null | Desired state    |
+`target` | *string* \| [*Location*](../interfaces/location.md) | - | Location or pathname to navigate to.   |
+`state` | *null* \| *object* | null | Desired state    |
 
 **Returns:** *void*
 
