@@ -18,7 +18,7 @@ export function createLocation(
 	key?: any,
 	currentLocation?: Location,
 	preserveSearch: boolean = false
-) {
+): Location {
 	let location: Location;
 	if (typeof path === "string") {
 		location = parsePath(path);

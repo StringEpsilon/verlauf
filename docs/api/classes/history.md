@@ -80,7 +80,7 @@ Current location. Value is retrieved from historyAdapter.getLocation() after eac
 
 ### block
 
-▸ **block**(...`args`: *any*[]): *function*
+▸ **block**(...`args`: *any*[]): Function
 
 Configure a transition block. [LegacyBlocker](../README.md#legacyblocker)
 
@@ -90,7 +90,7 @@ Name | Type | Description |
 ------ | ------ | ------ |
 `...args` | *any*[] | Arguments passed to {@link LegacyBlocker.block}   |
 
-**Returns:** *function*
+**Returns:** Function
 
 A callback to remove the block.
 
@@ -169,7 +169,7 @@ ___
 
 ### listen
 
-▸ **listen**(`listener`: [*NavigationListener*](../README.md#navigationlistener)): *function*
+▸ **listen**(`listener`: [*NavigationListener*](../README.md#navigationlistener)): Function
 
 Register a listener for all changes in location.
 
@@ -179,7 +179,7 @@ Name | Type | Description |
 ------ | ------ | ------ |
 `listener` | [*NavigationListener*](../README.md#navigationlistener) | The callback to register. Will be called with [Location](../interfaces/location.md) and action.   |
 
-**Returns:** *function*
+**Returns:** Function
 
 A callback to unregister the newly added listener.
 

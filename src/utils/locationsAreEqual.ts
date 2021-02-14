@@ -6,7 +6,7 @@ import { Location } from "../types";
  * @param b second location
  * @returns true, if the locations are equal.
  */
-export function locationsAreEqual(a: Location, b: Location) {
+export function locationsAreEqual(a: Location, b: Location): boolean {
 	return (
 		a === b ||
 		(a.pathname === b.pathname &&

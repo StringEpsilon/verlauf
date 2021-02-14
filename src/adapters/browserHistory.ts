@@ -28,18 +28,18 @@ export function createBrowserAdapter(
 	historyListener: OnAdapterLocationChange,
 	options: BrowserHistoryOptions
 ): HistoryAdapter {
-	let basename: string = stripTrailingSlash(
+	let _basename: string = stripTrailingSlash(
 		addLeadingSlash(options.basename || "")
 	);
 	let _window: Window = options.window || window;
-	let originPrefix: string = options.keepPage ? getOrigin(_window) : "";
+	let _originPrefix: string = options.keepPage ? getOrigin(_window) : "";
 
 	return {
 		getLength(): number {
 			return _window.history.length;
 		},
 
-		pushState(newLocation: Location, target: string): void {
+		pushState(newLocation: Location, target: string) {
 			if (options.forceRefresh) {
 				_window.location.href = target;
 				return;
@@ -51,7 +51,7 @@ export function createBrowserAdapter(
 			);
 		},
 
-		replaceState(newLocation: Location, target: string): void {
+		replaceState(newLocation: Location, target: string) {
 			if (options.forceRefresh) {
 				_window.location.replace(target);
 				return;
@@ -73,12 +73,12 @@ export function createBrowserAdapter(
 			};
 
 			result.pathname = addLeadingSlash(
-				stripBasename(result.pathname, basename)
+				stripBasename(result.pathname, _basename)
 			);
 			return result;
 		},
 
-		listen(): void {
+		listen() {
 			_window.onpopstate = () => {
 				historyListener(this.getLocation());
 			};
@@ -88,11 +88,11 @@ export function createBrowserAdapter(
 			_window.history.go(steps);
 		},
 
-		modifyPath(path) {
-			if (basename && basename !== "/") {
-				path = basename + path;
+		modifyPath(path): string {
+			if (_basename && _basename !== "/") {
+				path = _basename + path;
 			}
-			return originPrefix + addLeadingSlash(path);
+			return _originPrefix + addLeadingSlash(path);
 		},
 	};
 }
@@ -115,6 +115,6 @@ export function createBrowserAdapter(
  * // Thanks to the basename config option, the browser navigates to "/ui/login".
  * ```
  */
-export function createBrowserHistory(options?: BrowserHistoryOptions) {
+export function createBrowserHistory(options?: BrowserHistoryOptions): History {
 	return new History(createBrowserAdapter, options);
 }

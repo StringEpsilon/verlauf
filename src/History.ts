@@ -19,7 +19,10 @@ export const ACTION = {
 	POP: "POP",
 };
 
-const defaultUserConfirmation: getUserConfirmation = (message, callback) => {
+const defaultUserConfirmation: getUserConfirmation = (
+	message,
+	callback
+): void => {
 	callback(window.confirm(message));
 };
 
@@ -128,7 +131,7 @@ export class History {
 	 * @param listener The callback to register. Will be called with {@link Location} and action.
 	 * @returns A callback to unregister the newly added listener.
 	 */
-	listen = (listener: NavigationListener): (() => void) => {
+	listen = (listener: NavigationListener): Function => {
 		this._listeners.push(listener);
 		return () => {
 			this.unlisten(listener);
@@ -140,7 +143,7 @@ export class History {
 	 *
 	 * @param listener The listener to disable.
 	 */
-	unlisten = (listener: NavigationListener): void => {
+	unlisten = (listener: NavigationListener) => {
 		let index = this._listeners.indexOf(listener);
 		if (index >= 0) {
 			this._listeners.splice(index, 1);
@@ -191,7 +194,7 @@ export class History {
 	 * @param target Location to go to. Either a pathname or a complete location object.
 	 * @param state Optional state to push with the location.
 	 */
-	push = (target: string | Location, state: object | null = null): void => {
+	push = (target: string | Location, state: object | null = null) => {
 		this.navigate(target, state, ACTION.PUSH);
 	};
 
@@ -201,10 +204,7 @@ export class History {
 	 * @param target Location or pathname to navigate to.
 	 * @param state Desired state
 	 */
-	replace = (
-		target: string | Location,
-		state: object | null = null
-	): void => {
+	replace = (target: string | Location, state: object | null = null) => {
 		this.navigate(target, state, ACTION.REPLACE);
 	};
 
@@ -214,28 +214,28 @@ export class History {
 	 * @param args - Arguments passed to {@link LegacyBlocker.block}
 	 * @returns A callback to remove the block.
 	 */
-	block = (...args: any[]): (() => void) => {
+	block = (...args: any[]): Function => {
 		return this._blocker.block.apply(this._blocker, args);
 	};
 
 	/**
 	 * Remove the currently configured blocker.
 	 */
-	unblock = (): void => {
+	unblock = () => {
 		this._blocker.unblock();
 	};
 
 	/**
 	 * Shorthand for go(1). Go forward in history by one entry.
 	 */
-	goBack = (): void => {
+	goBack = () => {
 		this.go(-1);
 	};
 
 	/**
 	 * Shorthand for go(-1). Go forward in history by one entry.
 	 */
-	goForward = (): void => {
+	goForward = () => {
 		this.go(1);
 	};
 
@@ -250,7 +250,7 @@ export class History {
 	 * history.go(10) // go ten entries forward.
 	 * ```
 	 */
-	go = (steps: number): void => {
+	go = (steps: number) => {
 		this._historyAdapter.go(steps);
 	};
 

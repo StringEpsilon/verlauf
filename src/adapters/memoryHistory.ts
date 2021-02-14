@@ -33,17 +33,17 @@ export function createMemoryAdapter(
 	historyListener: OnAdapterLocationChange,
 	options: MemoryHistoryOptions
 ): HistoryAdapter {
-	let entries: Location[];
+	let _entries: Location[];
 
-	entries = normalizeEntries(
+	_entries = normalizeEntries(
 		options.initialEntries || ["/"],
 		options.keyLength
 	);
-	let activeEntry: number = options.initialIndex ? options.initialIndex : 0;
+	let _currentEntry: number = options.initialIndex ? options.initialIndex : 0;
 
 	return {
 		getLength(): number {
-			return entries.length;
+			return _entries.length;
 		},
 
 		modifyPath(path: string): string {
@@ -51,16 +51,16 @@ export function createMemoryAdapter(
 		},
 
 		pushState(newLocation: Location, target: string) {
-			entries.push(newLocation);
-			activeEntry++;
+			_entries.push(newLocation);
+			_currentEntry++;
 		},
 
 		replaceState(newLocation: Location, target: string) {
-			entries[activeEntry] = newLocation;
+			_entries[_currentEntry] = newLocation;
 		},
 
-		getLocation() {
-			return entries[activeEntry];
+		getLocation(): Location {
+			return _entries[_currentEntry];
 		},
 
 		listen() {
@@ -68,10 +68,10 @@ export function createMemoryAdapter(
 		},
 
 		go(steps: number) {
-			let targetIndex = activeEntry + steps;
-			if (targetIndex >= 0 && targetIndex < entries.length) {
-				activeEntry = targetIndex;
-				historyListener(entries[activeEntry]);
+			let targetIndex = _currentEntry + steps;
+			if (targetIndex >= 0 && targetIndex < _entries.length) {
+				_currentEntry = targetIndex;
+				historyListener(_entries[_currentEntry]);
 			}
 		},
 	};
@@ -82,6 +82,6 @@ export function createMemoryAdapter(
  * Compatible with node.js environments.
  * @param options Additional options for the memory history.
  */
-export function createMemoryHistory(options?: MemoryHistoryOptions) {
+export function createMemoryHistory(options?: MemoryHistoryOptions): History {
 	return new History(createMemoryAdapter, options);
 }

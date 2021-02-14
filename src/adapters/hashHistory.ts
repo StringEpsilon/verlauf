@@ -34,18 +34,18 @@ export function createHashAdapter(
 	historyListener: OnAdapterLocationChange,
 	options: HashHistoryOptions
 ): HistoryAdapter {
-	let basename: string = stripTrailingSlash(
+	let _basename: string = stripTrailingSlash(
 		addLeadingSlash(options.basename || "")
 	);
 	let _window: Window = options.window || window;
-	let hash: string = "#/";
-	let hashBase: string = getHashBase();
+	let _hash: string = "#/";
+	let _hashBase: string = getHashBase();
 
 	if (options.hashType === "noslash") {
-		hash = "#";
+		_hash = "#";
 	}
 	if (options.hashType === "hashbang") {
-		hash = "#!/";
+		_hash = "#!/";
 	}
 
 	return {
@@ -53,7 +53,7 @@ export function createHashAdapter(
 			return _window.history.length;
 		},
 
-		pushState(newLocation: Location, target: string): void {
+		pushState(newLocation: Location, target: string) {
 			_window.history.pushState(
 				{ key: newLocation.key, state: newLocation.state },
 				"",
@@ -61,7 +61,7 @@ export function createHashAdapter(
 			);
 		},
 
-		replaceState(newLocation: Location, target: string): void {
+		replaceState(newLocation: Location, target: string) {
 			_window.history.replaceState(
 				{ key: newLocation.key, state: newLocation.state },
 				"",
@@ -70,31 +70,31 @@ export function createHashAdapter(
 		},
 
 		getLocation(): Location {
-			let result = parsePath(_window.location.hash.substr(hash.length));
+			let result = parsePath(_window.location.hash.substr(_hash.length));
 			result.state = _window.history.state?.state || null;
 			result.key = _window.history.state?.key || "";
 			result.pathname = addLeadingSlash(
-				stripBasename(addLeadingSlash(result.pathname), basename)
+				stripBasename(addLeadingSlash(result.pathname), _basename)
 			);
 			return result;
 		},
 
-		listen(): void {
+		listen() {
 			_window.onhashchange = () => {
 				historyListener(this.getLocation());
 			};
 		},
 
-		go(steps): void {
+		go(steps) {
 			_window.history.go(steps);
 		},
 
-		modifyPath(path) {
-			if (basename && basename !== "/") {
-				path = basename + path;
+		modifyPath(path): string {
+			if (_basename && _basename !== "/") {
+				path = _basename + path;
 			}
 
-			return hashBase + hash + stripLeadingSlash(path);
+			return _hashBase + _hash + stripLeadingSlash(path);
 		},
 	};
 }
@@ -103,6 +103,6 @@ export function createHashAdapter(
  * Creates a History instance that keeps all location information in the hash portion of the URL.
  * @param options Additional options for the hash histories behavior.
  */
-export function createHashHistory(options?: HashHistoryOptions) {
+export function createHashHistory(options?: HashHistoryOptions): History {
 	return new History(createHashAdapter, options);
 }
