@@ -4,10 +4,6 @@
 
 An adapter between [History](../classes/history.md) and `window.history` or custom history implementations.
 
-## Hierarchy
-
-* **HistoryAdapter**
-
 ## Table of contents
 
 ### Properties
@@ -28,6 +24,12 @@ An adapter between [History](../classes/history.md) and `window.history` or cust
 
 Return the current size of the history stack.
 
+#### Type declaration:
+
+▸ (): *number*
+
+**Returns:** *number*
+
 ___
 
 ### getLocation
@@ -35,6 +37,12 @@ ___
 • **getLocation**: () => [*Location*](location.md)
 
 Get the current location on stack.
+
+#### Type declaration:
+
+▸ (): [*Location*](location.md)
+
+**Returns:** [*Location*](location.md)
 
 ___
 
@@ -44,6 +52,18 @@ ___
 
 Go n steps backwards or forwards on the history stack
 
+#### Type declaration:
+
+▸ (`steps`: *number*): *void*
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`steps` | *number* |
+
+**Returns:** *void*
+
 ___
 
 ### listen
@@ -51,6 +71,12 @@ ___
 • **listen**: () => *void*
 
 Registers the relevant event listeners.
+
+#### Type declaration:
+
+▸ (): *void*
+
+**Returns:** *void*
 
 ___
 
@@ -60,6 +86,18 @@ ___
 
 To modify a given path according to the [HistoryOptions](historyoptions.md) and the history type.
 
+#### Type declaration:
+
+▸ (`path`: *string*): *string*
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`path` | *string* |
+
+**Returns:** *string*
+
 ___
 
 ### pushState
@@ -68,6 +106,19 @@ ___
 
 Provides the method to push a new location to the stack
 
+#### Type declaration:
+
+▸ (`state`: [*Location*](location.md), `target`: *string*): *void*
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`state` | [*Location*](location.md) |
+`target` | *string* |
+
+**Returns:** *void*
+
 ___
 
 ### replaceState
@@ -75,3 +126,16 @@ ___
 • **replaceState**: (`state`: [*Location*](location.md), `target`: *string*) => *void*
 
 Provides the method to replace the current location on the stack
+
+#### Type declaration:
+
+▸ (`state`: [*Location*](location.md), `target`: *string*): *void*
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`state` | [*Location*](location.md) |
+`target` | *string* |
+
+**Returns:** *void*

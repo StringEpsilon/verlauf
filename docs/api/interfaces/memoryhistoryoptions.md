@@ -26,7 +26,7 @@ Options specific to the MemoryHistory.
 
 ### basename
 
-• `Optional` **basename**: *undefined* \| *string*
+• `Optional` **basename**: *string*
 
 Basename that will be appended to pathnames. Default: none.
 
@@ -36,7 +36,7 @@ ___
 
 ### createBlocker
 
-• `Optional` **createBlocker**: *undefined* \| Function
+• `Optional` **createBlocker**: Function
 
 Optional override for the history.block() behavior.
 
@@ -46,7 +46,7 @@ ___
 
 ### getUserConfirmation
 
-• `Optional` **getUserConfirmation**: *undefined* \| [*getUserConfirmation*](../README.md#getuserconfirmation)
+• `Optional` **getUserConfirmation**: [*getUserConfirmation*](../README.md#getuserconfirmation)
 
 Callback to ask the user to confirm or abort a page transition when blocking is active.
 Default: Uses window.confirm.
@@ -57,7 +57,7 @@ ___
 
 ### initialEntries
 
-• `Optional` **initialEntries**: *undefined* \| (*string* \| [*Location*](location.md))[]
+• `Optional` **initialEntries**: (*string* \| [*Location*](location.md))[]
 
 Preset the entries of the memory history.
 Default: [ "/" ].
@@ -66,7 +66,7 @@ ___
 
 ### initialIndex
 
-• `Optional` **initialIndex**: *undefined* \| *number*
+• `Optional` **initialIndex**: *number*
 
 Set the current location index from the provided initialEntries.
 Default: The last item or initialEntries or 0
@@ -75,7 +75,7 @@ ___
 
 ### keyLength
 
-• `Optional` **keyLength**: *undefined* \| *number*
+• `Optional` **keyLength**: *number*
 
 Length of the 'key' for each history entry. Default: 6.
 
@@ -85,7 +85,7 @@ ___
 
 ### preserveSearch
 
-• `Optional` **preserveSearch**: *undefined* \| *boolean*
+• `Optional` **preserveSearch**: *boolean*
 
 Tell history to preserve the search fragment when only the hash changes.
 Default is false.

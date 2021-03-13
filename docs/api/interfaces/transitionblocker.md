@@ -4,10 +4,6 @@
 
 Interface for the transition blocking subsystem.
 
-## Hierarchy
-
-* **TransitionBlocker**
-
 ## Table of contents
 
 ### Methods
@@ -27,10 +23,10 @@ Method to set a / the blocker.
 #### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
+:------ | :------ | :------ |
 `...args` | *any*[] | generic arguments.    |
 
-**Returns:** *function*
+**Returns:** () => *void*
 
 ___
 
@@ -43,7 +39,7 @@ Method to dertime whether or not a given transition is blocked.
 #### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
+:------ | :------ | :------ |
 `newLocation` | [*Location*](location.md) | Target location of the pending transition.   |
 `action` | *string* | Action related to the pending transition.    |
 
@@ -60,7 +56,7 @@ Unblock everything.
 #### Parameters:
 
 Name | Type | Description |
------- | ------ | ------ |
+:------ | :------ | :------ |
 `...args` | *any*[] | generic arguments    |
 
 **Returns:** *void*

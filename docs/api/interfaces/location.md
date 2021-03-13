@@ -2,10 +2,6 @@
 
 # Interface: Location
 
-## Hierarchy
-
-* **Location**
-
 ## Table of contents
 
 ### Properties
@@ -20,7 +16,7 @@
 
 ### hash
 
-• `Optional` **hash**: *undefined* \| *string*
+• `Optional` **hash**: *string*
 
 Fragment portion, including the '#'.
 
@@ -28,7 +24,7 @@ ___
 
 ### key
 
-• `Optional` **key**: *undefined* \| *string*
+• `Optional` **key**: *string*
 
 Unique string for this location.
 
@@ -44,7 +40,7 @@ ___
 
 ### search
 
-• `Optional` **search**: *undefined* \| *string*
+• `Optional` **search**: *string*
 
 Query portion, including the '?'
 
