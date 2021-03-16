@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.1:
+- Updated build dependencies
+- Auto-generate type definitions at build time.
+- Small documentation and readme changes
+
 ## 0.9.0
 
 ### Breaking:

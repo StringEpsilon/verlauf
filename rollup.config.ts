@@ -59,8 +59,6 @@ const config = [
 			copy({
 				targets: [
 					{ src: 'package.json', dest: 'dist/' },
-					// TODO: Remove this workaround once rollup-plugin-dts exports everything correctly.
-					{ src: 'verlauf.d.ts', dest: 'dist/', rename: 'types.d.ts' },
 					{ src: 'README.md', dest: 'dist/' },
 				]
 			})
