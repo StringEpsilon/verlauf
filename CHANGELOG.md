@@ -1,30 +1,36 @@
 # Changelog
 
+## FUTURE:
+
+-   hashAdapter now respects the window when looking for a `<base href="...">`, similar to browserAdapter.
+
 ## 0.9.1:
-- Updated build dependencies
-- Auto-generate type definitions at build time.
-- Small documentation and readme changes
+
+-   Updated build dependencies
+-   Auto-generate type definitions at build time.
+-   Small documentation and readme changes
 
 ## 0.9.0
 
 ### Breaking:
-- Removed `history.setOption()`. 
 
-It's potential to break things outweighs it's usefulness. And kicking it out makes the codebase a little easier and the bundle size smaller. 
+-   Removed `history.setOption()`.
+
+It's potential to break things outweighs it's usefulness. And kicking it out makes the codebase a little easier and the bundle size smaller.
 If you need some of the cut functionality, some of it can be achieved by implementing your own `HistoryAdapter`
 
 ### Non-Breaking:
-- Fixed the behavior of the `keepPage` option:
-    - Strip extranious slashes.
-    - Use the window object provided in the history options.
+
+-   Fixed the behavior of the `keepPage` option:
+    -   Strip extranious slashes.
+    -   Use the window object provided in the history options.
 
 ## 0.8.0
 
--   Marked _pendingTransition as private
+-   Marked \_pendingTransition as private
 -   Marked length, location, and action explicelty as public
 -   Enabled typescript strict mode.
 -   Fixed missing exports in verlauf.d.ts.
-
 
 ## 0.7.2
 
