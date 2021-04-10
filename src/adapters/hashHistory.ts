@@ -14,14 +14,15 @@ import {
 } from "../basenameUtils";
 
 /** @ignore */
-function getHashBase(): string {
-	if (!document.querySelector("base[href]")) {
+function getHashBase(window: Window): string {
+	if (!window.document.querySelector("base[href]")) {
 		return "";
 	}
+
 	return (
-		document.location.origin +
-		document.location.pathname +
-		document.location.search
+		window.location.origin +
+		window.location.pathname +
+		window.location.search
 	);
 }
 
@@ -39,7 +40,7 @@ export function createHashAdapter(
 	);
 	let _window: Window = options.window || window;
 	let _hash: string = "#/";
-	let _hashBase: string = getHashBase();
+	let _hashBase: string = getHashBase(_window);
 
 	if (options.hashType === "noslash") {
 		_hash = "#";

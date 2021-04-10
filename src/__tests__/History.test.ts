@@ -1,5 +1,10 @@
 import { History } from "../History";
-import { HistoryAdapter, NavigationListener, HistoryOptions } from "../types";
+import {
+	HistoryAdapter,
+	NavigationListener,
+	HistoryOptions,
+	TransitionBlocker,
+} from "../types";
 import { LegacyBlocker } from "../LegacyBlocker";
 
 interface TestWrapper extends HistoryAdapter {
@@ -129,15 +134,52 @@ describe("History", () => {
 	});
 
 	describe("block()", () => {
+		let isBlocked = false;
+
+		function DummyBlocker(): TransitionBlocker {
+			return {
+				unblock() {
+					isBlocked = false;
+				},
+				block(prompt: string | Function) {
+					isBlocked = true;
+					return () => {
+						this.unblock();
+					};
+				},
+
+				isBlocked(newLocation: Location, action: string): boolean {
+					return isBlocked;
+				},
+			};
+		}
+
 		it("returns and unblock functions that works.", () => {
-			let history = new History(createTestWrapper);
+			let history = new History(createTestWrapper, {
+				createBlocker: DummyBlocker,
+			});
 
 			let unblock = history.block("hello!");
+
+			expect(isBlocked).toBe(true);
 
 			expect(typeof unblock).toBe("function");
 			expect(() => unblock()).not.toThrow();
 
-			expect(() => unblock()).not.toThrow();
+			expect(isBlocked).toBe(false);
+		});
+		it("Unblocks properly via history.unlock() too.", () => {
+			let history = new History(createTestWrapper, {
+				createBlocker: DummyBlocker,
+			});
+
+			history.block("hello!");
+
+			expect(isBlocked).toBe(true);
+
+			history.unblock();
+
+			expect(isBlocked).toBe(false);
 		});
 	});
 

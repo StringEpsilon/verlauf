@@ -1,4 +1,4 @@
-import { createHashAdapter } from "../hashHistory";
+import { createHashAdapter, createHashHistory } from "../hashHistory";
 import { parsePath } from "../../utils/parsePath";
 
 describe("createHashAdapter()", () => {
@@ -221,49 +221,55 @@ describe("createHashAdapter()", () => {
 				pathname: "/location",
 			});
 		});
-	});
 
-	describe("listens to onhashchange", () => {
-		const _window = {
-			onhashchange: jest.fn(),
-			location: new URL(
-				"http://www.example.com/index.html#/hashlocation"
-			),
-			history: {},
-		};
-		const changeListener = jest.fn();
-		// @ts-ignore
-		let wrapper = createHashAdapter(changeListener, { window: _window });
+		it("in modifyPath(), appends the correct base path", () => {
+			let newWindow = Object.create(window);
+			delete newWindow.location;
+			newWindow.location = {
+				...location,
+				origin: "https://www.example.com",
+				pathname: "/index.html",
+			};
+			newWindow.document.querySelector = jest.fn(() => true);
 
-		wrapper.listen();
-		expect(_window.onhashchange).toBeDefined();
-		_window.onhashchange();
+			let wrapper = createHashAdapter(jest.fn(), {
+				window: newWindow,
+				basename: "/base",
+				keepPage: true,
+			});
 
-		expect(changeListener).toBeCalledTimes(1);
-		expect(changeListener).toBeCalledWith({
-			hash: "",
-			key: "",
-			pathname: "/hashlocation",
-			search: "",
-			state: null,
+			expect(wrapper.modifyPath("/foo")).toBe(
+				"https://www.example.com/index.html#/base/foo"
+			);
 		});
 	});
 
-	describe(".go", () => {
-		it("calls window.history.go()", () => {
-			const _window = {
-				onhashchange: jest.fn(),
-				history: {
-					go: jest.fn(),
-				},
-			};
-			// @ts-ignore
-			let wrapper = createHashAdapter(jest.fn(), { window: _window });
+	describe(".listen()", () => {
+		it("registers for the onhashchange event of the window", () => {
+			const listener = jest.fn();
+			let wrapper = createHashAdapter(listener, {});
+
+			expect(window.onhashchange).toBe(null);
+
+			wrapper.listen();
+
+			expect(window.onhashchange).not.toBe(null);
+
+			window.onhashchange(null);
+
+			expect(listener).toBeCalledTimes(1);
+		});
+	});
+
+	describe(".go()", () => {
+		it("passes through to window.history.go", () => {
+			let wrapper = createHashAdapter(jest.fn(), {});
+			window.history.go = jest.fn();
 
 			wrapper.go(-1);
 
-			expect(_window.history.go).toBeCalledTimes(1);
-			expect(_window.history.go).toBeCalledWith(-1);
+			expect(window.history.go).toBeCalledTimes(1);
+			expect(window.history.go).toBeCalledWith(-1);
 		});
 	});
 });
