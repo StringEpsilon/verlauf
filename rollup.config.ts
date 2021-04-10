@@ -7,14 +7,9 @@ import copy from "rollup-plugin-copy";
 function makeEsmConfig(input, output) {
 	return {
 		input: input,
-		output: [
-			{
-				file: output,
-				format: "esm",
-				plugins: [terser({ numWorkers: 1 })],
-			},
-		],
+		output: { file: "dist/" + output, format: "esm" },
 		plugins: [
+			[terser({ numWorkers: 1 })],
 			typescript({
 				clean: true,
 				tsconfigOverride: {
@@ -32,25 +27,19 @@ const config = [
 			{
 				file: `dist/cjs/${pkg.name}.js`,
 				format: "cjs",
-				plugins: [terser({ numWorkers: 1 })],
 			},
 			{
 				file: `dist/umd/${pkg.name}.js`,
 				format: "umd",
-				plugins: [terser({ numWorkers: 1 })],
-				name: "verlauf",
+				name: pkg.name,
 			},
 		],
-		plugins: [
-			typescript({
-				clean: true,
-			}),
-		],
+		plugins: [typescript({ clean: true }), terser({ numWorkers: 1 })],
 	},
-	makeEsmConfig("src/adapters/browserHistory.ts", "dist/createBrowserHistory.js"),
-	makeEsmConfig("src/adapters/hashHistory.ts", "dist/createHashHistory.js"),
-	makeEsmConfig("src/adapters/memoryHistory.ts", "dist/createMemoryHistory.js"),
-	makeEsmConfig("src/index.ts", `dist/esm/${pkg.name}.js`,),
+	makeEsmConfig("src/adapters/browserHistory.ts", "createBrowserHistory.js"),
+	makeEsmConfig("src/adapters/hashHistory.ts", "createHashHistory.js"),
+	makeEsmConfig("src/adapters/memoryHistory.ts", "createMemoryHistory.js"),
+	makeEsmConfig("src/index.ts", `dist/esm/${pkg.name}.js`),
 	{
 		input: "./src/index.ts",
 		output: [{ file: "dist/verlauf.d.ts", format: "es" }],
@@ -58,10 +47,10 @@ const config = [
 			dts(),
 			copy({
 				targets: [
-					{ src: 'package.json', dest: 'dist/' },
-					{ src: 'README.md', dest: 'dist/' },
-				]
-			})
+					{ src: "package.json", dest: "dist/" },
+					{ src: "README.md", dest: "dist/" },
+				],
+			}),
 		],
 	},
 ];
