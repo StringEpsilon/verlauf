@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install packages
-        run: "npm install"
+        run: "npm ci"
       - name: "check prettier"
         run: "npm run check_prettier"
       - name: "Run tests"
