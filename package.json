@@ -19,6 +19,7 @@
 		"prettier": "prettier --write src/**"
 	},
 	"devDependencies": {
+		"@types/jest": "^26.0.23",
 		"jest": "^27.0.4",
 		"prettier": "^2.3.0",
 		"rollup": "^2.50.4",
