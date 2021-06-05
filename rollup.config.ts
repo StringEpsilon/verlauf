@@ -9,13 +9,13 @@ function makeEsmConfig(input, output) {
 		input: input,
 		output: { file: "dist/" + output, format: "esm" },
 		plugins: [
-			[terser({ numWorkers: 1 })],
 			typescript({
 				clean: true,
 				tsconfigOverride: {
 					compilerOptions: { target: "ES6", module: "ESNext" },
 				},
 			}),
+			terser({ numWorkers: 1 }),
 		],
 	};
 }
