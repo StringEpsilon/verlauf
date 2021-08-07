@@ -6,17 +6,17 @@ verlauf
 
 ### Classes
 
-- [History](classes/history.md)
+- [History](classes/History.md)
 
 ### Interfaces
 
-- [BrowserHistoryOptions](interfaces/browserhistoryoptions.md)
-- [HashHistoryOptions](interfaces/hashhistoryoptions.md)
-- [HistoryAdapter](interfaces/historyadapter.md)
-- [HistoryOptions](interfaces/historyoptions.md)
-- [Location](interfaces/location.md)
-- [MemoryHistoryOptions](interfaces/memoryhistoryoptions.md)
-- [TransitionBlocker](interfaces/transitionblocker.md)
+- [BrowserHistoryOptions](interfaces/BrowserHistoryOptions.md)
+- [HashHistoryOptions](interfaces/HashHistoryOptions.md)
+- [HistoryAdapter](interfaces/HistoryAdapter.md)
+- [HistoryOptions](interfaces/HistoryOptions.md)
+- [Location](interfaces/Location.md)
+- [MemoryHistoryOptions](interfaces/MemoryHistoryOptions.md)
+- [TransitionBlocker](interfaces/TransitionBlocker.md)
 
 ### Type aliases
 
@@ -41,114 +41,116 @@ verlauf
 
 ### NavigationListener
 
-Ƭ **NavigationListener**: (`newLocation`: [*Location*](interfaces/location.md), `action`: *string*) => *void*
+Ƭ **NavigationListener**: (`newLocation`: [`Location`](interfaces/Location.md), `action`: `string`) => `void`
+
+#### Type declaration
+
+▸ (`newLocation`, `action`): `void`
 
 Callback for history.listen(). Invoked on every navigation (push, replace, go back, go forward).
 
-**`param`** The location that was navigated to.
+##### Parameters
 
-**`param`** the action type associated with the navigation.
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `newLocation` | [`Location`](interfaces/Location.md) | The location that was navigated to. |
+| `action` | `string` | the action type associated with the navigation. |
 
-#### Type declaration:
+##### Returns
 
-▸ (`newLocation`: [*Location*](interfaces/location.md), `action`: *string*): *void*
-
-#### Parameters:
-
-Name | Type |
-:------ | :------ |
-`newLocation` | [*Location*](interfaces/location.md) |
-`action` | *string* |
-
-**Returns:** *void*
+`void`
 
 ___
 
 ### OnAdapterLocationChange
 
-Ƭ **OnAdapterLocationChange**: (`newLocation`: [*Location*](interfaces/location.md)) => *void*
+Ƭ **OnAdapterLocationChange**: (`newLocation`: [`Location`](interfaces/Location.md)) => `void`
+
+#### Type declaration
+
+▸ (`newLocation`): `void`
 
 Callback invoked on HistoryAdapter location changes.
 
-#### Type declaration:
+##### Parameters
 
-▸ (`newLocation`: [*Location*](interfaces/location.md)): *void*
+| Name | Type |
+| :------ | :------ |
+| `newLocation` | [`Location`](interfaces/Location.md) |
 
-#### Parameters:
+##### Returns
 
-Name | Type |
-:------ | :------ |
-`newLocation` | [*Location*](interfaces/location.md) |
-
-**Returns:** *void*
+`void`
 
 ___
 
 ### getUserConfirmation
 
-Ƭ **getUserConfirmation**: (`message`: *string*, `callback`: (`confirmNavigation`: *boolean*) => *void*) => *void*
+Ƭ **getUserConfirmation**: (`message`: `string`, `callback`: (`confirmNavigation`: `boolean`) => `void`) => `void`
+
+#### Type declaration
+
+▸ (`message`, `callback`): `void`
 
 Callback to ask the user to confirm or deny a transition in LegacyBlocker.
 
-**`param`** Message to be shown to the user.
+##### Parameters
 
-**`param`** Must be called with `true` or `false` to confirm or deny the transition.
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `message` | `string` | Message to be shown to the user. |
+| `callback` | (`confirmNavigation`: `boolean`) => `void` | Must be called with `true` or `false` to confirm or deny the transition. |
 
-#### Type declaration:
+##### Returns
 
-▸ (`message`: *string*, `callback`: (`confirmNavigation`: *boolean*) => *void*): *void*
-
-#### Parameters:
-
-Name | Type |
-:------ | :------ |
-`message` | *string* |
-`callback` | (`confirmNavigation`: *boolean*) => *void* |
-
-**Returns:** *void*
+`void`
 
 ## Functions
 
 ### LegacyBlocker
 
-▸ **LegacyBlocker**(`getUserConfirmation`: [*getUserConfirmation*](README.md#getuserconfirmation)): [*TransitionBlocker*](interfaces/transitionblocker.md)
+▸ **LegacyBlocker**(`getUserConfirmation`): [`TransitionBlocker`](interfaces/TransitionBlocker.md)
 
 Implements the blocking behavior of history@4.10.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`getUserConfirmation` | [*getUserConfirmation*](README.md#getuserconfirmation) | Function used to get confirmation from the user for a blocked transition.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `getUserConfirmation` | [`getUserConfirmation`](README.md#getuserconfirmation) | Function used to get confirmation from the user for a blocked transition. |
 
-**Returns:** [*TransitionBlocker*](interfaces/transitionblocker.md)
+#### Returns
+
+[`TransitionBlocker`](interfaces/TransitionBlocker.md)
 
 ___
 
 ### createBrowserAdapter
 
-▸ **createBrowserAdapter**(`historyListener`: [*OnAdapterLocationChange*](README.md#onadapterlocationchange), `options`: [*BrowserHistoryOptions*](interfaces/browserhistoryoptions.md)): [*HistoryAdapter*](interfaces/historyadapter.md)
+▸ **createBrowserAdapter**(`historyListener`, `options`): [`HistoryAdapter`](interfaces/HistoryAdapter.md)
 
 Creates an adapter to interface the HMTL 5 history API with the History instance.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`historyListener` | [*OnAdapterLocationChange*](README.md#onadapterlocationchange) | Callback for history events (onpopstate).   |
-`options` | [*BrowserHistoryOptions*](interfaces/browserhistoryoptions.md) | Browser History options.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `historyListener` | [`OnAdapterLocationChange`](README.md#onadapterlocationchange) | Callback for history events (onpopstate). |
+| `options` | [`BrowserHistoryOptions`](interfaces/BrowserHistoryOptions.md) | Browser History options. |
 
-**Returns:** [*HistoryAdapter*](interfaces/historyadapter.md)
+#### Returns
+
+[`HistoryAdapter`](interfaces/HistoryAdapter.md)
 
 ___
 
 ### createBrowserHistory
 
-▸ **createBrowserHistory**(`options?`: [*BrowserHistoryOptions*](interfaces/browserhistoryoptions.md)): [*History*](classes/history.md)
+▸ **createBrowserHistory**(`options?`): [`History`](classes/History.md)
 
 Creates a History instance with the browser history adapter.
 
-**`example`** 
+**`example`**
 ```js
 const myHistory = createBrowserHistory({
   // Always prepend "/ui/" to all paths before pushing to history:
@@ -161,66 +163,74 @@ myHistory.push("/login"); // navigate to "/login".
 // Thanks to the basename config option, the browser navigates to "/ui/login".
 ```
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`options?` | [*BrowserHistoryOptions*](interfaces/browserhistoryoptions.md) | Options for the History object and the browserHistory adapter.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `options?` | [`BrowserHistoryOptions`](interfaces/BrowserHistoryOptions.md) | Options for the History object and the browserHistory adapter. |
 
-**Returns:** [*History*](classes/history.md)
+#### Returns
+
+[`History`](classes/History.md)
 
 ___
 
 ### createHashAdapter
 
-▸ **createHashAdapter**(`historyListener`: [*OnAdapterLocationChange*](README.md#onadapterlocationchange), `options`: [*HashHistoryOptions*](interfaces/hashhistoryoptions.md)): [*HistoryAdapter*](interfaces/historyadapter.md)
+▸ **createHashAdapter**(`historyListener`, `options`): [`HistoryAdapter`](interfaces/HistoryAdapter.md)
 
 Creates an adapter to interface the HMTL 5 history API with the history instance for hash based history.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`historyListener` | [*OnAdapterLocationChange*](README.md#onadapterlocationchange) | Callback for history events (onhashchange).   |
-`options` | [*HashHistoryOptions*](interfaces/hashhistoryoptions.md) | Hash history options.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `historyListener` | [`OnAdapterLocationChange`](README.md#onadapterlocationchange) | Callback for history events (onhashchange). |
+| `options` | [`HashHistoryOptions`](interfaces/HashHistoryOptions.md) | Hash history options. |
 
-**Returns:** [*HistoryAdapter*](interfaces/historyadapter.md)
+#### Returns
+
+[`HistoryAdapter`](interfaces/HistoryAdapter.md)
 
 ___
 
 ### createHashHistory
 
-▸ **createHashHistory**(`options?`: [*HashHistoryOptions*](interfaces/hashhistoryoptions.md)): [*History*](classes/history.md)
+▸ **createHashHistory**(`options?`): [`History`](classes/History.md)
 
 Creates a History instance that keeps all location information in the hash portion of the URL.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`options?` | [*HashHistoryOptions*](interfaces/hashhistoryoptions.md) | Additional options for the hash histories behavior.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `options?` | [`HashHistoryOptions`](interfaces/HashHistoryOptions.md) | Additional options for the hash histories behavior. |
 
-**Returns:** [*History*](classes/history.md)
+#### Returns
+
+[`History`](classes/History.md)
 
 ___
 
 ### createLocation
 
-▸ **createLocation**(`path`: *string* \| [*Location*](interfaces/location.md), `state?`: *any*, `key?`: *any*, `currentLocation?`: [*Location*](interfaces/location.md), `preserveSearch?`: *boolean*): [*Location*](interfaces/location.md)
+▸ **createLocation**(`path`, `state?`, `key?`, `currentLocation?`, `preserveSearch?`): [`Location`](interfaces/Location.md)
 
 Creates a new location object for a target path / location resolving the pathnames from the current location.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Default value | Description |
-:------ | :------ | :------ | :------ |
-`path` | *string* \| [*Location*](interfaces/location.md) | - | Target path or location object to resolve to.   |
-`state?` | *any* | - | Desired state of the new location   |
-`key?` | *any* | - | Key for the new location.   |
-`currentLocation?` | [*Location*](interfaces/location.md) | - | The location to resolve from   |
-`preserveSearch` | *boolean* | false | preserve the search fragment when only the hash changes.   |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `path` | `string` \| [`Location`](interfaces/Location.md) | `undefined` | Target path or location object to resolve to. |
+| `state?` | `any` | `undefined` | Desired state of the new location |
+| `key?` | `any` | `undefined` | Key for the new location. |
+| `currentLocation?` | [`Location`](interfaces/Location.md) | `undefined` | The location to resolve from |
+| `preserveSearch` | `boolean` | `false` | preserve the search fragment when only the hash changes. |
 
-**Returns:** [*Location*](interfaces/location.md)
+#### Returns
+
+[`Location`](interfaces/Location.md)
 
 The resolved new location.
 
@@ -228,51 +238,57 @@ ___
 
 ### createMemoryAdapter
 
-▸ **createMemoryAdapter**(`historyListener`: [*OnAdapterLocationChange*](README.md#onadapterlocationchange), `options`: [*MemoryHistoryOptions*](interfaces/memoryhistoryoptions.md)): [*HistoryAdapter*](interfaces/historyadapter.md)
+▸ **createMemoryAdapter**(`historyListener`, `options`): [`HistoryAdapter`](interfaces/HistoryAdapter.md)
 
 Creates an adapter with an internal history stack for the History instance.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`historyListener` | [*OnAdapterLocationChange*](README.md#onadapterlocationchange) | Callback for history "events", invoked on `go()`, as the memory adapter doesn't listen to any browser events.   |
-`options` | [*MemoryHistoryOptions*](interfaces/memoryhistoryoptions.md) | Memory History options.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `historyListener` | [`OnAdapterLocationChange`](README.md#onadapterlocationchange) | Callback for history "events", invoked on `go()`, as the memory adapter doesn't listen to any browser events. |
+| `options` | [`MemoryHistoryOptions`](interfaces/MemoryHistoryOptions.md) | Memory History options. |
 
-**Returns:** [*HistoryAdapter*](interfaces/historyadapter.md)
+#### Returns
+
+[`HistoryAdapter`](interfaces/HistoryAdapter.md)
 
 ___
 
 ### createMemoryHistory
 
-▸ **createMemoryHistory**(`options?`: [*MemoryHistoryOptions*](interfaces/memoryhistoryoptions.md)): [*History*](classes/history.md)
+▸ **createMemoryHistory**(`options?`): [`History`](classes/History.md)
 
 Creates a history instance using only internal memory for keeping track of locations.
 Compatible with node.js environments.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`options?` | [*MemoryHistoryOptions*](interfaces/memoryhistoryoptions.md) | Additional options for the memory history.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `options?` | [`MemoryHistoryOptions`](interfaces/MemoryHistoryOptions.md) | Additional options for the memory history. |
 
-**Returns:** [*History*](classes/history.md)
+#### Returns
+
+[`History`](classes/History.md)
 
 ___
 
 ### createPath
 
-▸ **createPath**(`location`: [*Location*](interfaces/location.md)): *string*
+▸ **createPath**(`location`): `string`
 
 Creates a path string from a location object.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`location` | [*Location*](interfaces/location.md) | Location object to create a path from.   |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `location` | [`Location`](interfaces/Location.md) | Location object to create a path from. |
 
-**Returns:** *string*
+#### Returns
+
+`string`
 
 the path string.
 
@@ -280,17 +296,19 @@ ___
 
 ### locationsAreEqual
 
-▸ **locationsAreEqual**(`a`: [*Location*](interfaces/location.md), `b`: [*Location*](interfaces/location.md)): *boolean*
+▸ **locationsAreEqual**(`a`, `b`): `boolean`
 
 Check if two locations are equal.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`a` | [*Location*](interfaces/location.md) | first location   |
-`b` | [*Location*](interfaces/location.md) | second location   |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `a` | [`Location`](interfaces/Location.md) | first location |
+| `b` | [`Location`](interfaces/Location.md) | second location |
 
-**Returns:** *boolean*
+#### Returns
+
+`boolean`
 
 true, if the locations are equal.

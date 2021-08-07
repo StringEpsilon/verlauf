@@ -2,140 +2,126 @@
 
 # Interface: HistoryAdapter
 
-An adapter between [History](../classes/history.md) and `window.history` or custom history implementations.
+An adapter between [History](../classes/History.md) and `window.history` or custom history implementations.
 
 ## Table of contents
 
-### Properties
+### Methods
 
-- [getLength](historyadapter.md#getlength)
-- [getLocation](historyadapter.md#getlocation)
-- [go](historyadapter.md#go)
-- [listen](historyadapter.md#listen)
-- [modifyPath](historyadapter.md#modifypath)
-- [pushState](historyadapter.md#pushstate)
-- [replaceState](historyadapter.md#replacestate)
+- [getLength](HistoryAdapter.md#getlength)
+- [getLocation](HistoryAdapter.md#getlocation)
+- [go](HistoryAdapter.md#go)
+- [listen](HistoryAdapter.md#listen)
+- [modifyPath](HistoryAdapter.md#modifypath)
+- [pushState](HistoryAdapter.md#pushstate)
+- [replaceState](HistoryAdapter.md#replacestate)
 
-## Properties
+## Methods
 
 ### getLength
 
-• **getLength**: () => *number*
+▸ **getLength**(): `number`
 
 Return the current size of the history stack.
 
-#### Type declaration:
+#### Returns
 
-▸ (): *number*
-
-**Returns:** *number*
+`number`
 
 ___
 
 ### getLocation
 
-• **getLocation**: () => [*Location*](location.md)
+▸ **getLocation**(): [`Location`](Location.md)
 
 Get the current location on stack.
 
-#### Type declaration:
+#### Returns
 
-▸ (): [*Location*](location.md)
-
-**Returns:** [*Location*](location.md)
+[`Location`](Location.md)
 
 ___
 
 ### go
 
-• **go**: (`steps`: *number*) => *void*
+▸ **go**(`steps`): `void`
 
 Go n steps backwards or forwards on the history stack
 
-#### Type declaration:
+#### Parameters
 
-▸ (`steps`: *number*): *void*
+| Name | Type |
+| :------ | :------ |
+| `steps` | `number` |
 
-#### Parameters:
+#### Returns
 
-Name | Type |
-:------ | :------ |
-`steps` | *number* |
-
-**Returns:** *void*
+`void`
 
 ___
 
 ### listen
 
-• **listen**: () => *void*
+▸ **listen**(): `void`
 
 Registers the relevant event listeners.
 
-#### Type declaration:
+#### Returns
 
-▸ (): *void*
-
-**Returns:** *void*
+`void`
 
 ___
 
 ### modifyPath
 
-• **modifyPath**: (`path`: *string*) => *string*
+▸ **modifyPath**(`path`): `string`
 
-To modify a given path according to the [HistoryOptions](historyoptions.md) and the history type.
+To modify a given path according to the [HistoryOptions](HistoryOptions.md) and the history type.
 
-#### Type declaration:
+#### Parameters
 
-▸ (`path`: *string*): *string*
+| Name | Type |
+| :------ | :------ |
+| `path` | `string` |
 
-#### Parameters:
+#### Returns
 
-Name | Type |
-:------ | :------ |
-`path` | *string* |
-
-**Returns:** *string*
+`string`
 
 ___
 
 ### pushState
 
-• **pushState**: (`state`: [*Location*](location.md), `target`: *string*) => *void*
+▸ **pushState**(`state`, `target`): `void`
 
 Provides the method to push a new location to the stack
 
-#### Type declaration:
+#### Parameters
 
-▸ (`state`: [*Location*](location.md), `target`: *string*): *void*
+| Name | Type |
+| :------ | :------ |
+| `state` | [`Location`](Location.md) |
+| `target` | `string` |
 
-#### Parameters:
+#### Returns
 
-Name | Type |
-:------ | :------ |
-`state` | [*Location*](location.md) |
-`target` | *string* |
-
-**Returns:** *void*
+`void`
 
 ___
 
 ### replaceState
 
-• **replaceState**: (`state`: [*Location*](location.md), `target`: *string*) => *void*
+▸ **replaceState**(`state`, `target`): `void`
 
 Provides the method to replace the current location on the stack
 
-#### Type declaration:
+#### Parameters
 
-▸ (`state`: [*Location*](location.md), `target`: *string*): *void*
+| Name | Type |
+| :------ | :------ |
+| `state` | [`Location`](Location.md) |
+| `target` | `string` |
 
-#### Parameters:
+#### Returns
 
-Name | Type |
-:------ | :------ |
-`state` | [*Location*](location.md) |
-`target` | *string* |
-
-**Returns:** *void*
+`void`

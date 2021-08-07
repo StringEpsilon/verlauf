@@ -8,51 +8,49 @@ History object, providing all APIs to interact with browser, hash or memory hist
 
 ### Constructors
 
-- [constructor](history.md#constructor)
+- [constructor](History.md#constructor)
 
 ### Properties
 
-- [action](history.md#action)
-- [length](history.md#length)
-- [location](history.md#location)
+- [action](History.md#action)
+- [length](History.md#length)
+- [location](History.md#location)
 
 ### Methods
 
-- [block](history.md#block)
-- [createHref](history.md#createhref)
-- [go](history.md#go)
-- [goBack](history.md#goback)
-- [goForward](history.md#goforward)
-- [isInTransition](history.md#isintransition)
-- [listen](history.md#listen)
-- [navigate](history.md#navigate)
-- [push](history.md#push)
-- [replace](history.md#replace)
-- [unblock](history.md#unblock)
-- [unlisten](history.md#unlisten)
+- [block](History.md#block)
+- [createHref](History.md#createhref)
+- [go](History.md#go)
+- [goBack](History.md#goback)
+- [goForward](History.md#goforward)
+- [isInTransition](History.md#isintransition)
+- [listen](History.md#listen)
+- [navigate](History.md#navigate)
+- [push](History.md#push)
+- [replace](History.md#replace)
+- [unblock](History.md#unblock)
+- [unlisten](History.md#unlisten)
 
 ## Constructors
 
 ### constructor
 
-\+ **new History**(`createAdapter`: (`listener`: [*OnAdapterLocationChange*](../README.md#onadapterlocationchange), `options`: [*HistoryOptions*](../interfaces/historyoptions.md)) => [*HistoryAdapter*](../interfaces/historyadapter.md), `options?`: [*HistoryOptions*](../interfaces/historyoptions.md)): [*History*](history.md)
+• **new History**(`createAdapter`, `options?`)
 
 Creates a new History instance.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`createAdapter` | (`listener`: [*OnAdapterLocationChange*](../README.md#onadapterlocationchange), `options`: [*HistoryOptions*](../interfaces/historyoptions.md)) => [*HistoryAdapter*](../interfaces/historyadapter.md) | The function to create a [HistoryAdapter](../interfaces/historyadapter.md) instance.   |
-`options?` | [*HistoryOptions*](../interfaces/historyoptions.md) | The options for the History instance and the HistoryAdapter.    |
-
-**Returns:** [*History*](history.md)
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `createAdapter` | (`listener`: [`OnAdapterLocationChange`](../README.md#onadapterlocationchange), `options`: [`HistoryOptions`](../interfaces/HistoryOptions.md)) => [`HistoryAdapter`](../interfaces/HistoryAdapter.md) | The function to create a [HistoryAdapter](../interfaces/HistoryAdapter.md) instance. |
+| `options?` | [`HistoryOptions`](../interfaces/HistoryOptions.md) | The options for the History instance and the HistoryAdapter. |
 
 ## Properties
 
 ### action
 
-• **action**: *string*
+• **action**: `string`
 
 Last action performen on the history stack. Initial value is always POP.
 
@@ -60,7 +58,7 @@ ___
 
 ### length
 
-• **length**: *number*
+• **length**: `number`
 
 Current length of the history. Value is retrived from historyAdapter.getLength() after each action (push, replace, pop).
 
@@ -68,7 +66,7 @@ ___
 
 ### location
 
-• **location**: [*Location*](../interfaces/location.md)
+• **location**: [`Location`](../interfaces/Location.md)
 
 Current location. Value is retrieved from historyAdapter.getLocation() after each action (push, replace, pop).
 
@@ -76,17 +74,19 @@ Current location. Value is retrieved from historyAdapter.getLocation() after eac
 
 ### block
 
-▸ **block**(...`args`: *any*[]): Function
+▸ **block**(...`args`): `Function`
 
 Configure a transition block. [LegacyBlocker](../README.md#legacyblocker)
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`...args` | *any*[] | Arguments passed to {@link LegacyBlocker.block}   |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `...args` | `any`[] | Arguments passed to {@link LegacyBlocker.block} |
 
-**Returns:** Function
+#### Returns
+
+`Function`
 
 A callback to remove the block.
 
@@ -94,70 +94,80 @@ ___
 
 ### createHref
 
-▸ **createHref**(`target`: [*Location*](../interfaces/location.md)): *string*
+▸ **createHref**(`target`): `string`
 
 Creates an appropriate href target string for a given location.
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`target` | [*Location*](../interfaces/location.md) |
+| Name | Type |
+| :------ | :------ |
+| `target` | [`Location`](../interfaces/Location.md) |
 
-**Returns:** *string*
+#### Returns
+
+`string`
 
 ___
 
 ### go
 
-▸ **go**(`steps`: *number*): *void*
+▸ **go**(`steps`): `void`
 
 Goes forwards or backwards in history. If the value is out of bounds, it will go as far as it can (i.E. to the first or last entry).
 
-**`example`** 
+**`example`**
 ```js
 history.go(-10); // go ten entries back.
 
 history.go(10) // go ten entries forward.
 ```
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`steps` | *number* | Number of steps to go forward / backward.   |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `steps` | `number` | Number of steps to go forward / backward. |
 
-**Returns:** *void*
+#### Returns
+
+`void`
 
 ___
 
 ### goBack
 
-▸ **goBack**(): *void*
+▸ **goBack**(): `void`
 
 Shorthand for go(1). Go forward in history by one entry.
 
-**Returns:** *void*
+#### Returns
+
+`void`
 
 ___
 
 ### goForward
 
-▸ **goForward**(): *void*
+▸ **goForward**(): `void`
 
 Shorthand for go(-1). Go forward in history by one entry.
 
-**Returns:** *void*
+#### Returns
+
+`void`
 
 ___
 
 ### isInTransition
 
-▸ **isInTransition**(): *boolean*
+▸ **isInTransition**(): `boolean`
 
 Checks whether or not the history is currently processing a transition.
 
-**Returns:** *boolean*
+#### Returns
+
+`boolean`
 
 True, if there is a transition currently in progress.
 
@@ -165,17 +175,19 @@ ___
 
 ### listen
 
-▸ **listen**(`listener`: [*NavigationListener*](../README.md#navigationlistener)): Function
+▸ **listen**(`listener`): `Function`
 
 Register a listener for all changes in location.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`listener` | [*NavigationListener*](../README.md#navigationlistener) | The callback to register. Will be called with [Location](../interfaces/location.md) and action.   |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `listener` | [`NavigationListener`](../README.md#navigationlistener) | The callback to register. Will be called with [Location](../interfaces/Location.md) and action. |
 
-**Returns:** Function
+#### Returns
+
+`Function`
 
 A callback to unregister the newly added listener.
 
@@ -183,76 +195,86 @@ ___
 
 ### navigate
 
-▸ **navigate**(`target`: *string* \| [*Location*](../interfaces/location.md), `state`: *null* \| *object*, `method?`: *string*): *void*
+▸ **navigate**(`target`, `state`, `method?`): `void`
 
 Navigate to a location with the specified method.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`target` | *string* \| [*Location*](../interfaces/location.md) | Target location.   |
-`state` | *null* \| *object* | Desired state for the location   |
-`method` | *string* | Specify the method to use for navigation. Either "PUSH" or "REPLACE". Default: PUSH.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `target` | `string` \| [`Location`](../interfaces/Location.md) | Target location. |
+| `state` | ``null`` \| `object` | Desired state for the location |
+| `method` | `string` | Specify the method to use for navigation. Either "PUSH" or "REPLACE". Default: PUSH. |
 
-**Returns:** *void*
+#### Returns
+
+`void`
 
 ___
 
 ### push
 
-▸ **push**(`target`: *string* \| [*Location*](../interfaces/location.md), `state?`: *null* \| *object*): *void*
+▸ **push**(`target`, `state?`): `void`
 
 Push a new location to the history stack and navigate to it.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Default value | Description |
-:------ | :------ | :------ | :------ |
-`target` | *string* \| [*Location*](../interfaces/location.md) | - | Location to go to. Either a pathname or a complete location object.   |
-`state` | *null* \| *object* | null | Optional state to push with the location.    |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `target` | `string` \| [`Location`](../interfaces/Location.md) | `undefined` | Location to go to. Either a pathname or a complete location object. |
+| `state` | ``null`` \| `object` | `null` | Optional state to push with the location. |
 
-**Returns:** *void*
+#### Returns
+
+`void`
 
 ___
 
 ### replace
 
-▸ **replace**(`target`: *string* \| [*Location*](../interfaces/location.md), `state?`: *null* \| *object*): *void*
+▸ **replace**(`target`, `state?`): `void`
 
 Replace the current location and state on the stack.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Default value | Description |
-:------ | :------ | :------ | :------ |
-`target` | *string* \| [*Location*](../interfaces/location.md) | - | Location or pathname to navigate to.   |
-`state` | *null* \| *object* | null | Desired state    |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `target` | `string` \| [`Location`](../interfaces/Location.md) | `undefined` | Location or pathname to navigate to. |
+| `state` | ``null`` \| `object` | `null` | Desired state |
 
-**Returns:** *void*
+#### Returns
+
+`void`
 
 ___
 
 ### unblock
 
-▸ **unblock**(): *void*
+▸ **unblock**(): `void`
 
 Remove the currently configured blocker.
 
-**Returns:** *void*
+#### Returns
+
+`void`
 
 ___
 
 ### unlisten
 
-▸ **unlisten**(`listener`: [*NavigationListener*](../README.md#navigationlistener)): *void*
+▸ **unlisten**(`listener`): `void`
 
 Removes / disables a listener.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`listener` | [*NavigationListener*](../README.md#navigationlistener) | The listener to disable.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `listener` | [`NavigationListener`](../README.md#navigationlistener) | The listener to disable. |
 
-**Returns:** *void*
+#### Returns
+
+`void`

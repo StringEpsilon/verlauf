@@ -8,55 +8,69 @@ Interface for the transition blocking subsystem.
 
 ### Methods
 
-- [block](transitionblocker.md#block)
-- [isBlocked](transitionblocker.md#isblocked)
-- [unblock](transitionblocker.md#unblock)
+- [block](TransitionBlocker.md#block)
+- [isBlocked](TransitionBlocker.md#isblocked)
+- [unblock](TransitionBlocker.md#unblock)
 
 ## Methods
 
 ### block
 
-▸ **block**(...`args`: *any*[]): *function*
+▸ **block**(...`args`): () => `void`
 
 Method to set a / the blocker.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`...args` | *any*[] | generic arguments.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `...args` | `any`[] | generic arguments. |
 
-**Returns:** () => *void*
+#### Returns
+
+`fn`
+
+▸ (): `void`
+
+Method to set a / the blocker.
+
+##### Returns
+
+`void`
 
 ___
 
 ### isBlocked
 
-▸ **isBlocked**(`newLocation`: [*Location*](location.md), `action`: *string*): *boolean*
+▸ **isBlocked**(`newLocation`, `action`): `boolean`
 
 Method to dertime whether or not a given transition is blocked.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`newLocation` | [*Location*](location.md) | Target location of the pending transition.   |
-`action` | *string* | Action related to the pending transition.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `newLocation` | [`Location`](Location.md) | Target location of the pending transition. |
+| `action` | `string` | Action related to the pending transition. |
 
-**Returns:** *boolean*
+#### Returns
+
+`boolean`
 
 ___
 
 ### unblock
 
-▸ **unblock**(...`args`: *any*[]): *void*
+▸ **unblock**(...`args`): `void`
 
 Unblock everything.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`...args` | *any*[] | generic arguments    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `...args` | `any`[] | generic arguments |
 
-**Returns:** *void*
+#### Returns
+
+`void`
