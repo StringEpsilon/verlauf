@@ -50,7 +50,7 @@ Creates a new History instance.
 
 ### action
 
-• **action**: `string`
+• **action**: `string` = `ACTION.POP`
 
 Last action performen on the history stack. Initial value is always POP.
 
@@ -201,11 +201,11 @@ Navigate to a location with the specified method.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `target` | `string` \| [`Location`](../interfaces/Location.md) | Target location. |
-| `state` | ``null`` \| `object` | Desired state for the location |
-| `method` | `string` | Specify the method to use for navigation. Either "PUSH" or "REPLACE". Default: PUSH. |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `target` | `string` \| [`Location`](../interfaces/Location.md) | `undefined` | Target location. |
+| `state` | ``null`` \| `object` | `undefined` | Desired state for the location |
+| `method` | `string` | `ACTION.PUSH` | Specify the method to use for navigation. Either "PUSH" or "REPLACE". Default: PUSH. |
 
 #### Returns
 
