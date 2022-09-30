@@ -39,7 +39,7 @@ const config = [
 	makeEsmConfig("src/adapters/browserHistory.ts", "createBrowserHistory.js"),
 	makeEsmConfig("src/adapters/hashHistory.ts", "createHashHistory.js"),
 	makeEsmConfig("src/adapters/memoryHistory.ts", "createMemoryHistory.js"),
-	makeEsmConfig("src/index.ts", `dist/esm/${pkg.name}.js`),
+	makeEsmConfig("src/index.ts", `esm/${pkg.name}.js`),
 	{
 		input: "./src/index.ts",
 		output: [{ file: "dist/verlauf.d.ts", format: "es" }],
@@ -49,6 +49,7 @@ const config = [
 				targets: [
 					{ src: "package.json", dest: "dist/" },
 					{ src: "README.md", dest: "dist/" },
+					{ src: "LICENSE", dest: "dist/" },
 				],
 			}),
 		],
