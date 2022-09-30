@@ -198,11 +198,11 @@ describe("createBrowserAdapter()", () => {
 
 			let wrapper = createBrowserAdapter(jest.fn(), {});
 			expect(wrapper.getLocation()).toEqual({
-				"hash": "#hash",
-				"key": "",
-				"pathname": "/path/name",
-				"search": "?search=true",
-				"state": null,
+				hash: "#hash",
+				key: "",
+				pathname: "/path/name",
+				search: "?search=true",
+				state: null,
 			});
 		});
 
@@ -219,23 +219,23 @@ describe("createBrowserAdapter()", () => {
 
 			// Mock history.length:
 			Object.defineProperty(window.history, "state", {
-				value:  {
+				value: {
 					state: {
 						foo: "foo",
 						bar: "bar",
 					},
-					key: "123456"
+					key: "123456",
 				},
 				configurable: true,
 			});
 
 			let wrapper = createBrowserAdapter(jest.fn(), {});
 			expect(wrapper.getLocation()).toEqual({
-				"hash": "#hash",
-				"key": "123456",
-				"pathname": "/path/name",
-				"search": "?search=true",
-				"state": {
+				hash: "#hash",
+				key: "123456",
+				pathname: "/path/name",
+				search: "?search=true",
+				state: {
 					foo: "foo",
 					bar: "bar",
 				},
