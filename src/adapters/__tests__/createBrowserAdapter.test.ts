@@ -183,4 +183,63 @@ describe("createBrowserAdapter()", () => {
 			expect(listener).toBeCalledTimes(1);
 		});
 	});
+
+	describe(".getLocation()", () => {
+		it("returns the current location from window history", () => {
+			let location = Object.assign({}, window.location);
+			delete global.window.location;
+			window = Object.create(window);
+			window.location = {
+				...location,
+				pathname: "/path/name",
+				search: "?search=true",
+				hash: "#hash",
+			};
+
+			let wrapper = createBrowserAdapter(jest.fn(), {});
+			expect(wrapper.getLocation()).toEqual({
+				"hash": "#hash",
+				"key": "",
+				"pathname": "/path/name",
+				"search": "?search=true",
+				"state": null,
+			});
+		});
+
+		it("returns the current location from window history, with proper state and key", () => {
+			let location = Object.assign({}, window.location);
+			delete global.window.location;
+			window = Object.create(window);
+			window.location = {
+				...location,
+				pathname: "/path/name",
+				search: "?search=true",
+				hash: "#hash",
+			};
+
+			// Mock history.length:
+			Object.defineProperty(window.history, "state", {
+				value:  {
+					state: {
+						foo: "foo",
+						bar: "bar",
+					},
+					key: "123456"
+				},
+				configurable: true,
+			});
+
+			let wrapper = createBrowserAdapter(jest.fn(), {});
+			expect(wrapper.getLocation()).toEqual({
+				"hash": "#hash",
+				"key": "123456",
+				"pathname": "/path/name",
+				"search": "?search=true",
+				"state": {
+					foo: "foo",
+					bar: "bar",
+				},
+			});
+		});
+	});
 });

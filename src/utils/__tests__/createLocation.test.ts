@@ -22,6 +22,22 @@ describe("createLocation()", () => {
 			});
 		});
 
+		it("Returns empty string for search if there is no current location.", () => {
+			expect(
+				createLocation(
+					"#hash",
+					null,
+					null,
+					void(0),
+					true
+				)
+			).toMatchObject({
+				pathname: "/",
+				search: "",
+				hash: "#hash",
+			});
+		});
+
 		it("overrides the search, if the new location has it", () => {
 			expect(
 				createLocation(

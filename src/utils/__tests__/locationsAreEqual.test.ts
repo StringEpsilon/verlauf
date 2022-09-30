@@ -84,4 +84,25 @@ describe("locationsAreEqual()", () => {
 			)
 		).toBe(false);
 	});
+
+	it("compares state", () => {
+		expect(
+			locationsAreEqual(
+				{
+					pathname: "/a",
+					search: "?search",
+					hash: "#hash",
+					key: "123456",
+					state: null,
+				},
+				{
+					pathname: "/a",
+					search: "?search",
+					hash: "#hash",
+					key: "123456",
+					state: {},
+				}
+			)
+		).toBe(false);
+	});
 });

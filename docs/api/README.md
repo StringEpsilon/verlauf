@@ -18,7 +18,7 @@ verlauf
 - [MemoryHistoryOptions](interfaces/MemoryHistoryOptions.md)
 - [TransitionBlocker](interfaces/TransitionBlocker.md)
 
-### Type aliases
+### Type Aliases
 
 - [NavigationListener](README.md#navigationlistener)
 - [OnAdapterLocationChange](README.md#onadapterlocationchange)
@@ -37,7 +37,7 @@ verlauf
 - [createPath](README.md#createpath)
 - [locationsAreEqual](README.md#locationsareequal)
 
-## Type aliases
+## Type Aliases
 
 ### NavigationListener
 
@@ -150,7 +150,8 @@ ___
 
 Creates a History instance with the browser history adapter.
 
-**`example`**
+**`Example`**
+
 ```js
 const myHistory = createBrowserHistory({
   // Always prepend "/ui/" to all paths before pushing to history:

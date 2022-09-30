@@ -6,7 +6,7 @@ An adapter between [History](../classes/History.md) and `window.history` or cust
 
 ## Table of contents
 
-### Methods
+### Properties
 
 - [getLength](HistoryAdapter.md#getlength)
 - [getLocation](HistoryAdapter.md#getlocation)
@@ -16,15 +16,19 @@ An adapter between [History](../classes/History.md) and `window.history` or cust
 - [pushState](HistoryAdapter.md#pushstate)
 - [replaceState](HistoryAdapter.md#replacestate)
 
-## Methods
+## Properties
 
 ### getLength
 
-▸ **getLength**(): `number`
+• **getLength**: () => `number`
+
+#### Type declaration
+
+▸ (): `number`
 
 Return the current size of the history stack.
 
-#### Returns
+##### Returns
 
 `number`
 
@@ -32,11 +36,15 @@ ___
 
 ### getLocation
 
-▸ **getLocation**(): [`Location`](Location.md)
+• **getLocation**: () => [`Location`](Location.md)
+
+#### Type declaration
+
+▸ (): [`Location`](Location.md)
 
 Get the current location on stack.
 
-#### Returns
+##### Returns
 
 [`Location`](Location.md)
 
@@ -44,17 +52,21 @@ ___
 
 ### go
 
-▸ **go**(`steps`): `void`
+• **go**: (`steps`: `number`) => `void`
+
+#### Type declaration
+
+▸ (`steps`): `void`
 
 Go n steps backwards or forwards on the history stack
 
-#### Parameters
+##### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `steps` | `number` |
 
-#### Returns
+##### Returns
 
 `void`
 
@@ -62,11 +74,15 @@ ___
 
 ### listen
 
-▸ **listen**(): `void`
+• **listen**: () => `void`
+
+#### Type declaration
+
+▸ (): `void`
 
 Registers the relevant event listeners.
 
-#### Returns
+##### Returns
 
 `void`
 
@@ -74,17 +90,21 @@ ___
 
 ### modifyPath
 
-▸ **modifyPath**(`path`): `string`
+• **modifyPath**: (`path`: `string`) => `string`
+
+#### Type declaration
+
+▸ (`path`): `string`
 
 To modify a given path according to the [HistoryOptions](HistoryOptions.md) and the history type.
 
-#### Parameters
+##### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `path` | `string` |
 
-#### Returns
+##### Returns
 
 `string`
 
@@ -92,18 +112,22 @@ ___
 
 ### pushState
 
-▸ **pushState**(`state`, `target`): `void`
+• **pushState**: (`state`: [`Location`](Location.md), `target`: `string`) => `void`
+
+#### Type declaration
+
+▸ (`state`, `target`): `void`
 
 Provides the method to push a new location to the stack
 
-#### Parameters
+##### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `state` | [`Location`](Location.md) |
 | `target` | `string` |
 
-#### Returns
+##### Returns
 
 `void`
 
@@ -111,17 +135,21 @@ ___
 
 ### replaceState
 
-▸ **replaceState**(`state`, `target`): `void`
+• **replaceState**: (`state`: [`Location`](Location.md), `target`: `string`) => `void`
+
+#### Type declaration
+
+▸ (`state`, `target`): `void`
 
 Provides the method to replace the current location on the stack
 
-#### Parameters
+##### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `state` | [`Location`](Location.md) |
 | `target` | `string` |
 
-#### Returns
+##### Returns
 
 `void`

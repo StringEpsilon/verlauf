@@ -82,7 +82,7 @@ Configure a transition block. [LegacyBlocker](../README.md#legacyblocker)
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `...args` | `any`[] | Arguments passed to {@link LegacyBlocker.block} |
+| `...args` | `any`[] | Arguments passed to LegacyBlocker.block |
 
 #### Returns
 
@@ -116,7 +116,8 @@ ___
 
 Goes forwards or backwards in history. If the value is out of bounds, it will go as far as it can (i.E. to the first or last entry).
 
-**`example`**
+**`Example`**
+
 ```js
 history.go(-10); // go ten entries back.
 

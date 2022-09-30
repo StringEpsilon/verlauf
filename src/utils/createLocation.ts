@@ -47,7 +47,7 @@ export function createLocation(
 
 	if (preserveSearch) {
 		if (!location.pathname && !location.search) {
-			location.search = currentLocation?.search;
+			location.search = currentLocation?.search ?? "";
 		}
 	}
 
