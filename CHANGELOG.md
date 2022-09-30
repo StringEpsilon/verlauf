@@ -1,6 +1,6 @@
 # Changelog
 
-## FUTURE:
+## 1.0.0:
 
 -   hashAdapter now respects the window when looking for a `<base href="...">`, similar to browserAdapter.
 

@@ -19,15 +19,6 @@ A complete overview of the differences can [be found here](./docs/differences.md
 
 ## Roadmap:
 
-**1.0**:
-
--   [ ] Backport bugfixes that were made in history@5, as compatability allows
-    -   [ ] Correctly parse and utilize `<base/>` tag in hashHistoryAdapter
--   [ ] Final pass over names and calling conventions of Verlauf specific APIs
--   [ ] **Ensure compatibility:**
-    -   [x] pass react-router test suite
-    -   [ ] Test behavior in demos and test applications.
-
 **Future**:
 
 -   [ ] Replace the code borrowed for unit tests.
